@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201212241532" AlpVersion="6.6.0">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.8.1.201206071455" AlpVersion="6.6.0">
 <Model>
 	<Id>1328041345188</Id>
 	<Name><![CDATA[CRCScreening_v49]]></Name>
@@ -23,8 +23,6 @@
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -184,7 +182,7 @@
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[type]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -206,7 +204,7 @@
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[initial_state]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -1537,8 +1535,6 @@ return uniform() < sensitivity;
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -1959,8 +1955,6 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -2120,7 +2114,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[model_description]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2142,7 +2136,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[num_lesion_types]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2164,7 +2158,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[num_tests]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2186,7 +2180,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[population_size]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2208,7 +2202,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[max_age]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2230,7 +2224,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[infile_population_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2252,7 +2246,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2274,7 +2268,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2296,7 +2290,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_year]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2318,7 +2312,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication_overwrite]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2340,7 +2334,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_year_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2362,7 +2356,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_year_overwrite]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2384,7 +2378,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_year_start_age]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2406,7 +2400,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_year_end_age]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2428,7 +2422,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_state]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2450,7 +2444,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_state_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2472,7 +2466,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_state_overwrite]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2494,7 +2488,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_polyp1_polyp2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2516,7 +2510,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_polyp2_polyp3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2538,7 +2532,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_polyp1_pre]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2560,7 +2554,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_polyp2_pre]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2582,7 +2576,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_polyp3_pre]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2604,7 +2598,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre1_pre2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2626,7 +2620,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre2_pre3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2648,7 +2642,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre3_pre4]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2670,7 +2664,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre1_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2692,7 +2686,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre2_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2714,7 +2708,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre3_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2736,7 +2730,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre4_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2758,7 +2752,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin1_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2780,7 +2774,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin2_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2802,7 +2796,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin3_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2824,7 +2818,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin4_dead]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2846,7 +2840,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre1_clin1]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2868,7 +2862,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre2_clin2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2890,7 +2884,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre3_clin3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2912,7 +2906,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_pre4_clin4]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2934,7 +2928,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin1_clin2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2956,7 +2950,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin2_clin3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -2978,7 +2972,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[mean_duration_clin3_clin4]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3000,7 +2994,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_survive_clin1]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3022,7 +3016,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_survive_clin2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3044,7 +3038,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_survive_clin3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3066,7 +3060,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_survive_clin4]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3088,7 +3082,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_polypectomy]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3110,7 +3104,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_polyp_pathology]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3132,7 +3126,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_treatment1]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3154,7 +3148,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_treatment2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3176,7 +3170,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_treatment3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3198,7 +3192,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_treatment4]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3220,7 +3214,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_treatment_cure]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3242,7 +3236,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lifespan_multiplier_no_treatment]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3264,7 +3258,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[value_loss_cancer]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3286,7 +3280,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[value_life_year_ages]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3308,7 +3302,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[value_life_year_dollars]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3330,7 +3324,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[model_test_probability]]></Label>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3352,7 +3346,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[duration_screen_low_risk]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3374,7 +3368,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[surveillance_interval]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3396,7 +3390,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[max_surveillance_negatives]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3418,7 +3412,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[use_conditional_compliance]]></Label>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3440,7 +3434,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[model_initial_compliance]]></Label>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3462,7 +3456,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[initial_compliance_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3484,7 +3478,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[never_compliant_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3506,7 +3500,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[diagnostic_compliance_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3528,7 +3522,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[surveillance_compliance_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3550,7 +3544,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[treatment_compliance_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3572,7 +3566,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[routine_tests]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3594,7 +3588,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_initial_state]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3616,7 +3610,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_black_female_ages]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3638,7 +3632,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_black_female_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3660,7 +3654,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_black_male_ages]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3682,7 +3676,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_black_male_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3704,7 +3698,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_white_female_ages]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3726,7 +3720,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_white_female_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3748,7 +3742,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_white_male_ages]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3770,7 +3764,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_incidence_white_male_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3792,7 +3786,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_risk_alpha]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3814,7 +3808,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lesion_risk_beta]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3836,7 +3830,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3858,7 +3852,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_routine_start]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3880,7 +3874,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_routine_end]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3902,7 +3896,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_routine_freq]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3924,7 +3918,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_specificity]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3946,7 +3940,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_sensitivity_polyp1]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3968,7 +3962,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_sensitivity_polyp2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -3990,7 +3984,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_sensitivity_polyp3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4012,7 +4006,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_sensitivity_cancer]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4034,7 +4028,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_cost]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4056,7 +4050,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_proportion_lethal]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4078,7 +4072,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_proportion_perforation]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4100,7 +4094,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_cost_perforation]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4122,7 +4116,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_proportion]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4144,7 +4138,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4166,7 +4160,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_not_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4188,7 +4182,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[compute_population_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4210,7 +4204,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[population_rates_sample_size]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4232,7 +4226,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[num_population_rates]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4254,7 +4248,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_discount_age]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4276,7 +4270,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_discount_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4298,7 +4292,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lifespan_discount_age]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4320,7 +4314,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[lifespan_discount_rate]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4341,7 +4335,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 						<ParameterEditor>
 							<Id>1330274699052</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4362,7 +4356,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 						<ParameterEditor>
 							<Id>1349378790107</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4383,7 +4377,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 						<ParameterEditor>
 							<Id>1349383271255</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4404,7 +4398,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 						<ParameterEditor>
 							<Id>1349384018401</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4425,7 +4419,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 						<ParameterEditor>
 							<Id>1350053085010</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4452,7 +4446,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1354811694596</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4479,7 +4473,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1354811715922</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_not_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4500,7 +4494,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1354817305024</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4521,7 +4515,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1358197900023</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4542,7 +4536,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1359475170459</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4563,7 +4557,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1359476176053</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4585,7 +4579,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1370967096227</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4607,7 +4601,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1370967122076</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication_overwrite]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4629,7 +4623,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1370967132528</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[outfile_replication]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4650,7 +4644,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372780306830</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4671,7 +4665,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372780347420</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4692,7 +4686,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372783816804</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4713,7 +4707,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372783850547</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4734,7 +4728,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784158350</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4755,7 +4749,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784171969</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4776,7 +4770,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784174543</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4797,7 +4791,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784182437</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4818,7 +4812,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784184574</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4839,7 +4833,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784257629</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4860,7 +4854,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1372784278923</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4881,7 +4875,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373388851548</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4902,7 +4896,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373388873872</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4923,7 +4917,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373388887022</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4944,7 +4938,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373388907365</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4965,7 +4959,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373388923261</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -4986,7 +4980,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373917526527</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5007,7 +5001,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373917609442</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5028,7 +5022,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373917655555</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5049,7 +5043,7 @@ This is used to calculate continuing, rather than initial compliance.
 						<ParameterEditor>
 							<Id>1373988815905</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5607,6 +5601,11 @@ catch (Exception e) {
     + "\t" + population.people.average("death_age")
     + "\t" + population.people.average("discounted_death_age")
     + "\t" + -population.people.average("lost_years")
+    //New line for conditional statistic
+    + "\t" + -population.lost_years_cond_polyp
+    + "\t" + -population.lost_years_cond_crc
+    + "\t" + -population.lost_years_cond_dead_crc
+    // End new line
     + "\t" + -population.people.average("discounted_lost_years")
     + "\t" + population.people.average("cancer_free_years")
     + "\t" + population.people.average("cost_routine")
@@ -5716,6 +5715,10 @@ catch (Exception e) {
         + "\t" + "lifeobs"
         + "\t" + "discounted_lifeobs"
         + "\t" + "lifelost"
+        //New line to create header for conditional lifelost statistics
+        + "\t" + "lifelost_cond_polyp"
+        + "\t" + "lifelost_cond_crc"
+        + "\t" + "lifelost_cond_dead_crc"
         + "\t" + "discounted_lifelost"
         + "\t" + "crcfree"
         + "\t" + "cost_routine"
@@ -6072,6 +6075,7 @@ if (parameterSet != null) {
 			if (nameVal != null && nameVal.length == 2) {
 				String fieldName = nameVal [0];
 				String fieldValue = nameVal [1];
+				//changed the following line
 				//traceln ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
 				outputLines.add ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
 				modelIO.setFieldValue (this, fieldName, fieldValue);
@@ -6237,8 +6241,6 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -6882,7 +6884,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sex_male]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -6904,7 +6906,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[educ_college]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -6926,7 +6928,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[income_gt_20k]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -6948,7 +6950,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[insure_none]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -6970,7 +6972,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[insure_private]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -6992,7 +6994,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[race_white]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7014,7 +7016,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[race_black]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7036,7 +7038,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[race_hispanic]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7058,7 +7060,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[race_other]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7080,7 +7082,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[alone_yes]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7102,7 +7104,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[source_yes]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7124,7 +7126,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[famhist_med_high]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7146,7 +7148,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[smoke_former]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7168,7 +7170,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[smoke_never]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7190,7 +7192,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[vitamin_yes]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7212,7 +7214,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[flushot_yes]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7234,7 +7236,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[region_midwest]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7256,7 +7258,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[region_south]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7278,7 +7280,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[region_west]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7299,7 +7301,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 						<ParameterEditor>
 							<Id>1370526830303</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7321,7 +7323,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>1378396768743</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[insure_private]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7343,7 +7345,7 @@ import org.renci.epi.util.stats.compliance.InsuranceCategory;]]></Import>
 							<Id>1378396773195</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[insure_private]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -9723,6 +9725,12 @@ if (lifespan > get_Population().get_Main().max_age) {
   lifespan = get_Population().get_Main().max_age;
 }
 
+//Print if lifespan is less than person age
+//if (lifespan < age){
+  //System.out.println("LIFESPAN INCORRECT");
+//}
+
+
 // Start the timer that will expire when this person dies.
 life_timer.restart(lifespan);
 
@@ -10156,8 +10164,6 @@ import java.text.NumberFormat;]]></Import>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -10780,6 +10786,84 @@ import java.text.NumberFormat;]]></Import>
 						<Type><![CDATA[int]]></Type>        
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951167300</Id>
+					<Name><![CDATA[sum_lost_years_cond_polyp]]></Name>
+					<X>0</X><Y>-650</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951349345</Id>
+					<Name><![CDATA[sum_lost_years_cond_crc]]></Name>
+					<X>0</X><Y>-630</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951424576</Id>
+					<Name><![CDATA[sum_lost_years_cond_dead_crc]]></Name>
+					<X>0</X><Y>-610</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951429834</Id>
+					<Name><![CDATA[lost_years_cond_polyp]]></Name>
+					<X>0</X><Y>-550</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951506620</Id>
+					<Name><![CDATA[lost_years_cond_crc]]></Name>
+					<X>0</X><Y>-530</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1379951508892</Id>
+					<Name><![CDATA[lost_years_cond_dead_crc]]></Name>
+					<X>0</X><Y>-510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -10801,16 +10885,26 @@ int num_dead_crc = 0;
 int num_crc_and_polyp = 0;
 int num_crc_and_no_polyp = 0;
 int num_dead_crc_and_crc = 0;
+// stuff for calculating conditioal life lost
+/*
+double sum_lifelost_cond_polyp = 0.0;
+double sum_lifelost_cond_crc = 0.0;
+double sum_lifelost_cond_dead_crc = 0.0;
+double sum_lifelost_cond_crc_and_polyp = 0.0;
+*/
 
 for (int i=0; i<people.size(); i++) {
   if (people.get(i).event_polyp) {
     num_polyp++;
+    sum_lost_years_cond_polyp += people.get(i).lost_years;
   }
   if (people.get(i).event_crc) {
     num_crc++;
+    sum_lost_years_cond_crc += people.get(i).lost_years;
   }
   if (people.get(i).event_dead_crc) {
     num_dead_crc++;
+    sum_lost_years_cond_dead_crc += people.get(i).lost_years;
   }
   if (people.get(i).event_crc && people.get(i).event_polyp) {
     num_crc_and_polyp++;
@@ -10841,6 +10935,16 @@ if (abs(prob_dead_crc_check - prob_dead_crc) > 1e-5) {
   error("Check failed: prob_dead_crc=" + prob_dead_crc + ", prob_dead_crc_check=" + prob_dead_crc_check);
 }
 
+// --------------------------------------------------------
+// This section calculates conditional lifelost given various criterion
+/*
+double lifelost_cond_polyp = sum_lifelost_polyp / num_polyp;
+double lifelost_cond_crc = sum_lifelost_crc/ num_crc;
+double lifelost_cond_dead_crc = sum_lifelost_cond_dead_crc / num_dead_crc;
+*/
+lost_years_cond_polyp = sum_lost_years_cond_polyp / num_polyp;
+lost_years_cond_crc = sum_lost_years_cond_crc/ num_crc;
+lost_years_cond_dead_crc = sum_lost_years_cond_dead_crc / num_dead_crc;
 
 //---------------------------------------------------------------
 // This section is for events whose counters are located in the
@@ -11404,7 +11508,7 @@ for (int i=0; i < people.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[/*
+					<Body><![CDATA[
 if (get_Main().output_population_snapshots) {
 	outfile_person_writer_count++;
 	NumberFormat format = new java.text.DecimalFormat ("00000");
@@ -11414,7 +11518,7 @@ if (get_Main().output_population_snapshots) {
 	boolean append = false;
 	outfile_person_writer =
 		Main.modelIO.getModelOutputWriter (fileName, append, compress);
-}	*/
+}
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -11426,11 +11530,11 @@ if (get_Main().output_population_snapshots) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[/*
+					<Body><![CDATA[
 if (get_Main().output_population_snapshots) {
     Main.modelIO.closeWriter (outfile_person_writer);
 }
-*/]]></Body>
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -11441,7 +11545,7 @@ if (get_Main().output_population_snapshots) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[/*
+					<Body><![CDATA[
 if (get_Main().output_population_snapshots && time () > outfile_person_min_age ) {
 	Main.modelIO.writePeople (people.iterator(), outfile_person_writer);
 }
@@ -11461,7 +11565,7 @@ if (get_Main().output_population_snapshots&&
 	boolean compress = get_Main().output_population_snapshots_compress;
 	boolean append = false;
 	Main.modelIO.writePeople (people.iterator (), outputDir, fileName);
-} */
+} 
 
 ]]></Body>
 				</Function>
@@ -11565,6 +11669,10 @@ if (get_Main().output_population_snapshots&&
 							<Name><![CDATA[insure_medicaid]]></Name>
 							<Value><![CDATA[]]></Value>	
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[age]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
 					</Parameters>
 					<Replication><![CDATA[get_Main().population_size]]></Replication>	
 					<CollectionType>ARRAY_LIST_BASED</CollectionType>
@@ -11583,8 +11691,6 @@ if (get_Main().output_population_snapshots&&
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -11653,7 +11759,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11675,7 +11781,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[routine_start]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11697,7 +11803,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[routine_end]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11719,7 +11825,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[routine_freq]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11741,7 +11847,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[specificity]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11763,7 +11869,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sensitivity_polyp1]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11785,7 +11891,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sensitivity_polyp2]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11807,7 +11913,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sensitivity_polyp3]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11829,7 +11935,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sensitivity_cancer]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11851,7 +11957,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11873,7 +11979,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11895,7 +12001,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[have_model]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11917,7 +12023,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_lethal]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11939,7 +12045,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[proportion_perforation]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11961,7 +12067,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[cost_perforation]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -11983,7 +12089,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[compliance_rate_given_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -12005,7 +12111,7 @@ if (get_Main().output_population_snapshots&&
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[compliance_rate_given_not_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -12032,7 +12138,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1354823004756</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -12059,7 +12165,7 @@ This is used to calculate continuing, rather than initial compliance.
 							<Id>1354823004774</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[test_compliance_rate_given_not_prev_compliant]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -12103,8 +12209,6 @@ This is used to calculate continuing, rather than initial compliance.
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
 			<SamplesToKeep>100</SamplesToKeep>
-			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
-			<ElementsLimitValue>100</ElementsLimitValue>
 			<MakeDefaultViewArea>true</MakeDefaultViewArea>
 			<SceneGridColor/>
 			<SceneBackgroundColor/>
@@ -12416,7 +12520,7 @@ return null;
 			<CustomGeneratorCode>new Random()</CustomGeneratorCode>
 			<SeedValue>1</SeedValue>
 			<RandomSelectionModeForSimultaneousEvents>false</RandomSelectionModeForSimultaneousEvents>
-			<VmArgs><![CDATA[]]></VmArgs>
+			<VmArgs><![CDATA[-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8321]]></VmArgs>
 			<AbsoluteAccuracy>1.0E-5</AbsoluteAccuracy>
 			<RelativeAccuracy>1.0E-5</RelativeAccuracy>
 			<TimeAccuracy>1.0E-5</TimeAccuracy>
@@ -12518,7 +12622,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[population_size]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[990]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[max_age]]></ParameterName>
@@ -12526,7 +12630,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[infile_population_name]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA["population2.tsv"]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outfile_replication]]></ParameterName>
@@ -12918,7 +13022,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[death_rate_delay]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[59]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[intervention]]></ParameterName>
@@ -12942,7 +13046,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[output_population_snapshots]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[true]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[output_population_snapshots_compress]]></ParameterName>
@@ -12950,7 +13054,7 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[intervention_compliance_rate]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
+					<ParameterValue><![CDATA[0.5]]></ParameterValue>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[beta_sex_female]]></ParameterName>
@@ -13030,6 +13134,18 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[cohort]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[outfile_agent_name]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[outfile_agent_overwrite]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[outfile_agent]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -18538,7 +18654,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (3); //00);
+execute_populations_parallel (5); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -18548,13 +18664,13 @@ static int outcomesIndex = 0;
 
 // Useful for smaller runs.
 
-//private String inputDirectory = "pops";
-//private String outputDirectory = "out";
+private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
+private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
 
 // For production runs.
-private String inputDirectory  = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\pops";
-private String outputDirectory = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\pops";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\out";
 
 /**
  * Change this to select a different experment.
@@ -18612,6 +18728,7 @@ private void model_population (File [] cohorts,
                                HashMap<String,Outcomes> results,
                                Calibrate calibrate)
 {
+
 	model_population (cohorts,
 					  new File [] { null },
 					  experimentParameters, 
@@ -18639,11 +18756,13 @@ private void model_population (File [] cohorts,
                                 HashMap<String,Outcomes> results,
                                 Calibrate calibrate)
 {
+    //System.out.println ("Experiment params: ==> \n" + experimentParameters + "END EXPERIMENT PARAMS");
     System.out.println ("iteration params: ==> \n(" + iterationParameters + ")");		
 	for (File cohort : cohorts) {
 		System.out.println ("cohort: " + cohort);
 		for (File intervention : interventions) {
 		    String scenario = get_scenario_name (cohort, intervention);
+		    //System.out.println ("output of get_senario_name method"+ scenario);
 	        String scenarioParameters = get_scenario_parameters (intervention);
 			futures.put (scenario,
 					     execute_parallel (cohort,
@@ -18678,9 +18797,20 @@ private void execute_populations_parallel (int replications) {
 	HashMap<String,Outcomes> results = new HashMap<String,Outcomes> ();
 		
 	List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
+	
 	for (String iterationParameters : iterationParameterSets) {
-
+		
+		///For debug purposes
+		System.out.println (iterationParameters);
+		//System.exit(0);
+		
+		
         File [] cohorts = Main.modelIO.getFilesByPattern (".*.tsv.[0-9]+", new File (inputDirectory));
+		System.out.println("BREAK 1");
+		System.out.println("INPUT_DIRECTORY"+inputDirectory);
+		System.out.println("COHORTS"+cohorts);
+		System.out.println("EXPERIMENT_PARAMETERS"+experimentParameters);
+		System.out.println("ITERATION_PARMERTERS"+iterationParameters);
 		model_population (cohorts,
 					      experimentParameters,
                           iterationParameters,
@@ -18688,7 +18818,7 @@ private void execute_populations_parallel (int replications) {
                           futures,
                           null, //results,
                           null);
-
+                          
         File experimentDir = new File (formExperimentDirPath ());
         File [] interventions = Main.modelIO.getFilesByPattern ("intervention.[0-9]+", experimentDir);
     	model_population (cohorts,
@@ -18850,12 +18980,26 @@ private String getInputFileConfiguration (File input) {
 	int cohort = Main.modelIO.getAge (input);
 	if (cohort > -1) {
 		value = "cohort=" + cohort + "\n";
+		value += "death_rate_delay=" + cohort + "\n";
 	}
 	int lines = Main.modelIO.countFileLines (input);
-
+	lines = 10000; 
 	value += "population_size=" + (lines - 1) + "\n";
 	value += "infile_population_name=" + input.getPath () + "\n";
 	
+	return value;
+}
+
+/**
+* Get the age of the cohort from the cohort file
+@param input The cohort input file
+*/
+private String getCohortAge (File input){
+	String value = "";
+	int cohort = Main.modelIO.getAge(input);
+	if (cohort > -1) {
+		value = "death_rate_delay=" + cohort + "\n";
+	}
 	return value;
 }
 /**
@@ -19033,18 +19177,29 @@ class ModelRunner implements Runnable {
 			Main root = create_model (input, scenario, replication);
 			// Must keep same engine to retain initialization results.
 			//root.setEngine (createEngine ());
-		
 			traceln ("-start: " + root.output_dir + " rep(" + replication + ")");
 		
 			List<String> outputLines = new ArrayList<String> ();
 			outputLines.add ("--replication: " + replication);
 
+			/* //Old order
 			root.configure_parameters (input.getName () + "-" + scenario,
-									   new String [] {
-									   		getInputFileConfiguration (input),
-									   },
-									   outputLines);
+						   new String [] {
+						   		getInputFileConfiguration (input),
+						   },
+						   outputLines);					   
+			
 			root.configure_parameters (input.getName () + "-" + scenario, parameters, outputLines);
+			*/
+			root.configure_parameters (input.getName () + "-" + scenario, parameters, outputLines);
+						root.configure_parameters (input.getName () + "-" + scenario,
+						   new String [] {
+						   		getInputFileConfiguration (input),
+						   },
+						   outputLines);	
+			
+			System.out.println ("SENARIO IN RUNNER " + scenario);
+			System.out.println ("PARAMETER IN RUNNER " + parameters);
 
 			Main.modelIO.writeConfiguration (root,
 										root.output_dir,
@@ -19135,12 +19290,17 @@ List<Future> execute_parallel  (File input,
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[C:/dev/crcsim/common/util/target/epi-util-1.0-SNAPSHOT.jar]]></Location>
-		<Imported>false</Imported>
+		<Location><![CDATA[commons-math3-3.0.jar]]></Location>
+		<Imported>true</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
-		<Location><![CDATA[commons-math3-3.0.jar]]></Location>
+		<Location><![CDATA[epi-util-1.0-SNAPSHOT.jar]]></Location>
+		<Imported>true</Imported>
+		<Folder>false</Folder>
+	</ClassPathEntry>
+	<ClassPathEntry>
+		<Location><![CDATA[guava-14.0.1.jar]]></Location>
 		<Imported>true</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>
