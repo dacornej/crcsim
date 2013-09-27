@@ -45,11 +45,14 @@ class X {
 //@ContextConfiguration(locations={"/spring/population-context.xml"})
 public class ModelIOTest { //extends AbstractJUnit4SpringContextTests {
 	
-    private static Log logger = LogFactory.getLog (ModelIO.class); 
 
-    public ModelIOTest () {
+    private static Log logger = LogFactory.getLog (ModelIOTest.class); 
+    static {
 	BasicConfigurator.configure ();
 	Logger.getRootLogger().setLevel (Level.DEBUG);
+    }
+
+    public ModelIOTest () {
     }
 
     @Test
@@ -78,7 +81,7 @@ public class ModelIOTest { //extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void testGeography () throws Exception {
-	Geography geography = new Geography ();
+	Geography geography = new Geography (Geography.COMPLIANCE);
 
 	double distance = geography.getDistanceToNearestEndoscopyFacilityByZipCode ("27517");
 	CountyIntercepts countyIntercepts = geography.getCountyInterceptsByStcotrbg ("3700199999900000");
@@ -90,7 +93,7 @@ public class ModelIOTest { //extends AbstractJUnit4SpringContextTests {
 
 	assert distance == 4.4922130495 : "Distance by zip code failed.";
 
-	assert countyIntercepts.getMedicaidOnly () == 0.0016 : "Medicaid by county FIPS failed";
+	assert countyIntercepts.getMedicaidOnly () == 0.348013 : "Medicaid by county FIPS failed";
     }
 
     @Test
