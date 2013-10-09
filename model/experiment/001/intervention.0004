@@ -1,0 +1,3 @@
+#Senario 0003: Choice Model:ON,Modality Model:OFF, Distribution of Test acording to default
+model_initial_compliance=true
+model_test_probability=false

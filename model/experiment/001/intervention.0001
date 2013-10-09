@@ -1,0 +1,4 @@
+#Senario 0001: Choice Model:OFF,Modality Model:OFF, Only Colonoscopy
+initial_compliance_rate=0.55
+intervention_compliance_rate=0.55
+test_proportion=0.0,0.0,1.0,0.0 

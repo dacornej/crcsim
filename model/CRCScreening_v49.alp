@@ -6063,7 +6063,7 @@ if (parameterSet != null) {
 				String fieldName = nameVal [0];
 				String fieldValue = nameVal [1];
 				//This line prints out the settings
-				//System.out.println ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
+				System.out.println ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
 
 				outputLines.add ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
 				modelIO.setFieldValue (this, fieldName, fieldValue);
@@ -7354,7 +7354,7 @@ import org.renci.epi.util.stats.ModalityModel;]]></Import>
 						<ParameterEditor>
 							<Id>1378912940934</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7375,7 +7375,7 @@ import org.renci.epi.util.stats.ModalityModel;]]></Import>
 						<ParameterEditor>
 							<Id>1379356964978</Id>
 							<Name><![CDATA[]]></Name>
-							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -7397,7 +7397,7 @@ import org.renci.epi.util.stats.ModalityModel;]]></Import>
 							<Id>1379535357553</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[insure_private]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -9487,6 +9487,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 	      complianceModel.getTestAdjustedComplianceProbability (
 	          compliance_prob,
 	  	      test.name);
+	  System.out.println("Use Statistical Model of Compliance");
 	  	      
     } else {
       // Assign the compliance probability based on the user-specified rate.
@@ -9652,7 +9653,43 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
       	test.compliance_rate_given_not_prev_compliant;
     }
   }
+  // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
+  // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
+  /*
+  System.out.println(insure_medicaid);
+  //intervene_medicaid_reminder();
+  if ((this.insure_medicaid) && (uniform() < 0.5)){
+	double diff = 0;
+	diff = (1-compliance_prob);
+	System.out.println("Old Prob of Compliance: " + compliance_prob);
+	compliance_prob = compliance_prob + (diff/2.0);
+	System.out.println("New Prob of Compliance: " + compliance_prob);	
+  }
+  */
+  // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
+  /*
+  System.out.println("Is BLACK: " + this.race_black);
+  if ((this.race_black) && (uniform() < 0.2)){
+  	double diff = 0;
+  	diff = (1-compliance_prob);
+	System.out.println("Old Prob of Compliance: " + compliance_prob);
+	compliance_prob = compliance_prob + (diff/2.0);
+	System.out.println("New Prob of Compliance: " + compliance_prob);
+  }
+  */
   
+  // INTERVENTION 3: Make uninsured compliant with Colonoscopy
+  int numFreeScreen = 0;
+  if ((this.insure_none) && (numFreeScreen < 1000)){
+  	System.out.println("DO I Get To Intervention");
+  	if (routine_test.name == "Colonoscopy"){
+  		numFreeScreen++;
+  		compliance_prob = 1;
+  		System.out.println("Number of Free Colonoscopies: " + numFreeScreen);
+  		System.out.println("New Compliance Prob: "+ compliance_prob);
+  	}
+  	
+  }
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform () < compliance_prob;
   routine_compliance_history.add (new Boolean (isCompliant));
@@ -9824,6 +9861,7 @@ if (    screen_state.isStateActive(Person.Diagnostic)
    ) {
   if (is_compliant(diagnostic_test)) {
     diagnostic_test.tot_performed++;
+    //System.out.println(diagnostic_test.tot_performed); //added for debuging
     add_cost(diagnostic_test.cost, routine_is_diagnostic ? "routine" : "diagnostic");
 
     // Check for immediate death from the test procedure.
@@ -9924,10 +9962,15 @@ if (    screen_state.isStateActive(Person.Routine)
     && !disease_state.isStateActive(Person.ClinicalCancer)
     && !disease_state.isStateActive(Person.Dead)
    ) {
-   
+  // INTERVENTION 3: Forcing some uninsured people to have Colonoscopies
+  System.out.println("UNINSURED " + insure_none);
+  System.out.println("Chosen test: " + routine_test.name);  
+  
   if (routine_test.name.equals ("Colonoscopy")) {
 	// Keep a count of colonoscopies per person.
   	num_colonoscopies++;
+  	System.out.println(time());
+  	System.out.println(num_colonoscopies);
   }
   
   if (routine_test.name.equals(diagnostic_test.name)) {
@@ -10166,6 +10209,23 @@ else {
 
 
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1381330942118</Id>
+					<Name><![CDATA[intervene_medicaid_reminder]]></Name>
+					<X>-590</X><Y>720</Y>
+					<Label><X>25</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[if ((this.insure_medicaid) && (uniform() < 0.5)){
+	double diff = 0;
+	diff = (1-compliance_prob);
+	System.out.println("Old Prob of Compliance: " + compliance_prob);
+	compliance_prob = compliance_prob + (diff/2.0);
+	System.out.println("New Prob of Compliance: " + compliance_prob);	
+}]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -18744,6 +18804,7 @@ static int outcomesIndex = 0;
 
 private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
+//private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out2"; // New output directory for experimental runs
 
 
 // For production runs on the RENCI Machine
@@ -18755,7 +18816,9 @@ private boolean debugMode = true; // Set population size to some low number for 
 /**
  * Change this to select a different experment.
  */
-private String experimentId = "000";
+//private String experimentId = "000"; //orginal Experiment using inital_compliance_rate
+//private String experimentId = "001";
+private String experimentId = "002";
 
 /**
  * Forms the path to experiment specific data.
@@ -18990,7 +19053,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 100;
+		lines = 11;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
@@ -19291,17 +19354,12 @@ List<Future> execute_parallel  (File input,
 		<Folder>false</Folder>
 	</ClassPathEntry>
 	<ClassPathEntry>
+		<Location><![CDATA[guava-14.0.1.jar]]></Location>
+		<Imported>true</Imported>
+		<Folder>false</Folder>
+	</ClassPathEntry>
+	<ClassPathEntry>
 		<Location><![CDATA[epi-util-1.0-SNAPSHOT.jar]]></Location>
-		<Imported>true</Imported>
-		<Folder>false</Folder>
-	</ClassPathEntry>
-	<ClassPathEntry>
-		<Location><![CDATA[guava-14.0.1.jar]]></Location>
-		<Imported>true</Imported>
-		<Folder>false</Folder>
-	</ClassPathEntry>
-	<ClassPathEntry>
-		<Location><![CDATA[guava-14.0.1.jar]]></Location>
 		<Imported>true</Imported>
 		<Folder>false</Folder>
 	</ClassPathEntry>

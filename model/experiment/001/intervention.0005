@@ -1,0 +1,4 @@
+#Senario 0004: Choice Model:ON,Modality Model:OFF, Only Colonoscopy
+model_initial_compliance=true
+model_test_probability=false
+test_proportion=1.0,0.0,0.0,0.0 

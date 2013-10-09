@@ -1,0 +1,4 @@
+#Senario 0005: Choice Model:ON,Modality Model:ON
+model_initial_compliance=true
+model_test_probability=true
+
