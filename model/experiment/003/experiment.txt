@@ -1,7 +1,6 @@
 routine_tests=FOBT,Sigmoidoscopy,Colonoscopy;null
-#routine_tests=null,null,Colonoscopy;null
 test_routine_end=80,80,80,80
-model_test_probability=false
+model_test_probability=true
 model_initial_compliance=true
 use_conditional_compliance=false
 initial_compliance_rate=0.346
@@ -16,9 +15,7 @@ compute_population_rates=false
 #population_size=135870
 population_size=10000
 #Turn off Dynamic Compliance Rate year
-dynamic_compliance_rate_year_offset=-1
+dynamic_compliance_rate_year_offset=7
 output_population_snapshots=false
 #death_rate_delay=
-intervene_medicaid_mailer=true
-intervene_mass_media=true
-intervene_free_screenings=true
+

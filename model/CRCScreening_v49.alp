@@ -5037,6 +5037,90 @@ This is used to calculate continuing, rather than initial compliance.
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1381343205637</Id>
+					<Name><![CDATA[intervene_medicaid_mailer]]></Name>
+					<X>-210</X><Y>2330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1381343205635</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1381343259247</Id>
+					<Name><![CDATA[intervene_mass_media]]></Name>
+					<X>-210</X><Y>2370</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1381343259245</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1381343300621</Id>
+					<Name><![CDATA[intervene_free_screenings]]></Name>
+					<X>-210</X><Y>2400</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1381343300619</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType>CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1381450721220</Id>
+					<Name><![CDATA[age_for_compliance]]></Name>
+					<X>-210</X><Y>2430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[int]]></Type>        
+						<DefaultValue><![CDATA[50]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1381450721218</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1336336262301</Id>
 					<Name><![CDATA[routine_test_list]]></Name>
@@ -5595,6 +5679,14 @@ catch (Exception e) {
     // End new line
     + "\t" + -population.people.average("discounted_lost_years")
     + "\t" + population.people.average("cancer_free_years")
+    //New statistics for compliance
+    + "\t" + population.pct_utd_any_test
+    + "\t" + population.pct_utd_colon
+    + "\t" + population.pct_utd_medicaid_any
+    + "\t" + population.pct_utd_medicaid_colon
+    + "\t" + population.pct_utd_black_any
+    + "\t" + population.pct_utd_black_colon
+    //End new stats
     + "\t" + population.people.average("cost_routine")
     + "\t" + population.people.average("discounted_cost_routine")
     + "\t" + population.people.average("cost_diagnostic")
@@ -5708,6 +5800,14 @@ catch (Exception e) {
         + "\t" + "lifelost_cond_dead_crc"
         + "\t" + "discounted_lifelost"
         + "\t" + "crcfree"
+        //new Statistics
+        + "\t" + "pct_utd_any_test"
+        + "\t" + "pct_utd_colon"
+        + "\t" + "pct_utd_medicaid_any"
+        + "\t" + "pct_utd_medicaid_colon"
+        + "\t" + "pct_utd_black_any"
+        + "\t" + "pct_utd_black_colon"
+        //end new statistics
         + "\t" + "cost_routine"
         + "\t" + "discounted_cost_routine"
         + "\t" + "cost_diagnostic"
@@ -6219,12 +6319,25 @@ catch (Exception e) {
 		<ActiveObjectClass>
 			<Id>1328041345707</Id>
 			<Name><![CDATA[Person]]></Name>
+			<AdditionalClassCode><![CDATA[//public static final int COLON_UTD_DURATION = 10;
+//public static final int MAX_AGE = 100;
+//boolean[] FOBT_UTD = new boolean[MAX_AGE+1];
+//boolean[] COLON_UTD = new boolean[MAX_AGE+1];
+//for (int j = 0; j < fobt_utd.length; j++){
+	//fobt_utd[j] = false;
+//}
+//java.util.Arrays.fill(FOBT_UTD, Boolean.FALSE);
+//java.util.Arrays.fill(COLON_UTD, Boolean.FALSE);
+//System.out.println("New Array " + fobt_utd);
+//System.out.println("Length of Array " + fobt_utd.length);
+]]></AdditionalClassCode>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
 			<Import><![CDATA[import org.renci.epi.util.CountyIntercepts;
 import org.renci.epi.util.stats.ComplianceModel;
-import org.renci.epi.util.stats.ModalityModel;]]></Import>
+import org.renci.epi.util.stats.ModalityModel;
+import java.util.Arrays;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -6857,6 +6970,71 @@ import org.renci.epi.util.stats.ModalityModel;]]></Import>
 						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381369142298</Id>
+					<Name><![CDATA[fobt_utd]]></Name>
+					<X>-710</X><Y>-430</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean[]	]]></Type>        
+						<InitialValue><![CDATA[new boolean[101]]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381371347087</Id>
+					<Name><![CDATA[colon_utd]]></Name>
+					<X>-710</X><Y>-460</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean[]]]></Type>        
+						<InitialValue><![CDATA[new boolean[101]]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381371579805</Id>
+					<Name><![CDATA[COLON_UTD_DURATION]]></Name>
+					<X>-710</X><Y>-510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[10]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381414815810</Id>
+					<Name><![CDATA[SIGMOID_UTD_DURATION]]></Name>
+					<X>-710</X><Y>-540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="true" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[5]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381414951723</Id>
+					<Name><![CDATA[sigmoid_utd]]></Name>
+					<X>-710</X><Y>-480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean[]]]></Type>        
+						<InitialValue><![CDATA[new boolean[101]]]></InitialValue>                 	
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1328041345823</Id>
 					<Name><![CDATA[sex_male]]></Name>
@@ -6872,7 +7050,7 @@ import org.renci.epi.util.stats.ModalityModel;]]></Import>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[sex_male]]></Label>
-							<EditorContolType>TEXT_BOX</EditorContolType>
+							<EditorContolType>CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -9408,7 +9586,12 @@ for (int i=0; i<lesion_sources.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[// Decide if the person is ever compliant.
+					<Body><![CDATA[//initalize arrays
+java.util.Arrays.fill(fobt_utd, Boolean.FALSE);
+java.util.Arrays.fill(colon_utd, Boolean.FALSE);
+java.util.Arrays.fill(sigmoid_utd, Boolean.FALSE);
+
+// Decide if the person is ever compliant.
 never_compliant = (uniform() < get_Population().get_Main().never_compliant_rate);
 
 // Choose which tests the person will take.
@@ -9487,7 +9670,6 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 	      complianceModel.getTestAdjustedComplianceProbability (
 	          compliance_prob,
 	  	      test.name);
-	  System.out.println("Use Statistical Model of Compliance");
 	  	      
     } else {
       // Assign the compliance probability based on the user-specified rate.
@@ -9653,46 +9835,49 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
       	test.compliance_rate_given_not_prev_compliant;
     }
   }
-  // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
-  // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
-  /*
-  System.out.println(insure_medicaid);
-  //intervene_medicaid_reminder();
-  if ((this.insure_medicaid) && (uniform() < 0.5)){
-	double diff = 0;
-	diff = (1-compliance_prob);
-	System.out.println("Old Prob of Compliance: " + compliance_prob);
-	compliance_prob = compliance_prob + (diff/2.0);
-	System.out.println("New Prob of Compliance: " + compliance_prob);	
+  if (interventionActive){
+	  // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
+	  // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
+	  if ((main.intervene_medicaid_mailer) && (this.insure_medicaid) && (uniform() < 0.5)){
+		double diff = 0;
+		diff = (1-compliance_prob);
+		System.out.println("Old Prob of Compliance: " + compliance_prob);
+		compliance_prob = compliance_prob + (diff/2.0);
+		System.out.println("New Prob of Compliance: " + compliance_prob);	
+	  }
+	  
+	  // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
+	  
+	  //System.out.println("Is BLACK: " + this.race_black);
+	  if ((main.intervene_mass_media) && (this.race_black) && (uniform() < 0.2)){
+	  	double diff2 = 0;
+	  	diff2 = (1-compliance_prob);
+		//System.out.println("Old Prob of Compliance: " + compliance_prob);
+		compliance_prob = compliance_prob + (diff2/2.0);
+		//System.out.println("New Prob of Compliance: " + compliance_prob);
+	  }
+	  
+	  
+	  // INTERVENTION 3: Make uninsured compliant with Colonoscopy
+	  //System.out.println("UNINSURED " + insure_none);
+	  //System.out.println("Chosen test: " + routine_test.name); 
+	  int numFreeScreen = 0;
+	  if ((main.intervene_free_screenings) && (this.insure_none) && (numFreeScreen < 1000)){
+	  	
+	  	if (test.name == "Colonoscopy"){
+	  		System.out.println("DO I Get To here");
+	  		numFreeScreen++;
+	  		compliance_prob = 1;
+	  		System.out.println("Number of Free Colonoscopies: " + numFreeScreen);
+	  		System.out.println("New Compliance Prob: "+ compliance_prob);
+	  	}
+  	  }
   }
-  */
-  // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
-  /*
-  System.out.println("Is BLACK: " + this.race_black);
-  if ((this.race_black) && (uniform() < 0.2)){
-  	double diff = 0;
-  	diff = (1-compliance_prob);
-	System.out.println("Old Prob of Compliance: " + compliance_prob);
-	compliance_prob = compliance_prob + (diff/2.0);
-	System.out.println("New Prob of Compliance: " + compliance_prob);
-  }
-  */
-  
-  // INTERVENTION 3: Make uninsured compliant with Colonoscopy
-  int numFreeScreen = 0;
-  if ((this.insure_none) && (numFreeScreen < 1000)){
-  	System.out.println("DO I Get To Intervention");
-  	if (routine_test.name == "Colonoscopy"){
-  		numFreeScreen++;
-  		compliance_prob = 1;
-  		System.out.println("Number of Free Colonoscopies: " + numFreeScreen);
-  		System.out.println("New Compliance Prob: "+ compliance_prob);
-  	}
-  	
-  }
+
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform () < compliance_prob;
   routine_compliance_history.add (new Boolean (isCompliant));
+  set_utd(test.name, isCompliant); // indexes into up-to-date vector if person chooses to comply
   return isCompliant;
   /*
   if (uniform() < compliance_prob) {
@@ -9962,15 +10147,13 @@ if (    screen_state.isStateActive(Person.Routine)
     && !disease_state.isStateActive(Person.ClinicalCancer)
     && !disease_state.isStateActive(Person.Dead)
    ) {
-  // INTERVENTION 3: Forcing some uninsured people to have Colonoscopies
-  System.out.println("UNINSURED " + insure_none);
-  System.out.println("Chosen test: " + routine_test.name);  
+ 
   
   if (routine_test.name.equals ("Colonoscopy")) {
 	// Keep a count of colonoscopies per person.
   	num_colonoscopies++;
-  	System.out.println(time());
-  	System.out.println(num_colonoscopies);
+  	//System.out.println(time());
+  	//System.out.println(num_colonoscopies);
   }
   
   if (routine_test.name.equals(diagnostic_test.name)) {
@@ -10225,6 +10408,46 @@ else {
 	System.out.println("Old Prob of Compliance: " + compliance_prob);
 	compliance_prob = compliance_prob + (diff/2.0);
 	System.out.println("New Prob of Compliance: " + compliance_prob);	
+}]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1381365038862</Id>
+					<Name><![CDATA[set_utd]]></Name>
+					<X>-200</X><Y>780</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[testType]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isCompliant]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Body><![CDATA[int age = (int) time();
+// Need to fix this type miss match
+//String testType = test.name;
+System.out.println("PRINT AGE: " + age);
+System.out.println("PRINT TEST TYPE: " + testType);
+if (testType.equals("FOBT")){
+	fobt_utd[age] = isCompliant;
+	boolean[] newArray1 = Arrays.copyOfRange(fobt_utd,age - 1, age + 1);
+	System.out.println("FOBT Array: " + Arrays.toString(newArray1));
+}else if (testType.equals("Colonoscopy")){
+	 int end = Math.min(colon_utd.length, age + COLON_UTD_DURATION);
+	 for(int c = 0; c < end; c++){
+	 	colon_utd[c] = isCompliant;
+	 }
+	 boolean[] newArray2 = Arrays.copyOfRange(colon_utd,age-1, age + COLON_UTD_DURATION +1);
+	 System.out.println("isCompliant: "+ isCompliant+ "COLON Array: " + Arrays.toString(newArray2));
+}else if(testType.equals("Sigmoidoscopy")){
+	int end = Math.min(sigmoid_utd.length, age + SIGMOID_UTD_DURATION);
+	for(int c = 0; c < end; c++){
+		sigmoid_utd[c] = isCompliant;
+	 }
 }]]></Body>
 				</Function>
 			</Functions>
@@ -10989,6 +11212,84 @@ import java.text.NumberFormat;]]></Import>
 						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421031719</Id>
+					<Name><![CDATA[pct_utd_any_test]]></Name>
+					<X>-490</X><Y>-60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421073963</Id>
+					<Name><![CDATA[pct_utd_colon]]></Name>
+					<X>-490</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421103304</Id>
+					<Name><![CDATA[pct_utd_medicaid_any]]></Name>
+					<X>-490</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421132337</Id>
+					<Name><![CDATA[pct_utd_medicaid_colon]]></Name>
+					<X>-490</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421160348</Id>
+					<Name><![CDATA[pct_utd_black_any]]></Name>
+					<X>-490</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381421184925</Id>
+					<Name><![CDATA[pct_utd_black_colon]]></Name>
+					<X>-490</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -11467,7 +11768,8 @@ if (get_Main().compute_population_rates) {
 
 // Calculate probabilities of various events.
 compute_event_probs();
-]]></Body>
+// Calculate percentages of individuals who are up to date with screenings various ways
+compute_utd();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -11694,6 +11996,84 @@ if (get_Main().output_population_snapshots&&
 } 
 
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1381415679603</Id>
+					<Name><![CDATA[compute_utd]]></Name>
+					<X>-150</X><Y>40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// This section is for counters used in the method
+int num_utd_at_50 = 0;
+int num_utd_colon_50 = 0;
+int num_medicaid_utd_50 = 0;
+int num_medicaid_utd_colon_50 = 0;
+int num_black_utd_50 = 0;
+int num_black_utd_colon_50 = 0;
+int years_utd_anytest = 0;
+int years_utd_fobt = 0;
+int years_utd_colon = 0; 
+int ageUTD = get_Main.age_for_compliance;
+int countMedicaid = 0;
+int countBlack = 0;
+for (int i = 0; i < people.size(); i++){
+	//Percentage of population up to date with anytest at age 50
+	if (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]){
+		num_utd_at_50++;
+	}
+	//Percentate of population up to date with Colonosocpy at age 50
+	if (people.get(i).colon_utd[ageUTD]){
+		num_utd_colon_50++;
+	}
+	// initalize counters
+	if (people.get(i).insure_medicaid){
+		countMedicaid++;
+	}
+	if (people.get(i).race_black){
+		countBlack++;
+	}
+	//Percentage of Medicaid individual utd with anytest at age 50
+	if ((people.get(i).insure_medicaid) && (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]) ){
+		num_medicaid_utd_50++;
+	}
+	//Percentage of Medicaid individual utd with Colonoscopy at age 50
+	if ((people.get(i).insure_medicaid) && (people.get(i).colon_utd[ageUTD]) ){
+		num_medicaid_utd_colon_50++;
+	}
+	//Percentage of Blacks utd with anytest at age 50
+	if ((people.get(i).race_black) && (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]) ){
+		num_black_utd_50++;
+	}
+	//Percentage of Blacks utd with colonoscopy at age 50
+	if ((people.get(i).race_black) && (people.get(i).colon_utd[ageUTD]) ){
+		num_black_utd_colon_50++;
+	}
+	//Number of years from 50 to 80 utd with anytest
+	//boolean[] anyTest = new Array[31]; 
+	//for (int i = 50; i<=80; i++ ){
+	
+	//}
+	//Number of years from 50 to 80 utd with fobt if choose FOBT
+	//Number of years from 50 to 80 utd with colonoscopy if choose Colonoscopy
+	
+}
+pct_utd_any_test = (double)num_utd_at_50/people.size();
+pct_utd_colon = (double)num_utd_colon_50/people.size();
+pct_utd_medicaid_any = num_medicaid_utd_50/(double)countMedicaid;
+pct_utd_medicaid_colon = num_medicaid_utd_colon_50/(double)countMedicaid;
+pct_utd_black_any = num_black_utd_50/(double)countBlack;
+pct_utd_black_colon = num_black_utd_colon_50/(double)countBlack;
+/*
+System.out.println("Number at 50: " + num_utd_at_50);
+System.out.println("PCT at 50: " + pct_utd_any_test);
+System.out.println(num_utd_colon_50);
+System.out.println(people.size());
+System.out.println(pct_utd_colon +"THE equation output: "+ (double)num_utd_colon_50/people.size() );
+System.out.println(countMedicaid);
+*/]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -13284,6 +13664,22 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outfile_agent]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[intervene_medicaid_mailer]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[intervene_mass_media]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[intervene_free_screenings]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[age_for_compliance]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -17271,6 +17667,42 @@ copyToClipboard( s );
 				<Step><![CDATA[]]></Step>
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
+			<Parameter>	
+				<Id>1381343205637</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1381343259247</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1381343300621</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1381450721220</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[//this.calibration.getValue ()
 root.population.people.average ("lifespan")]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
@@ -17814,6 +18246,18 @@ if (root.simulation_count % 2 == 0) {
 			<FreeformParamValue>	
 				<Id>1373988815907</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1381343205637</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1381343259247</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1381343300621</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1381450721220</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1328041345577</Id>
 				<Type>FIXED</Type>
@@ -18352,6 +18796,22 @@ if (root.simulation_count % 2 == 0) {
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
 				<Id>1373988815907</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1381343205637</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1381343259247</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1381343300621</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1381450721220</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties 
