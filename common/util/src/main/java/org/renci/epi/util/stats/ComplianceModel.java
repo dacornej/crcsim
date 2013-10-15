@@ -184,6 +184,10 @@ public class ComplianceModel {
 	    // 1-(1-p)^(1/6)
 	    result = 1 - Math.pow (1 - probability, 1.0 / 6.0); 
 	    logger.debug ("-------------------> " + result);
+	} else if (test.equals("Colonoscopy")) {
+		//1-(1-p)^(10/6
+		result = 1 - Math.pow (1 - probability, 10.0/6.0);
+		logger.debug ("-------------------> " + result);
 	}
 	return result;
     }
