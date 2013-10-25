@@ -5707,6 +5707,7 @@ catch (Exception e) {
     + "\t" + population.pct_utd_medicaid_colon
     + "\t" + population.pct_utd_black_any
     + "\t" + population.pct_utd_black_colon
+    + "\t" + population.avg_years_utd_anytest
     //End new stats
     + "\t" + population.people.average("cost_routine")
     + "\t" + population.people.average("discounted_cost_routine")
@@ -5828,6 +5829,7 @@ catch (Exception e) {
         + "\t" + "pct_utd_medicaid_colon"
         + "\t" + "pct_utd_black_any"
         + "\t" + "pct_utd_black_colon"
+        + "\t" + "avg_years_utd_anytest"
         //end new statistics
         + "\t" + "cost_routine"
         + "\t" + "discounted_cost_routine"
@@ -6232,7 +6234,19 @@ catch (Exception e) {
 
   for (int j = 0; j <= population_size -1; j++) {
 	outfile_agent_writer.write(
-    "\n" + (j+1) 	+ "\t" + population.people.get(j).cost_routine
+    "\n" + (j+1) 	
+    			+ "\t" + population.people.get(j).SEHP
+    			+ "\t" + population.people.get(j).insure_dual
+    			+ "\t" + population.people.get(j).insure_medicaid
+    			+ "\t" + population.people.get(j).insure_medicare
+    			+ "\t" + population.people.get(j).insure_none
+    			+ "\t" + population.people.get(j).insure_private
+    			+ "\t" + population.people.get(j).race_black
+    			+ "\t" + population.people.get(j).race_hispanic
+    			+ "\t" + population.people.get(j).race_other
+    			+ "\t" + population.people.get(j).race_white
+    			+ "\t" + population.people.get(j).sex_male
+    			+ "\t" + population.people.get(j).cost_routine
     			+ "\t" + population.people.get(j).cost_diagnostic
     			+ "\t" + population.people.get(j).cost_surveillance
     			+ "\t" + population.people.get(j).cost_treatment
@@ -6264,6 +6278,17 @@ catch (Exception e) {
        
     outfile_agent_writer.write(
                  "agent number"
+        + "\t" + "SEHP"
+        + "\t" + "insure_dual"
+        + "\t" + "insure_medcaid"
+        + "\t" + "insure_medicare"
+        + "\t" + "insure_none"
+        + "\t" + "insure_private"
+        + "\t" + "race_black"
+        + "\t" + "race_hispanic"
+        + "\t" + "race_other"
+        + "\t" + "race_white"
+        + "\t" + "sex_male"         
         + "\t" + "routine cost"
         + "\t" + "diagnostic cost"
         + "\t" + "surveillance cost"
@@ -9668,9 +9693,13 @@ if (test.name.equals("None")) {
 }
 
 if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
-  return uniform() < main.diagnostic_compliance_rate;
+  boolean isCompliant1 = uniform() < main.diagnostic_compliance_rate;
+  set_utd(test.name,isCompliant1);
+  return isCompliant1;
 } else if (screen_state.isStateActive (Person.Surveillance)) {
-  return uniform() < main.surveillance_compliance_rate;
+  boolean isCompliant2 = uniform() < main.surveillance_compliance_rate;
+  set_utd(test.name, isCompliant2);	
+  return isCompliant2;
 } else if (screen_state.isStateActive (Person.Routine) || 
           (screen_state.isStateActive (Person.Diagnostic) && routine_is_diagnostic)) {  
   // Determine the compliance probability. If this person is never
@@ -9886,7 +9915,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   //if (interventionActive){ //this iff statement implments the dynamic compliance rate stuff when turned on 
 	  // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
 	  // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
-	  if ((main.intervene_medicaid_mailer) && (this.insure_medicaid) && (uniform() < 0.5)){
+	  if ((main.intervene_medicaid_mailer) && ((this.insure_medicaid) || (this.insure_dual)) && (uniform() < 0.5)){
 		double diff = 0;
 		diff = (1-compliance_prob);
 		//System.out.println("Old Prob of Compliance: " + compliance_prob);
@@ -11351,6 +11380,18 @@ import java.text.NumberFormat;]]></Import>
 						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1381878769479</Id>
+					<Name><![CDATA[avg_years_utd_anytest]]></Name>
+					<X>-490</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -12078,26 +12119,30 @@ int num_black_utd_colon_50 = 0;
 int years_utd_fobt = 0;
 int years_utd_colon = 0; 
 int ageUTD = get_Main().age_for_compliance;
+int countAlive = 0;
+int countAliveAt50 = 0;
 int countMedicaid = 0;
 int countBlack = 0;
 int ageMax = 80;
 for (int i = 0; i < people.size(); i++){
-	//Percentage of population up to date with anytest at age 50
-	if (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]){
-		num_utd_at_50++;
-	}
-	//Percentate of population up to date with Colonosocpy at age 50
-	if (people.get(i).colon_utd[ageUTD]){
-		num_utd_colon_50++;
-	}
-	// initalize counters
-	if (people.get(i).insure_medicaid){
-		countMedicaid++;
-	}
-	if (people.get(i).race_black){
-		countBlack++;
-	}
 	if (people.get(i).death_age > ageUTD){
+		countAlive++; // will accumulate the number of people alive at a given age
+		//Percentage of population up to date with anytest at age 50
+		if (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]){
+			num_utd_at_50++;
+		}
+		//Percentate of population up to date with Colonosocpy at age 50
+		if (people.get(i).colon_utd[ageUTD]){
+			num_utd_colon_50++;
+		}
+		// initalize counters
+		if (people.get(i).insure_medicaid){
+			countMedicaid++;
+		}
+		if (people.get(i).race_black){
+			countBlack++;
+		}
+		
 		//Percentage of Medicaid individual utd with anytest at age 50
 		if ((people.get(i).insure_medicaid) && (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]) ){
 			num_medicaid_utd_50++;
@@ -12116,7 +12161,11 @@ for (int i = 0; i < people.size(); i++){
 		}
 	
 	}// end if statement that evalutes if people are alive
-	//Number of years from 50 to 80 utd with anytest 
+	//Number of years from 50 to 80 utd with anytest
+	if (people.get(i).death_age > 50){
+		countAliveAt50++;
+	}
+	 
 	for (int j = 50; j<=ageMax; j++ ){
 		if (people.get(i).colon_utd[j] || people.get(i).fobt_utd[j]){
 			years_utd_anytest++;
@@ -12126,12 +12175,14 @@ for (int i = 0; i < people.size(); i++){
 	//Number of years from 50 to 80 utd with colonoscopy if choose Colonoscopy
 	
 }
-pct_utd_any_test = (double)num_utd_at_50/people.size();
-pct_utd_colon = (double)num_utd_colon_50/people.size();
+pct_utd_any_test = (double)num_utd_at_50/(double)countAlive;
+pct_utd_colon = (double)num_utd_colon_50/(double)countAlive;
 pct_utd_medicaid_any = num_medicaid_utd_50/(double)countMedicaid;
 pct_utd_medicaid_colon = num_medicaid_utd_colon_50/(double)countMedicaid;
 pct_utd_black_any = num_black_utd_50/(double)countBlack;
 pct_utd_black_colon = num_black_utd_colon_50/(double)countBlack;
+avg_years_utd_anytest = (double)years_utd_anytest/(double)countAliveAt50;
+
 /*
 System.out.println("Number at 50: " + num_utd_at_50);
 System.out.println("PCT at 50: " + pct_utd_any_test);
@@ -12139,11 +12190,12 @@ System.out.println(num_utd_colon_50);
 System.out.println(people.size());
 System.out.println(pct_utd_colon +"THE equation output: "+ (double)num_utd_colon_50/people.size() );
 System.out.println(countMedicaid);
-*/
+
 System.out.println("NUB Black: " + countBlack);
 System.out.println(pct_utd_black_colon);
 System.out.println("NUM MEDICAID: " + countMedicaid );
-System.out.println(pct_utd_medicaid_colon);]]></Body>
+System.out.println(pct_utd_medicaid_colon);
+*/]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -19604,7 +19656,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 101;
+		lines = 10001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
