@@ -1,0 +1,4 @@
+#Senario 0006: Mass Media. age_for_compliance = 55
+initial_compliance_rate=0.6
+intervention_compliance_rate=0.6
+

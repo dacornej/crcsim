@@ -1,0 +1,3 @@
+#Senario 0001: No Intervention. age_for_compliance = 60
+initial_compliance_rate = 0.1
+intervention_compliance_rate = 0.1

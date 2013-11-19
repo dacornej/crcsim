@@ -1,0 +1,4 @@
+#Senario 0009: Free Screenings. age_for_compliance = 55
+initial_compliance_rate=0.9
+intervention_compliance_rate=0.9
+

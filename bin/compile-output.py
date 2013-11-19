@@ -31,7 +31,7 @@ for root, dirname, filename in os.walk (input_dir):
                 stream.readline ()
 
             age = path.split ('/')[-2].split ('.')[2]
-
+            # NOTE From meeting: should probaly add itteration here with similar syntax to lines above and below
             scenario = path.split ('/')[-2].split ('.')
 
             ''' account for control vs intervention format. '''

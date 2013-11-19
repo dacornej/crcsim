@@ -216,7 +216,7 @@
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1328732552570</Id>
 					<Name><![CDATA[running]]></Name>
-					<X>20</X><Y>-690</Y>
+					<X>30</X><Y>-710</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1421,14 +1421,14 @@ else {
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1328732687446</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>570</X><Y>-640</Y>
+					<X>580</X><Y>-660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>52</X><Y>0</Y></Point>
+						<Point><X>43</X><Y>17</Y></Point>
 					</Points>
 					<Properties Source="1328732552570" Target="1328732681618" Trigger="message">
 						<Timeout><![CDATA[1]]></Timeout>
@@ -6252,6 +6252,13 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).cost_treatment
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).lifespan
+    			+ "\t" + population.people.get(j).lost_years
+    			+ "\t" + population.people.get(j).event_crc
+    			+ "\t" + population.people.get(j).event_dead
+    			+ "\t" + population.people.get(j).event_dead_crc
+    			+ "\t" + population.people.get(j).event_polyp
+    			+ "\t" + population.people.get(j).cancer_free_start
+    			+ "\t" + population.people.get(j).cancer_free_years
     );
   } 
 
@@ -6277,7 +6284,7 @@ catch (Exception e) {
     outfile_agent_writer = new BufferedWriter(new FileWriter(output_dir + File.separator + outfile_agent_name));
        
     outfile_agent_writer.write(
-                 "agent number"
+                 "agent_number"
         + "\t" + "SEHP"
         + "\t" + "insure_dual"
         + "\t" + "insure_medcaid"
@@ -6289,12 +6296,19 @@ catch (Exception e) {
         + "\t" + "race_other"
         + "\t" + "race_white"
         + "\t" + "sex_male"         
-        + "\t" + "routine cost"
-        + "\t" + "diagnostic cost"
-        + "\t" + "surveillance cost"
-        + "\t" + "treatment cost"
-        + "\t" + "death age"
+        + "\t" + "routine_cost"
+        + "\t" + "diagnostic_cost"
+        + "\t" + "surveillance_cost"
+        + "\t" + "treatment_cost"
+        + "\t" + "death_age"
         + "\t" + "lifespan"
+        + "\t" + "lifelost"
+        + "\t" + "event_crc"
+        + "\t" + "event_dead"
+        + "\t" + "event_dead_crc"
+        + "\t" + "event_polyp"
+        + "\t" + "cancer_free_start"
+        + "\t" + "cancer_free_years"
       );
 
     outfile_agent_writer.write("\r");
@@ -9694,7 +9708,7 @@ if (test.name.equals("None")) {
 
 if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   boolean isCompliant1 = uniform() < main.diagnostic_compliance_rate;
-  set_utd(test.name,isCompliant1);
+  set_utd(test.name,isCompliant1); // Set utd for appriate number of years, diagnostic test
   return isCompliant1;
 } else if (screen_state.isStateActive (Person.Surveillance)) {
   boolean isCompliant2 = uniform() < main.surveillance_compliance_rate;
@@ -10471,7 +10485,7 @@ else {
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
+					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1381330942118</Id>
 					<Name><![CDATA[intervene_medicaid_reminder]]></Name>
 					<X>-590</X><Y>720</Y>
@@ -10479,13 +10493,38 @@ else {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[if ((this.insure_medicaid) && (uniform() < 0.5)){
+					<Parameter>
+						<Name><![CDATA[compliance_prob]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isActive]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isMedicaid]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isDual]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[pctRespond]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[pctIncrease]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ((isActive) && ((isMedicaid) || (isDual)) && (uniform() < pctRespond)){
 	double diff = 0;
 	diff = (1-compliance_prob);
-	System.out.println("Old Prob of Compliance: " + compliance_prob);
-	compliance_prob = compliance_prob + (diff/2.0);
-	System.out.println("New Prob of Compliance: " + compliance_prob);	
-}]]></Body>
+	//System.out.println("Old Prob of Compliance: " + compliance_prob);
+	compliance_prob = compliance_prob + pctIncrease*diff;
+	//System.out.println("New Prob of Compliance: " + compliance_prob);	
+  }
+return compliance_prob;]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -10526,6 +10565,88 @@ if (testType.equals("FOBT")){
 		sigmoid_utd[c] = isCompliant;
 	 }
 }]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1383066616346</Id>
+					<Name><![CDATA[intervene_mass_media]]></Name>
+					<X>-590</X><Y>740</Y>
+					<Label><X>25</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[compliance_prob]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isActive]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isBlack]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[pctRespond]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[pctIncrease]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Body><![CDATA[if ((isActive) && (isBlack) && (uniform() < pctRespond)){
+  double diff2 = 0;
+  diff2 = (1-compliance_prob);
+  //System.out.println("Old Prob of Compliance: " + compliance_prob);
+  compliance_prob = compliance_prob + (pctIncrease*diff2);
+  //System.out.println("New Prob of Compliance: " + compliance_prob);
+}
+return compliance_prob;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1383067300952</Id>
+					<Name><![CDATA[intervene_free_screen]]></Name>
+					<X>-590</X><Y>760</Y>
+					<Label><X>25</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[compliance_prob]]></Name>
+						<Type><![CDATA[double]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isActive]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[isUninsured]]></Name>
+						<Type><![CDATA[boolean]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[numFreeScreens]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[testNameString]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[boolean isStart = true;
+int countScreens;
+if (isStart){countScreens = 0;}
+int countScreen= 0;
+if ((isActive) && (isUninsured) && (countScreen < numFreeScreens)){
+	if (testNameString.equals("Colonoscopy")){
+  		//System.out.println("DO I Get To here");
+  		countScreen++;
+  		compliance_prob = 1;
+  		//System.out.println("Number of Free Colonoscopies: " + numFreeScreen);
+  		//System.out.println("New Compliance Prob: "+ compliance_prob);
+	}
+}
+return compliance_prob;]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -19371,7 +19492,7 @@ engine.runFast();]]></Code>
 		<CustomExperiment>
 			<Id>1349374749666</Id>
 			<Name><![CDATA[HassmillerCRC]]></Name>
-			<MaximumMemory>4096</MaximumMemory>
+			<MaximumMemory>4000</MaximumMemory>
 			<CommandLineArguments><![CDATA[seed 12334 ]]></CommandLineArguments>
 			<VmArgs><![CDATA[-Xms1024m]]></VmArgs>
 			<Import><![CDATA[import java.io.File;
@@ -19394,7 +19515,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (10); //00);
+execute_populations_parallel (1); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -19406,6 +19527,8 @@ static int outcomesIndex = 0;
 
 private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\crcsim\\pops";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\crcsim\\model\\out";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out2"; // New output directory for experimental runs
 
 
@@ -19421,7 +19544,8 @@ private boolean debugMode = true; // Set population size to some low number for 
 //private String experimentId = "000"; //orginal Experiment using inital_compliance_rate
 //private String experimentId = "001";
 //private String experimentId = "002";
-private String experimentId = "003";
+//private String experimentId = "003";
+private String experimentId = "004";
 
 /**
  * Forms the path to experiment specific data.

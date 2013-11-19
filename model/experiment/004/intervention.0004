@@ -1,0 +1,4 @@
+#Senario 0004: Medicaid Mailer. age_for_compliance = 60
+initial_compliance_rate = 0.4
+intervention_compliance_rate = 0.4
+
