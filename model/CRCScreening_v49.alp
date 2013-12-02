@@ -19545,7 +19545,7 @@ private boolean debugMode = true; // Set population size to some low number for 
 //private String experimentId = "001";
 //private String experimentId = "002";
 //private String experimentId = "003";
-private String experimentId = "004";
+private String experimentId = "005";
 
 /**
  * Forms the path to experiment specific data.
@@ -19571,10 +19571,10 @@ private String formExperimentPath (String element) {
 /**
  * Get a scenario name normalizing between control and intervention scenarios.
  */
-private String get_scenario_name (File cohort, File scenario) {
+private String get_scenario_name (File cohort, int iterationIndex, File scenario) {
 	return scenario == null ? 
-		cohort.getName () + "." + CONTROL : 
-		cohort.getName () + "." + scenario.getName ();
+		cohort.getName () + "." + iterationIndex + "." + CONTROL : 
+		cohort.getName () + "." + iterationIndex + "." + scenario.getName ();
 }
 /**
  * Get model parameters by reading a scenario configuration file.
@@ -19586,6 +19586,7 @@ private String get_scenario_parameters (File scenario) {
  * Execute the model for a set of control scenarios in parallel.
  * @param cohorts A list of file names where each is an agent cohort.
  * @param iterationParameters Parameters controlling random draws for an iteration.
+ * @param iterationIndex zero based numeric value for to keep track of which iteration we are on
  * @param replications Number of times to run the model with this set of parameters.
  * @param futures For tracking parallel execution.
  * @param results Model execution results.
@@ -19593,6 +19594,7 @@ private String get_scenario_parameters (File scenario) {
 private void model_population (File [] cohorts,
                                String experimentParameters,
                                String iterationParameters,
+							   int iterationIndex,	
                                int replications,
                                HashMap<String,List<Future>> futures,
                                HashMap<String,Outcomes> results,
@@ -19603,6 +19605,7 @@ private void model_population (File [] cohorts,
 					  new File [] { null },
 					  experimentParameters, 
 	                  iterationParameters,
+					  iterationIndex,
 	                  replications,
 	                  futures,
 	                  null, //results,
@@ -19613,6 +19616,7 @@ private void model_population (File [] cohorts,
  * @param cohorts A list of file names where each is an agent cohort.
  * @param interventions A list of files containing intervention specific parameters.
  * @param iterationParameters Parameters controlling random draws for an iteration.
+ * @param iterationIndex zero based numeric value for to keep track of which iteration we are on
  * @param replications Number of times to run the model with this set of parameters.
  * @param futures For tracking parallel execution.
  * @param results Model execution results.
@@ -19621,6 +19625,7 @@ private void model_population (File [] cohorts,
 							    File [] interventions,
                                 String experimentParameters,
                                 String iterationParameters,
+								int iterationIndex,
                                 int replications,
                                 HashMap<String,List<Future>> futures,
                                 HashMap<String,Outcomes> results,
@@ -19631,7 +19636,7 @@ private void model_population (File [] cohorts,
 	for (File cohort : cohorts) {
 		System.out.println ("cohort: " + cohort);
 		for (File intervention : interventions) {
-		    String scenario = get_scenario_name (cohort, intervention);
+		    String scenario = get_scenario_name (cohort, iterationIndex, intervention);
 		    //System.out.println ("output of get_senario_name method"+ scenario);
 	        String scenarioParameters = get_scenario_parameters (intervention);
 			futures.put (scenario,
@@ -19668,8 +19673,9 @@ private void execute_populations_parallel (int replications) {
 		
 	List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
 	
-	for (String iterationParameters : iterationParameterSets) {
-		
+	for (int c = 0; c < iterationParameterSets.size(); c++) {
+		String iterationParameters = iterationParameterSets.get(c);
+		int iterationIndex = c;
 		///For debug purposes
 		System.out.println (iterationParameters);
 		//System.exit(0);
@@ -19683,6 +19689,7 @@ private void execute_populations_parallel (int replications) {
 		model_population (cohorts,
 					      experimentParameters,
                           iterationParameters,
+						  iterationIndex,
                           replications,
                           futures,
                           null, //results,
@@ -19694,6 +19701,7 @@ private void execute_populations_parallel (int replications) {
     	                  interventions,
 					      experimentParameters,
                           iterationParameters,
+						  iterationIndex,
                           replications,
                           futures,
                           null, //results
@@ -19728,11 +19736,14 @@ private void calibrate (int replications) {
 	 */
 	Calibrate calibrate = new JavaScriptCalibrate (formExperimentPath ("calibrate.js"));
 	List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
-	for (String iterationParameters : iterationParameterSets) {
+	for (int c = 0; c < iterationParameterSets.size(); c++) {
+		String iterationParameters = iterationParameterSets.get(c);
+		int iterationIndex = c;
 	    File [] cohorts = Main.modelIO.getFilesByPattern (".*.tsv.[0-9]+", new File (inputDirectory));
 		model_population (cohorts,
 						  experimentParameters,
    		                  iterationParameters,
+						  iterationIndex,
    	                   	  replications,
                           futures,
                           null, //results,

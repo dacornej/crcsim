@@ -1,0 +1,6 @@
+#Senario 0006: Mass Media. age_for_compliance = 55
+intervene_medicaid_mailer=false
+intervene_mass_media=true
+intervene_free_screenings=false
+age_for_compliance=55
+
