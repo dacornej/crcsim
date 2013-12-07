@@ -1,5 +1,5 @@
-#Senario 0000: No Intervention. age_for_compliance = 55
+#Senario 0000: FREE SCREEN
 intervene_medicaid_mailer=false
 intervene_mass_media=false
-intervene_free_screenings=false
-age_for_compliance=55
+intervene_free_screenings=true
+age_for_compliance=50

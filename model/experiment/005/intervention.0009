@@ -1,6 +1,0 @@
-#Senario 0009: Free Screenings. age_for_compliance = 55
-intervene_medicaid_mailer=false
-intervene_mass_media=false
-intervene_free_screenings=true
-age_for_compliance=55
-

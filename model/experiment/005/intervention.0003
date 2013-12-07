@@ -1,5 +1,0 @@
-#Senario 0003: Medicaid Mailer. age_for_compliance = 55
-intervene_medicaid_mailer=true
-intervene_mass_media=false
-intervene_free_screenings=false
-age_for_compliance=55
