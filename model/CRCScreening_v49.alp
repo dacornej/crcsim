@@ -10017,14 +10017,14 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 		  get_Population().get_Main().dynamic_compliance_rate_year_offset;	
 	  boolean interventionActive = true; // By default the intervention is on unless the following statements evaluates otherwise
 	  if (dynamicComplianceRateYearOffset > -1) {
-	      System.out.println("11111111111111 Using Dynamic Compliance Offset in with in loop");
+	      //System.out.println("11111111111111 Using Dynamic Compliance Offset in with in loop");
 	      interventionActive =
 		  	  time () >= (age + //get_Population().get_Main().death_rate_delay + 
 				 		  dynamicComplianceRateYearOffset);
 		  if (interventionActive) {	
 		      compliance_prob = get_Population().get_Main().intervention_compliance_rate;
 		      if (compliance_prob > 0) {
-		      	System.out.println ("dyn-comp: => " + compliance_prob + "\t @: " + time() + "IN SEC 11111");
+		      	//System.out.println ("dyn-comp: => " + compliance_prob + "\t @: " + time() + "IN SEC 11111");
               }
 		  }
 		  
@@ -10139,8 +10139,10 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 		interventionActive =
 			time () >= (get_Population().get_Main().death_rate_delay + 
 				 		dynamicComplianceRateYearOffset);
-		if (interventionActive)
-			System.out.println ("****** intervention active in " + time () + "FOR CONDITIONAL COMPILIANCE PEOPLE");
+		if (interventionActive){
+			//System.out.println("stuff");
+		}
+			
 	}
 
 
@@ -10172,16 +10174,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   }
   //System.out.println("isMailedReminderActive:" + isMailedReminderActive + "Compliance Prob before Medicaid Reminder:" + compliance_prob + "isMedicaid:" + this.insure_medicaid);
   compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.1);
-  //System.out.println("Compliance Prob after Medicaid mailer intervention:" + compliance_prob);
-  /* //Orignial code before encapsulated in intervene_medicaid_reminder()
-  if ((main.intervene_medicaid_mailer) && ((this.insure_medicaid) || (this.insure_dual)) && (uniform() < 0.5)){
-	double diff = 0;
-	diff = (1-compliance_prob);
-	//System.out.println("Old Prob of Compliance: " + compliance_prob);
-	compliance_prob = compliance_prob + (diff/2.0);
-	//System.out.println("New Prob of Compliance: " + compliance_prob);	
-  }
-  */
+
   
   // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
   boolean isMassMediaActive = false;
@@ -10191,16 +10184,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   }
   //System.out.println("isMassMediaActive:" + isMassMediaActive + "Compliance Prob before Mass Media:" + compliance_prob + "isBlack:" + this.race_black);
   compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.07, 0.04);
-  //System.out.println("Compliance Prob after Mass Media intervention:" + compliance_prob);
-  /* //Mass media code before encapsulating in intervene_mass_media()
-  if ((main.intervene_mass_media) && (this.race_black) && (uniform() < 0.2)){
-  	double diff2 = 0;
-  	diff2 = (1-compliance_prob);
-	//System.out.println("Old Prob of Compliance: " + compliance_prob);
-	compliance_prob = compliance_prob + (diff2/2.0);
-	//System.out.println("New Prob of Compliance: " + compliance_prob);
-  }
-  */
+  
   
   
   // INTERVENTION 3: Make uninsured compliant with Colonoscopy
@@ -10209,7 +10193,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   boolean isFreeScreeActive = false;
   if (main.intervene_free_screenings && (time() == 50)){
   	isFreeScreeActive = true;
-  	System.out.println("------------->Free Screen active: " + time());
+  	//System.out.println("------------->Free Screen active: " + time());
   }  
   //System.out.println("isFreeScreenActive:" + isFreeScreeActive + "Compliance Prob before FreeScreen:" + compliance_prob + "isUninsured:" + this.insure_none + "Current time:" + time());
   if ((isFreeScreeActive) && (this.insure_none) && (people.free_screen_count < main.num_free_colonoscopy)){
@@ -10219,8 +10203,8 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   		people.free_screen_count++;
   		is_free_screen = true;
   		compliance_prob = 1;
-  		System.out.println("Number of Free Colonoscopies: " + people.free_screen_count);
-  		System.out.println("New Compliance Prob: "+ compliance_prob);
+  		//System.out.println("Number of Free Colonoscopies: " + people.free_screen_count);
+  		//System.out.println("New Compliance Prob: "+ compliance_prob);
 	  	}
   	  }
 
@@ -10229,16 +10213,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   routine_compliance_history.add (new Boolean (isCompliant));
   set_utd(test.name, isCompliant); // indexes into up-to-date vector if person chooses to comply
   return isCompliant;
-  /*
-  if (uniform() < compliance_prob) {
-    routine_compliance_history.add(new Boolean(true));
-    return true;
-  }
-  else {
-    routine_compliance_history.add(new Boolean(false));
-    return false;
-  }
-  */
+
 }
 else {
   error("Unexpected screen state for person " + getIndex() + ": state=" + screen_state);
