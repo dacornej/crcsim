@@ -1,5 +1,6 @@
 #Senario 0000: FREE SCREEN
 intervene_medicaid_mailer=false
 intervene_mass_media=false
-intervene_free_screenings=true
+intervene_free_screenings=false
 prob_colon_uninsured=0.6
+infile_location_name=nearest_dist_simulation_short_test.csv

@@ -3862,7 +3862,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["80,80,80,80"]]></DefaultValue>
+						<DefaultValue><![CDATA["75,75,75,75"]]></DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
@@ -5200,11 +5200,32 @@ This is used to calculate continuing, rather than initial compliance.
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["nearest_dist_simulation.csv"]]></DefaultValue>
+						<DefaultValue><![CDATA["nearest_dist_simulation_short_test.csv"]]></DefaultValue>
 						<ParameterEditor>
 							<Id>1388425019673</Id>
 							<Name><![CDATA[]]></Name>
 							<Label><![CDATA[infile_population_name]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390863773910</Id>
+					<Name><![CDATA[dynamic_compliance_rate_year_offset_new]]></Name>
+					<X>370</X><Y>2160</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[int]]></Type>        
+						<DefaultValue><![CDATA[-1]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390863773908</Id>
+							<Name><![CDATA[]]></Name>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -5855,6 +5876,26 @@ catch (Exception e) {
     + "\t" + population.num_mail_reminder_year2021
     + "\t" + population.num_mail_reminder_year2022
     + "\t" + population.num_mail_reminder_year2023
+    + "\t" + population.count_male
+    + "\t" + population.count_female
+    + "\t" + population.count_white
+    + "\t" + population.count_black
+    + "\t" + population.count_other
+    + "\t" + population.count_private
+    + "\t" + population.count_medicaid
+    + "\t" + population.count_medicare
+    + "\t" + population.count_dual
+    + "\t" + population.count_none
+    + "\t" + population.count_utd_any_male
+    + "\t" + population.count_utd_any_female
+    + "\t" + population.count_utd_any_white
+    + "\t" + population.count_utd_any_black
+    + "\t" + population.count_utd_any_other
+    + "\t" + population.count_utd_any_private
+    + "\t" + population.count_utd_any_medicaid
+    + "\t" + population.count_utd_any_medicare
+    + "\t" + population.count_utd_any_dual
+    + "\t" + population.count_utd_any_none
     + "\t" + population.people.average("cost_routine")
     + "\t" + population.people.average("discounted_cost_routine")
     + "\t" + population.people.average("cost_diagnostic")
@@ -5870,6 +5911,10 @@ catch (Exception e) {
     + "\t" + population.prob_crc_given_no_polyp
     + "\t" + population.prob_dead_crc_given_crc
     + "\t" + population.prob_dead_crc
+    + "\t" + population.prob_dead_crc_black
+    + "\t" + population.prob_dead_crc_medicaid
+    + "\t" + population.prob_dead_crc_male
+    + "\t" + population.prob_dead_crc_female
     + "\t" + population.prob_crc_from_medium_polyp
     + "\t" + population.prob_crc_from_large_polyp
     + "\t" + population.time_polyp_to_pre.mean()
@@ -6053,6 +6098,26 @@ catch (Exception e) {
         + "\t" + "num_mail_reminder_year2021"
         + "\t" + "num_mail_reminder_year2022"
         + "\t" + "num_mail_reminder_year2023"
+        + "\t" + "count_male"
+        + "\t" + "count_female"
+        + "\t" + "count_white"
+        + "\t" + "count_black"
+        + "\t" + "count_other"
+        + "\t" + "count_private"
+        + "\t" + "count_medicaid"
+        + "\t" + "count_medicare"
+        + "\t" + "count_dual"
+        + "\t" + "count_none"
+		+ "\t" + "count_utd_any_male"
+		+ "\t" + "count_utd_any_female"
+		+ "\t" + "count_utd_any_white"
+		+ "\t" + "count_utd_any_black"
+		+ "\t" + "count_utd_any_other"
+		+ "\t" + "count_utd_any_private"
+		+ "\t" + "count_utd_any_medicaid"
+		+ "\t" + "count_utd_any_medicare"
+		+ "\t" + "count_utd_any_dual"
+		+ "\t" + "count_utd_any_none"
         + "\t" + "cost_routine"
         + "\t" + "discounted_cost_routine"
         + "\t" + "cost_diagnostic"
@@ -6068,6 +6133,10 @@ catch (Exception e) {
         + "\t" + "prob_crc_given_no_polyp"
         + "\t" + "prob_dead_crc_given_crc"
         + "\t" + "prob_dead_crc"
+        + "\t" + "prob_dead_crc_black"
+        + "\t" + "prob_dead_crc_medicaid"
+        + "\t" + "prob_dead_crc_male"
+        + "\t" + "prob_dead_crc_female"
         + "\t" + "prob_crc_from_medium_polyp"
         + "\t" + "prob_crc_from_large_polyp"
         + "\t" + "time_polyp_to_pre"
@@ -6459,6 +6528,13 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).insure_medicare_orig
     			+ "\t" + population.people.get(j).insure_none_orig
     			+ "\t" + population.people.get(j).insure_private_orig
+    			+ "\t" + population.people.get(j).insure_dual_age50
+    			+ "\t" + population.people.get(j).insure_medicaid_age50
+    			+ "\t" + population.people.get(j).insure_medicare_age50
+    			+ "\t" + population.people.get(j).insure_none_age50
+    			+ "\t" + population.people.get(j).insure_private_age50
+    			+ "\t" + population.people.get(j).routine_test.name
+    			+ "\t" + population.people.get(j).is_free_screen
     			+ "\t" + population.people.get(j).compliance_prob_inital
     			+ "\t" + population.people.get(j).compliance_prob_intv
     			+ "\t" + population.people.get(j).race_black
@@ -6516,6 +6592,13 @@ catch (Exception e) {
         + "\t" + "insure_medicare_orig"
         + "\t" + "insure_none_orig"
         + "\t" + "insure_private_orig"
+        + "\t" + "insure_dual_age50"
+        + "\t" + "insure_medcaid_age50"
+        + "\t" + "insure_medicare_age50"
+        + "\t" + "insure_none_age50"
+        + "\t" + "insure_private_age50"
+        + "\t" + "modality"
+        + "\t" + "is_free_screen"
         + "\t" + "compliance_prob_orig"
         + "\t" + "compliance_prob_intv"
         + "\t" + "race_black"
@@ -8045,6 +8128,160 @@ import java.util.Arrays;]]></Import>
 						<ParameterEditor>
 							<Id>1390082155818</Id>
 							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390406490179</Id>
+					<Name><![CDATA[income_hi_cat]]></Name>
+					<X>-50</X><Y>60</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[int]]></Type>        
+						<DefaultValue><![CDATA[0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390406490177</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[income_gt_20k]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427825</Id>
+					<Name><![CDATA[insure_none_age50]]></Name>
+					<X>110</X><Y>80</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427823</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[insure_none]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427841</Id>
+					<Name><![CDATA[insure_private_age50]]></Name>
+					<X>110</X><Y>100</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427839</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[insure_private]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427844</Id>
+					<Name><![CDATA[insure_medicare_age50]]></Name>
+					<X>110</X><Y>120</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427842</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[insure_private]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427847</Id>
+					<Name><![CDATA[insure_medicaid_age50]]></Name>
+					<X>110</X><Y>140</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427845</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[insure_private]]></Label>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427850</Id>
+					<Name><![CDATA[insure_dual_age50]]></Name>
+					<X>110</X><Y>160</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427848</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[insure_private]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1390539427853</Id>
+					<Name><![CDATA[income_hi_cat_age50]]></Name>
+					<X>110</X><Y>60</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[int]]></Type>        
+						<DefaultValue><![CDATA[0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1390539427851</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[income_gt_20k]]></Label>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -9699,6 +9936,7 @@ tot_lesions++;
 diagnostic_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
 surveillance_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
 
+
 // To assign the routine test, we develop a probability distribution
 // for choosing each of the tests, then use that distribution to
 // randomly select one. The probability distribution can be constructed
@@ -10099,13 +10337,16 @@ for (int i=0; i<lesion_sources.size(); i++) {
 						<Type><![CDATA[Test]]></Type>
 					</Parameter>
 					<Body><![CDATA[
-Main main = get_Population().get_Main ();
+Main main = get_Population().get_Main();
 Population people = get_Population();
 
 if (test.name.equals("None")) {
   return false;
 }
-
+//Strictly for debuging/breakpoint setting
+if (insure_none){
+	//System.out.println("Modality: " + test.name);
+}
 if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   boolean isCompliant1 = uniform() < main.diagnostic_compliance_rate;
   set_utd(test.name,isCompliant1); // Set utd for appriate number of years, diagnostic test
@@ -10154,10 +10395,12 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 													  this.insure_dual,
 													  this.insure_none);
       // Adjust probability based on the type of test. To annualize the probality produced by the statistical model
-	  compliance_prob =
-	      complianceModel.getTestAdjustedComplianceProbability (
-	          compliance_prob,
-	  	      test.name);
+	  if (!insure_none){
+		  compliance_prob =
+		      complianceModel.getTestAdjustedComplianceProbability (
+		          compliance_prob,
+		  	      test.name);
+	  }
 	  this.compliance_prob_inital = compliance_prob; //Add so can output inital compliance rate
 	  	      
     } else {
@@ -10336,14 +10579,14 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
   // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
   boolean isMailedReminderActive = false;
-  if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset + this.age))){
+  if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
   	isMailedReminderActive = true;
   }
   compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.1);
 
   // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
   boolean isMassMediaActive = false;
-  if (main.intervene_mass_media && (time() >= (main.dynamic_compliance_rate_year_offset + this.age))){
+  if (main.intervene_mass_media && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
   	isMassMediaActive = true;
   	//System.out.println("-------------->Mass Media Active at time: " + time());
   }
@@ -10351,23 +10594,30 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   
   // INTERVENTION 3: Make uninsured compliant with Colonoscopy
   boolean isFreeScreeActive = false;
-  if (main.intervene_free_screenings && (time() == 50)){
+  if (main.intervene_free_screenings && (time() == 50) && (this.age <= 43)){
   	isFreeScreeActive = true;
   	//System.out.println("------------->Free Screen active: " + time());
   }  
   if ((isFreeScreeActive) && (this.insure_none) && (people.free_screen_count < main.num_free_colonoscopy)){
-  	
+  	//make_colonoscopy(); //makes it so all uninsured people choose colonoscopies if free screens have not been all given out.
   	if (test.name.equals("Colonoscopy")){
   		//System.out.println("DO I Get To here");
   		people.free_screen_count++;
   		is_free_screen = true;
   		compliance_prob = 1;
+  		routine_compliance_history.add (new Boolean (true));
+  		set_utd(test.name, true); // indexes into up-to-date vector if person chooses to comply
+  		//choose_tests();
+  		return true;
   		//System.out.println("Number of Free Colonoscopies: " + people.free_screen_count);
   		//System.out.println("New Compliance Prob: "+ compliance_prob);
 	  	}
   	  }
   
   this.compliance_prob_intv = compliance_prob;
+  if (insure_none){
+  	//System.out.println("Modality: " + test.name + "Compliance_Prob: " + compliance_prob );
+  }
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform () < compliance_prob;
   routine_compliance_history.add (new Boolean (isCompliant));
@@ -10937,25 +11187,29 @@ return compliance_prob;]]></Body>
 						<Name><![CDATA[isCompliant]]></Name>
 						<Type><![CDATA[boolean]]></Type>
 					</Parameter>
-					<Body><![CDATA[int age = (int) time();
+					<Body><![CDATA[
+Main main = get_Population().get_Main();
 // Need to fix this type miss match
 //String testType = test.name;
 //System.out.println("PRINT AGE: " + age);
 //System.out.println("PRINT TEST TYPE: " + testType);
+//if (((age +main.dynamic_compliance_rate_year_offset_new)  < 50) && ((age +main.dynamic_compliance_rate_year_offset_new)  > 75)){
+	//return;
+//}
 if (testType.equals("FOBT")){
-	fobt_utd[age] = isCompliant;
-	boolean[] newArray1 = Arrays.copyOfRange(fobt_utd,age - 1, age + 1);
+	fobt_utd[main.age] = isCompliant;
+	boolean[] newArray1 = Arrays.copyOfRange(fobt_utd,main.age - 1, main.age + 1);
 	//System.out.println("FOBT Array: " + Arrays.toString(newArray1));
 }else if (testType.equals("Colonoscopy")){
-	 int end = Math.min(colon_utd.length, age + COLON_UTD_DURATION);
-	 for(int c = 0; c < end; c++){
+	 int end = Math.min(colon_utd.length, main.age + COLON_UTD_DURATION);
+	 for(int c = main.age; c < end; c++){
 	 	colon_utd[c] = isCompliant;
 	 }
-	 boolean[] newArray2 = Arrays.copyOfRange(colon_utd,age-1, age + COLON_UTD_DURATION +1);
+	 boolean[] newArray2 = Arrays.copyOfRange(colon_utd,main.age-1, main.age + COLON_UTD_DURATION +1);
 	 //System.out.println("isCompliant: "+ isCompliant+ "COLON Array: " + Arrays.toString(newArray2));
 }else if(testType.equals("Sigmoidoscopy")){
-	int end = Math.min(sigmoid_utd.length, age + SIGMOID_UTD_DURATION);
-	for(int c = 0; c < end; c++){
+	int end = Math.min(sigmoid_utd.length, main.age + SIGMOID_UTD_DURATION);
+	for(int c = main.age; c < end; c++){
 		sigmoid_utd[c] = isCompliant;
 	 }
 }]]></Body>
@@ -11077,13 +11331,36 @@ return compliance_prob;]]></Body>
 					<Body><![CDATA[//This is psuedo cod for a method that implement dynamic insurance
 Main main = get_Population().get_Main ();
 
+//Transition prameters for the Insurance at age 50 for those >=65
+//For Medicare in 2007 data set
+//CAT 1
+double gt65_cat_1_mcare4mcare = 0.035;
+double gt65_cat_1_mcare2none = 0.36;
+double gt65_cat_1_mcare2private = 0.605;
+//CAT 2
+double gt65_cat_2_mcare4mcare = 0.035;
+double gt65_cat_2_mcare2none = 0.17;
+double gt65_cat_2_mcare2private = 0.795;
+//CAT 3
+double gt65_cat_3_mcare4mcare = 0.06;
+double gt65_cat_3_mcare2none = 0.94;
+// For Dual patient in 2007 data set
+double gt65_dual2none = 0.5;
+double gt65_dual2maid = 0.25;
+double gt65_dual2dual = 0.25;
+
+//Transition prameters for the Insurance at age 50 for those <65
+double lt65_cat1_none2dual = 1.0;
+
+
+
 outage:
 if (age < 65){
 	//this indicates that the individual is age 65 or youner in 2007
 	if (main.age == 65){
 		//CHANGE FROM ORIGINAL AT AGE 65
 		if (insure_none){
-			if (!(income_gt_20k) && (uniform() < 0.5)){
+			if ((income_hi_cat == 1) && (uniform() < lt65_cat1_none2dual)){
 				//implement the 50% of poor unisured go to dual
 				insure_none = false;
 				insure_dual = true;
@@ -11119,18 +11396,22 @@ if (age < 65){
 	//If older than 65 in 2007 need to set insurance early
 	if (main.age == 2){
 		if (insure_none){
+			insure_none = true;
 			//Was uninsured early in life too
 			break outage;
 		}else if (insure_private) {
+			insure_private = true;
 			//was also privately insured early in life
 			break outage;
 		}else if (insure_medicare){
-			if (!(income_gt_20k)){
+			insure_medicare = false;
+			if ((income_hi_cat == 1)){
 				// Low INCOME early insurance
-				if (uniform() < .06){
+				if (uniform() < gt65_cat_1_mcare4mcare){
 					//6% of poor were medicare before (disabled)
+					insure_medicare = true;
 					break outage;
-				}else if (uniform() < 0.3){
+				}else if (uniform() < gt65_cat_1_mcare2none){
 					//30% were previously uninsured
 					insure_medicare = false;
 					insure_none = true;
@@ -11141,10 +11422,26 @@ if (age < 65){
 					insure_private = true;
 					break outage;
 				}
+			}else if (income_hi_cat == 2){
+				if (uniform() < gt65_cat_2_mcare4mcare){
+				//6% were previousl medicare
+					insure_medicare = true;
+					break outage;
+				}else if (uniform() < gt65_cat_2_mcare2none){
+					insure_medicare = false;
+					insure_none = true;
+					break outage;
+				}else{
+					insure_medicaid = false;
+					insure_private = true;
+					break outage;
+				}
+				
 			}else {
-				//High INCOME early insureance
-				if (uniform() < 0.06){
+				//High HI_CAT = 3 early insureance
+				if (uniform() < gt65_cat_3_mcare4mcare){
 					// 6% were previously Medicare
+					insure_medicare = true;
 					break outage;
 				}else {
 					// otherwise previously Private
@@ -11154,8 +11451,10 @@ if (age < 65){
 				}
 			}
 		}else if (insure_dual) {
+			insure_dual = false;
 			if (uniform() < 0.25) {
 				// 25 % Dual @65 previously Dual
+				insure_dual = true;
 				break outage;
 			}else if (uniform() < 0.25) {
 				// 25% Dual @65 previusly medicaid
@@ -11175,10 +11474,40 @@ if (age < 65){
 		insure_dual = insure_dual_orig;
 		insure_private = insure_private_orig;
 		insure_none = insure_none_orig;
+		break outage;
+		
 	}
 }
 
+if (main.age == 50){
+	
+	insure_medicare_age50 = insure_medicare;
+	insure_medicaid_age50 = insure_medicaid;
+	insure_dual_age50 = insure_dual;
+	insure_private_age50 = insure_private;
+	insure_none_age50 = insure_none;
+	
+}
+
 ]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1390855533882</Id>
+					<Name><![CDATA[make_colonoscopy]]></Name>
+					<X>-90</X><Y>640</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//This is psuedo cod for a method that implement dynamic insurance
+Main main = get_Population().get_Main ();
+
+//Set all uninsured indiviudals before test are used up to Colonoscopy (Will do this permenatly for these individuals)
+if ((insure_none) && (main.intervene_free_screenings) && (get_Population().free_screen_count <= main.num_free_colonoscopy)){
+	routine_test = main.test_set.get_test_by_name("Colonoscopy");
+	return;
+}]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -13154,6 +13483,318 @@ import org.apache.commons.lang3.BooleanUtils;]]></Import>
 						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390447742945</Id>
+					<Name><![CDATA[prob_dead_crc_black]]></Name>
+					<X>-180</X><Y>-470</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390447747500</Id>
+					<Name><![CDATA[prob_dead_crc_medicaid]]></Name>
+					<X>-180</X><Y>-450</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390447917516</Id>
+					<Name><![CDATA[prob_dead_crc_male]]></Name>
+					<X>-180</X><Y>-430</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390447941807</Id>
+					<Name><![CDATA[prob_dead_crc_female]]></Name>
+					<X>-180</X><Y>-410</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467393</Id>
+					<Name><![CDATA[count_utd_any_male]]></Name>
+					<X>-1350</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467395</Id>
+					<Name><![CDATA[count_utd_any_female]]></Name>
+					<X>-1350</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467397</Id>
+					<Name><![CDATA[count_utd_any_white]]></Name>
+					<X>-1350</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467399</Id>
+					<Name><![CDATA[count_utd_any_black]]></Name>
+					<X>-1350</X><Y>-10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467401</Id>
+					<Name><![CDATA[count_utd_any_other]]></Name>
+					<X>-1350</X><Y>10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467403</Id>
+					<Name><![CDATA[count_utd_any_private]]></Name>
+					<X>-1350</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467408</Id>
+					<Name><![CDATA[count_utd_any_medicaid]]></Name>
+					<X>-1350</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467410</Id>
+					<Name><![CDATA[count_utd_any_medicare]]></Name>
+					<X>-1350</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467412</Id>
+					<Name><![CDATA[count_utd_any_dual]]></Name>
+					<X>-1350</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884467414</Id>
+					<Name><![CDATA[count_utd_any_none]]></Name>
+					<X>-1350</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479670</Id>
+					<Name><![CDATA[count_male]]></Name>
+					<X>-1530</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479672</Id>
+					<Name><![CDATA[count_female]]></Name>
+					<X>-1530</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479674</Id>
+					<Name><![CDATA[count_white]]></Name>
+					<X>-1530</X><Y>-30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479676</Id>
+					<Name><![CDATA[count_black]]></Name>
+					<X>-1530</X><Y>-10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479678</Id>
+					<Name><![CDATA[count_other]]></Name>
+					<X>-1530</X><Y>10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479686</Id>
+					<Name><![CDATA[count_private]]></Name>
+					<X>-1530</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479688</Id>
+					<Name><![CDATA[count_medicaid]]></Name>
+					<X>-1530</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479690</Id>
+					<Name><![CDATA[count_medicare]]></Name>
+					<X>-1530</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479692</Id>
+					<Name><![CDATA[count_dual]]></Name>
+					<X>-1530</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1390884479694</Id>
+					<Name><![CDATA[count_none]]></Name>
+					<X>-1530</X><Y>110</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
 			</Variables>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -13175,6 +13816,19 @@ int num_dead_crc = 0;
 int num_crc_and_polyp = 0;
 int num_crc_and_no_polyp = 0;
 int num_dead_crc_and_crc = 0;
+
+int num_black = 0;
+int num_medicaid = 0;
+int num_male = 0;
+int num_female = 0;
+int num_crc_black = 0;
+int num_crc_medicaid = 0;
+int num_crc_female = 0;
+int num_crc_male = 0;
+int num_dead_black = 0;
+int num_dead_medicaid = 0;
+int num_dead_male = 0;
+int num_dead_female = 0;
 // stuff for calculating conditioal life lost
 /*
 double sum_lifelost_cond_polyp = 0.0;
@@ -13205,6 +13859,49 @@ for (int i=0; i<people.size(); i++) {
   if (people.get(i).event_dead_crc && people.get(i).event_crc) {
     num_dead_crc_and_crc++;
   }
+  //Black counters
+  if (people.get(i).race_black){
+  	num_black++;
+  	if (people.get(i).event_crc){
+  		num_crc_black++;
+  	}
+  	if (people.get(i).event_dead_crc){
+  		num_dead_black++;
+  	}
+  }
+  
+  //medicaid counters
+    
+  if (people.get(i).insure_medicaid_orig || people.get(i).insure_dual_orig){
+  	num_medicaid++;
+  	if (people.get(i).event_crc){
+  		num_crc_medicaid++;
+  	}
+  	if (people.get(i).event_dead_crc){
+  		num_dead_medicaid++;
+  	}
+  }
+  //female counters
+  if (!people.get(i).sex_male){
+  	num_female++;
+  	if (people.get(i).event_crc){
+  		num_crc_female++;
+  	}
+  	if (people.get(i).event_dead_crc){
+  		num_dead_female++;
+  	}
+  }
+  
+  //male counters
+  if (people.get(i).sex_male){
+  	num_male++;
+  	if (people.get(i).event_crc){
+  		num_crc_male++;
+  	}
+  	if (people.get(i).event_dead_crc){
+  		num_dead_male++;
+  	}
+  }
 }
 
 prob_polyp = (1.0 * num_polyp) / people.size();
@@ -13214,6 +13911,11 @@ prob_dead_crc_given_crc = (1.0 * num_dead_crc_and_crc) / num_crc;
 
 prob_crc = (1.0 * num_crc) / people.size();
 prob_dead_crc = (1.0 * num_dead_crc) / people.size();
+
+prob_dead_crc_black = (double)num_dead_black/num_black;
+prob_dead_crc_medicaid = (double)num_dead_medicaid/num_medicaid;
+prob_dead_crc_male = (double)num_dead_male/num_male;
+prob_dead_crc_female = (double)num_dead_female/num_female;
 
 double prob_crc_check = prob_crc_given_polyp * prob_polyp + prob_crc_given_no_polyp;
 double prob_dead_crc_check = prob_dead_crc_given_crc * prob_crc_check;
@@ -13696,6 +14398,7 @@ for (int i=0; i<people.size(); i++) {
     p.sex_male = in.getBoolean("SEXC");
     p.educ_college = in.getBoolean("EDU");
     p.income_gt_20k = in.getBoolean("INCOME");
+    p.income_hi_cat = in.getInt("NEW_INCOME_CAT");
     p.race_black = in.getBoolean("BLACK");
     p.race_hispanic = in.getBoolean("HISP");
     p.race_other = in.getBoolean("OTHER");
@@ -14024,46 +14727,122 @@ int[] num_utd_any;
 int[] num_utd_colon;
 int[] num_mail_reminders;
 
+
 num_alive = new int[20];
 num_utd_any = new int[20];
+int[] num_utd_fobt = new int[20];
 num_utd_colon = new int[20];
 num_mail_reminders = new int[20];
 
+
+
+
+int[] num_male = new int[20];
+int[] num_utd_any_male = new int[20];
+int[] num_female = new int[20];
+int[] num_utd_any_female = new int[20];
+int[] num_white = new int[20];
+int[] num_utd_any_white = new int[20];
+int[] num_black = new int[20];
+int[] num_utd_any_black = new int[20];
+int[] num_other = new int[20];
+int[] num_utd_any_other = new int[20];
+int[] num_private = new int[20];
+int[] num_utd_any_private = new int[20];
+int[] num_medicaid = new int[20];
+int[] num_utd_any_medicaid = new int[20];
+int[] num_medicare = new int[20];
+int[] num_utd_any_medicare = new int[20];
+int[] num_dual = new int[20];
+int[] num_utd_any_dual = new int[20];
+int[] num_none = new int[20];
+int[] num_utd_any_none = new int[20];
+
+
 for (int i = 0; i < people.size(); i++){
 	for(int j = 0; j<num_alive.length; j++){
-		if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset + j)){
-			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset + j;
+		if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j)){
+			
+			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j;
 			//System.out.println("Base Cohort age: " + people.get(i).age +  "AGE 2014: " + ageIDX + "Current Time: "+ time());
 			num_alive[j] = num_alive[j] + 1;
-			num_utd_any[j] = num_utd_any[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			//BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX])
+			//BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX])||(people.get(i).fobt_utd[ageIDX])||(people.get(i).sigmoid_utd[ageIDX]))
+			num_utd_fobt[j] = num_utd_fobt[j] + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]);
 			num_utd_colon[j] = num_utd_colon[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
-			if (people.get(i).insure_medicaid || people.get(i).insure_dual){
-				num_mail_reminders[j] = num_mail_reminders[j] + 1;
+			//num_utd_any[j] = num_utd_fobt[j]+num_utd_colon[j];
+			num_utd_any[j] = num_utd_any[j] + BooleanUtils.toInteger(((people.get(i).colon_utd[ageIDX])||(people.get(i).fobt_utd[ageIDX])||(people.get(i).sigmoid_utd[ageIDX])));
+			
+			
+			if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){
+				//if ((people.get(i).insure_medicaid || people.get(i).insure_dual) && !(people.get(i).colon_utd[ageIDX])){
+				if ((people.get(i).insure_medicaid || people.get(i).insure_dual)){
+					num_mail_reminders[j] = num_mail_reminders[j] + 1;
+				}
+			
+				//GENDER COUNTERS
+				if (people.get(i).sex_male){
+					num_male[j] = num_male[j] + 1;
+					num_utd_any_male[j] = num_utd_any_male[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else{
+					num_female[j] = num_female[j] + 1;
+					num_utd_any_female[j] = num_utd_any_female[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}
+				//RACE COUNTERS
+				if (people.get(i).race_white){
+					num_white[j] = num_white[j] + 1;
+					num_utd_any_white[j] = num_utd_any_white[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else if (people.get(i).race_black){
+					num_black[j] = num_black[j] + 1;
+					num_utd_any_black[j] = num_utd_any_black[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else{
+					num_other[j] = num_other[j] + 1;
+					num_utd_any_other[j] = num_utd_any_other[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}
+				//INSURANCE COUNTERS
+				if (people.get(i).insure_private_orig ){
+					num_private[j] = num_private[j] + 1;
+					num_utd_any_private[j] = num_utd_any_private[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else if (people.get(i).insure_medicaid_orig){
+					num_medicaid[j] = num_medicaid[j] + 1;
+					num_utd_any_medicaid[j] = num_utd_any_medicaid[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else if (people.get(i).insure_medicare_orig){
+					num_medicare[j] = num_medicare[j] + 1;
+					num_utd_any_medicare[j] = num_utd_any_medicare[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else if (people.get(i).insure_dual_orig){
+					num_dual[j] = num_dual[j] + 1;
+					num_utd_any_dual[j] = num_utd_any_dual[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}else{
+					num_none[j] = num_none[j] + 1;
+					num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				}
 			}
+			
 		}
 	}
-	/*
-	if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset + 1)){
-		int age2014 = people.get(i).age + main.dynamic_compliance_rate_year_offset + 1;
-		System.out.println("Base Cohort age: " + people.get(i).age +  "AGE 2014: " + age2014 + "Current Time: "+ time());
-		num_alive_year2014++;
-		num_utd_any_year2014 = num_utd_any_year2014 + BooleanUtils.toInteger(people.get(i).colon_utd[age2014]) + BooleanUtils.toInteger(people.get(i).fobt_utd[age2014]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[age2014]);
-		num_utd_colon_year2014 = num_utd_colon_year2014 + BooleanUtils.toInteger(people.get(i).colon_utd[age2014]);
-		if (people.get(i).insure_medicaid || people.get(i).insure_dual){
-			num_mail_reminder_year2014++;
-		}
-	}else if(people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset + 2)){
-		int age2015 = people.get(i).age + main.dynamic_compliance_rate_year_offset + 2;
-		System.out.println("Base Cohort age: " + people.get(i).age +  "AGE 2014: " + age2014 + "Current Time: " + time());
-		num_alive_year2015++;
-		num_utd_any_year2015 = num_utd_any_year2015 + BooleanUtils.toInteger(people.get(i).colon_utd[age2015]) + BooleanUtils.toInteger(people.get(i).fobt_utd[age2015]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[age2015]);
-		num_utd_colon_year2015 = num_utd_colon_year2015 + BooleanUtils.toInteger(people.get(i).colon_utd[age2015]);
-		if (people.get(i).insure_medicaid || people.get(i).insure_dual){
-			num_mail_reminder_year2015++;
-		}
-	}
-	*/
-}  
+}
+//num_utd_any = num_utd_fobt+num_utd_colon;  
+//Sum the exact counters only over 10
+count_male = sum_over10(num_male);
+count_utd_any_male = sum_over10(num_utd_any_male);
+count_female = sum_over10(num_female);
+count_utd_any_female = sum_over10(num_utd_any_female);
+count_white = sum_over10(num_white);
+count_utd_any_white = sum_over10(num_utd_any_white);
+count_black = sum_over10(num_black);
+count_utd_any_black = sum_over10(num_utd_any_black);
+count_other = sum_over10(num_other);
+count_utd_any_other = sum_over10(num_utd_any_other);
+count_private = sum_over10(num_private);
+count_utd_any_private = sum_over10(num_utd_any_private);
+count_medicaid = sum_over10(num_medicaid);
+count_utd_any_medicaid = sum_over10(num_utd_any_medicaid);
+count_medicare = sum_over10(num_medicare);
+count_utd_any_medicare = sum_over10(num_utd_any_medicare);
+count_dual = sum_over10(num_dual);
+count_utd_any_dual = sum_over10(num_utd_any_dual);
+count_none = sum_over10(num_none);
+count_utd_any_none = sum_over10(num_utd_any_none);
 
 num_alive_year2014 = num_alive[0];
 num_alive_year2015 = num_alive[1];
@@ -14135,6 +14914,25 @@ num_mail_reminder_year2020 = num_mail_reminders[6];
 num_mail_reminder_year2021 = num_mail_reminders[7];
 num_mail_reminder_year2022 = num_mail_reminders[8];
 num_mail_reminder_year2023 = num_mail_reminders[9];]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1390885418830</Id>
+					<Name><![CDATA[sum_over10]]></Name>
+					<X>40</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[utdArray]]></Name>
+						<Type><![CDATA[int[]]]></Type>
+					</Parameter>
+					<Body><![CDATA[double sum = 0;
+for (int i = 0; i < 10; i++){
+	sum+=utdArray[i];
+}
+return sum;]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -14278,6 +15076,34 @@ num_mail_reminder_year2023 = num_mail_reminders[9];]]></Body>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[compliance_prob_intv]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[income_hi_cat]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[insure_none_age50]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[insure_private_age50]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[insure_medicare_age50]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[insure_medicaid_age50]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[insure_dual_age50]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[income_hi_cat_age50]]></Name>
 							<Value><![CDATA[]]></Value>	
 						</Parameter>
 					</Parameters>
@@ -15789,6 +16615,10 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[infile_location_name]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[dynamic_compliance_rate_year_offset_new]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -19848,6 +20678,15 @@ copyToClipboard( s );
 				<Step><![CDATA[]]></Step>
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
+			<Parameter>	
+				<Id>1390863773910</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[//this.calibration.getValue ()
 root.population.people.average ("lifespan")]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
@@ -20415,6 +21254,9 @@ if (root.simulation_count % 2 == 0) {
 			<FreeformParamValue>	
 				<Id>1388425019675</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1390863773910</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1328041345577</Id>
 				<Type>FIXED</Type>
@@ -20987,6 +21829,10 @@ if (root.simulation_count % 2 == 0) {
 				<Id>1388425019675</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1390863773910</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
 			<ModelTimeProperties 
 				UseCalendar="false">
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
@@ -21440,11 +22286,13 @@ static int outcomesIndex = 0;
 private boolean debugMode = true; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
 // For production runs on the RENCI Machine
-//private String inputDirectory = "C:\\cleanpops-2013-12-27";
+//private String inputDirectory = "C:\\cleanpops-2014-01-30-1019";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //Depreicated links to broken systemscience shared drive (replaced by SystemsScience_Windows)
@@ -21461,7 +22309,9 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim
 //private String experimentId = "002";
 //private String experimentId = "003";
 //private String experimentId = "005";
-private String experimentId = "fs";
+private String experimentId = "006";
+//private String experimentId = "fs";
+//private String experimentId = "base";
 
 /**
  * Forms the path to experiment specific data.
@@ -21707,7 +22557,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 101;
+		lines = 30001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
