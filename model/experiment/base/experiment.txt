@@ -18,7 +18,7 @@ population_size=10000
 dynamic_compliance_rate_year_offset=7
 dynamic_compliance_rate_year_offset_new=7
 output_population_snapshots=false
-outfile_agent=false
+outfile_agent=true
 prob_colon_uninsured=0.6
 num_free_colonoscopy=1500
 

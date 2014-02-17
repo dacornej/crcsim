@@ -22534,15 +22534,14 @@ static int outcomesIndex = 0;
 private boolean debugMode = false; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
+private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
-//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
 // For production runs on the RENCI Machine
-//private String inputDirectory = "C:\\cleanpops-2014-01-30-1019";
-private String inputDirectory = "C:\\cleanpops-2014-02-05-1203";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+//private String inputDirectory = "C:\\cleanpops-2014-02-05-1203";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //Depreicated links to broken systemscience shared drive (replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\pops";
@@ -22558,9 +22557,9 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim
 //private String experimentId = "002";
 //private String experimentId = "003";
 //private String experimentId = "005";
-//private String experimentId = "006";
+private String experimentId = "006";
 //private String experimentId = "fs";
-private String experimentId = "base";
+//private String experimentId = "base";
 
 /**
  * Forms the path to experiment specific data.
@@ -22590,6 +22589,14 @@ private String get_scenario_name (File cohort, int iterationIndex, File scenario
 	return scenario == null ? 
 		cohort.getName () + "." + iterationIndex + "." + CONTROL : 
 		cohort.getName () + "." + iterationIndex + "." + scenario.getName ();
+}
+
+/**
+ * Get a scenario number normalizing between control and intervention scenarios.
+ */
+private int get_scenario_number (File cohort, int iterationIndex, File scenario) {
+	return scenario == null ? 
+		-1 : Integer.parseInt(scenario.getName ());
 }
 /**
  * Get model parameters by reading a scenario configuration file.
