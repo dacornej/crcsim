@@ -1,0 +1,5 @@
+#Scenario 0003: ENDOSCOPY EXPANSION (NEW DISTANCE FILE)
+intervene_medicaid_mailer=false
+intervene_mass_media=false
+intervene_free_screenings=false
+infile_location_name=nearest_dist_simulation_short_test.csv
