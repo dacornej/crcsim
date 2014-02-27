@@ -1874,6 +1874,7 @@ double or_sigmoid_region_west = 2.02;
 // Declare lookup tables that will be defined through the Main parameters.
 
 TableFunction value_life_year = null;
+TableFunction secular_trend = null;
 TableFunction[] lesion_incidence_black_female = null;
 TableFunction[] lesion_incidence_black_male = null;
 TableFunction[] lesion_incidence_white_female = null;
@@ -2095,7 +2096,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="Parameter">
 					<Id>1328041345577</Id>
 					<Name><![CDATA[model_description]]></Name>
-					<X>40</X><Y>110</Y>
+					<X>40</X><Y>70</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2117,7 +2118,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="Parameter">
 					<Id>1328041345581</Id>
 					<Name><![CDATA[num_lesion_types]]></Name>
-					<X>40</X><Y>150</Y>
+					<X>40</X><Y>110</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2139,7 +2140,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="Parameter">
 					<Id>1328041345582</Id>
 					<Name><![CDATA[num_tests]]></Name>
-					<X>40</X><Y>170</Y>
+					<X>40</X><Y>130</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2161,7 +2162,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="Parameter">
 					<Id>1328041345583</Id>
 					<Name><![CDATA[population_size]]></Name>
-					<X>40</X><Y>190</Y>
+					<X>40</X><Y>150</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2183,7 +2184,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="Parameter">
 					<Id>1328041345584</Id>
 					<Name><![CDATA[max_age]]></Name>
-					<X>40</X><Y>210</Y>
+					<X>40</X><Y>170</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5235,7 +5236,7 @@ This is used to calculate continuing, rather than initial compliance.
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1393011259231</Id>
-					<Name><![CDATA[trend_table]]></Name>
+					<Name><![CDATA[secular_trend_years]]></Name>
 					<X>-210</X><Y>2520</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -5243,12 +5244,78 @@ This is used to calculate continuing, rather than initial compliance.
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["0,40,50,60,70,80,100;0,100"]]></DefaultValue>
+						<DefaultValue><![CDATA["1900,2002,2004,2006,2008,2010,2012,2200"]]></DefaultValue>
 						<ParameterEditor>
 							<Id>1393011259229</Id>
 							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[lesion_incidence_black_male_ages]]></Label>
+							<Label><![CDATA[secular_trend_years]]></Label>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1393269136568</Id>
+					<Name><![CDATA[secular_trend_values]]></Name>
+					<X>-213</X><Y>2552</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[String]]></Type>        
+						<DefaultValue><![CDATA[".10,.10,.155,.181,.22,.235,.24,.24"]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1393269136566</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[secular_trend_values]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1393275672213</Id>
+					<Name><![CDATA[infile_location_compliance_intercepts_name]]></Name>
+					<X>40</X><Y>210</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[String]]></Type>        
+						<DefaultValue><![CDATA["compliance_county_intercepts_new6.csv"]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1393275672211</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[infile_location_compliance_intercepts_name]]></Label>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1393299045985</Id>
+					<Name><![CDATA[secular_trend_active]]></Name>
+					<X>-210</X><Y>2570</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1393299045983</Id>
+							<Name><![CDATA[]]></Name>
+							<Label><![CDATA[secular_trend_active]]></Label>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5455,6 +5522,24 @@ String[] dim1_fields;
 
 double[] x;
 double[] y;
+
+// create look-up table for adjustment for secular trend
+fields = secular_trend_years.split(",");
+x = new double[fields.length];
+for (int i = 0; i < fields.length; i++) {
+  x[i] = Double.parseDouble(fields[i]);
+}
+
+fields = secular_trend_values.split(",");
+y = new double[fields.length];
+for (int i = 0; i < fields.length; i++) {
+  y[i] = Double.parseDouble(fields[i]);
+}
+
+secular_trend = new TableFunction(x, y, TableFunction.INTERPOLATION_STEP, 1, TableFunction.OUTOFRANGE_NEAREST, 0.0);
+
+
+
 
 
 // Create a lookup table for the value of a life-year.
@@ -10425,7 +10510,8 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 
       // Compute the compliance probability based on the person's characteristics.
 
-	  ComplianceModel complianceModel = new ComplianceModel (main.infile_location_name);
+	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
+	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
 
 
 	  compliance_prob =
@@ -10443,10 +10529,19 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 													  this.insure_none);
       // Adjust probability based on the type of test. To annualize the probality produced by the statistical model
 	  if (!insure_none){
+		  //Annulaizing adjustmnt
 		  compliance_prob =
 		      complianceModel.getTestAdjustedComplianceProbability (
 		          compliance_prob,
 		  	      test.name);
+		  	      
+		 // Trend adjustment
+		 if (main.secular_trend_active){
+		 	compliance_prob = Math.min(compliance_prob + apply_trend(),1);
+		 }
+	  }else{
+	  	//if get here than uninsured
+	  	compliance_prob = compliance_prob+0.05;
 	  }
 	  this.compliance_prob_inital = compliance_prob; //Add so can output inital compliance rate
 	  	      
@@ -10629,7 +10724,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
   	isMailedReminderActive = true;
   }
-  compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.1);
+  compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.06);
 
   // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
   boolean isMassMediaActive = false;
@@ -11212,7 +11307,7 @@ else {
 
 if ((isActive)&& ((isMedicaid)||(isDual))){
 	//Colonoscopy people get automatic p-bumps at 50 and 60 and every age where they are not up-to date in the previous period
-	if (((main.age == 50) || (main.age == 60))|| ((main.age > 50) && (!(colon_utd[main.age-1])))){
+	if (((main.age == 50) || (main.age == 60)||(main.age == 70))|| ((main.age > 50) && (!(colon_utd[main.age-1])))){
 		if (uniform() < pctRespond){
 			//System.out.println("Old Prob of Compliance: " + compliance_prob);
 			compliance_prob = Math.min(compliance_prob + pctIncrease, 1);
@@ -11684,7 +11779,7 @@ if ((main.age >= age)&&(main.age< age + 5)){
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
+					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1393011032081</Id>
 					<Name><![CDATA[apply_trend]]></Name>
 					<X>-90</X><Y>660</Y>
@@ -11692,14 +11787,33 @@ if ((main.age >= age)&&(main.age< age + 5)){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//This is psuedo cod for a method that implement dynamic insurance
+					<Body><![CDATA[//This method implements the notion of adding a secular trend using a lookup table
 Main main = get_Population().get_Main ();
 
-//Set all uninsured indiviudals before test are used up to Colonoscopy (Will do this permenatly for these individuals)
-if ((insure_none) && (main.intervene_free_screenings) && (get_Population().free_screen_count <= main.num_free_colonoscopy)){
-	routine_test = main.test_set.get_test_by_name("Colonoscopy");
-	return;
-}]]></Body>
+double trendValue = main.secular_trend.get(get_year_from_age());
+return trendValue;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[int]]></ReturnType>
+					<Id>1393269814732</Id>
+					<Name><![CDATA[get_year_from_age]]></Name>
+					<X>-90</X><Y>690</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//This translates a cohort year into a calendar year
+Main main = get_Population().get_Main ();
+
+int birthYear = (2007 + main.dynamic_compliance_rate_year_offset_new) - (age + main.dynamic_compliance_rate_year_offset_new);
+int currentYear = birthYear + main.age;
+/*
+System.out.println("Cohort age: " + age);
+System.out.println("Current age: " + main.age);
+System.out.println("Transformed year: "+ currentYear);
+*/
+return currentYear;
+]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -15058,7 +15172,7 @@ int[] num_utd_any_none = new int[20];
 for (int i = 0; i < people.size(); i++){
 	for(int j = 0; j<num_alive.length; j++){
 		if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j)){
-			
+			if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){
 			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j;
 			//System.out.println("Base Cohort age: " + people.get(i).age +  "AGE 2014: " + ageIDX + "Current Time: "+ time());
 			num_alive[j] = num_alive[j] + 1;
@@ -15070,7 +15184,7 @@ for (int i = 0; i < people.size(); i++){
 			num_utd_any[j] = num_utd_any[j] + BooleanUtils.toInteger(((people.get(i).colon_utd[ageIDX])||(people.get(i).fobt_utd[ageIDX])||(people.get(i).sigmoid_utd[ageIDX])));
 			
 			
-			if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){
+			//if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){//comented out for test of global checking
 				if ((people.get(i).insure_medicaid || people.get(i).insure_dual)){
 				//People eligble for mailded reminder
 					if (ageIDX == 50){
@@ -15079,7 +15193,7 @@ for (int i = 0; i < people.size(); i++){
 					}else if ((ageIDX > 50) && people.get(i).routine_test.name.equals("Colonoscopy")){
 						//send reminders is after age 50 and check utd array according to assigned test
 						//special case colonoscopy, everybody gets a letter at age 51 to account for the fact that people who comply at 50 got letter on average
-						if (ageIDX ==51){
+						if ((ageIDX ==51) || (ageIDX == 61)||(ageIDX == 71) ){
 							num_mail_reminders[j] = num_mail_reminders[j] + 1;
 						}else{
 							num_mail_reminders[j] = num_mail_reminders[j] + BooleanUtils.toInteger(!(people.get(i).colon_utd[ageIDX - 1]));
@@ -15136,6 +15250,7 @@ for (int i = 0; i < people.size(); i++){
 }
 //num_utd_any = num_utd_fobt+num_utd_colon;  
 //Sum the exact counters only over 10
+/*
 count_male = sum_over10(num_male);
 count_utd_any_male = sum_over10(num_utd_any_male);
 count_female = sum_over10(num_female);
@@ -15156,6 +15271,29 @@ count_dual = sum_over10(num_dual);
 count_utd_any_dual = sum_over10(num_utd_any_dual);
 count_none = sum_over10(num_none);
 count_utd_any_none = sum_over10(num_utd_any_none);
+*/
+
+//Just do the counters in the year 2023
+count_male = num_male[9];
+count_utd_any_male = num_utd_any_male[9];
+count_female = num_female[9];
+count_utd_any_female = num_utd_any_female[9];
+count_white = num_white[9];
+count_utd_any_white = num_utd_any_white[9];
+count_black = num_black[9];
+count_utd_any_black = num_utd_any_black[9];
+count_other = num_other[9];
+count_utd_any_other = num_utd_any_other[9];
+count_private = num_private[9];
+count_utd_any_private = num_utd_any_private[9];
+count_medicaid = num_medicaid[9];
+count_utd_any_medicaid = num_utd_any_medicaid[9];
+count_medicare = num_medicare[9];
+count_utd_any_medicare = num_utd_any_medicare[9];
+count_dual = num_dual[9];
+count_utd_any_dual = num_utd_any_dual[9];
+count_none = num_none[9];
+count_utd_any_none = num_utd_any_none[9];
 
 num_alive_year2014 = num_alive[0];
 num_alive_year2015 = num_alive[1];
@@ -16935,7 +17073,19 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[trend_table]]></ParameterName>
+					<ParameterName><![CDATA[secular_trend_years]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[secular_trend_values]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[infile_location_compliance_intercepts_name]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[secular_trend_active]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -21013,6 +21163,33 @@ copyToClipboard( s );
 				<Step><![CDATA[]]></Step>
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
+			<Parameter>	
+				<Id>1393269136568</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1393275672213</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1393299045985</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[//this.calibration.getValue ()
 root.population.people.average ("lifespan")]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
@@ -21586,6 +21763,15 @@ if (root.simulation_count % 2 == 0) {
 			<FreeformParamValue>	
 				<Id>1393011259231</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1393269136568</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1393275672213</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1393299045985</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1328041345577</Id>
 				<Type>FIXED</Type>
@@ -22166,6 +22352,18 @@ if (root.simulation_count % 2 == 0) {
 				<Id>1393011259231</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1393269136568</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1393275672213</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1393299045985</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
 			<ModelTimeProperties 
 				UseCalendar="false">
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
@@ -22604,7 +22802,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (1); //00);
+execute_populations_parallel (10); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -22619,14 +22817,14 @@ static int outcomesIndex = 0;
 private boolean debugMode = false; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
 // For production runs on the RENCI Machine
-//private String inputDirectory = "C:\\cleanpops-2014-02-05-1203";
-//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+private String inputDirectory = "C:\\cleanpops-2014-02-05-1203-smallcohort";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //Depreicated links to broken systemscience shared drive (replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\pops";
@@ -22643,7 +22841,8 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim
 //private String experimentId = "003";
 //private String experimentId = "005";
 //private String experimentId = "006";//just tests the distance file
-private String experimentId = "007"; // all interventions with end year of testing program changed
+//private String experimentId = "007"; // all interventions with end year of testing program changed
+private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
 //private String experimentId = "fs";
 //private String experimentId = "base";
 
@@ -22899,7 +23098,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 30001;
+		lines = 101;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");

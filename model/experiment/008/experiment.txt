@@ -20,7 +20,6 @@ output_population_snapshots=false
 outfile_agent=false
 prob_colon_uninsured=0.6
 num_free_colonoscopy=500
-infile_location_name=nearest_dist_simulation6.csv
-infile_location_compliance_intercepts_name=compliance_county_intercepts_new6.csv
+infile_location_name=nearest_dist_simulation.csv
 secular_trend_active=false
 
