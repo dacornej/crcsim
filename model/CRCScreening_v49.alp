@@ -5288,7 +5288,7 @@ This is used to calculate continuing, rather than initial compliance.
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["compliance_county_intercepts_new6.csv"]]></DefaultValue>
+						<DefaultValue><![CDATA["compliance_county_intercepts.csv"]]></DefaultValue>
 						<ParameterEditor>
 							<Id>1393275672211</Id>
 							<Name><![CDATA[]]></Name>
@@ -10287,6 +10287,21 @@ if (main.model_test_probability) {
     }
   }
 }
+/*
+else{
+//This condition allow us to not have test set by stat model 27 FEB 2014
+	prob_colon = 1;
+	prob_fobt = 0;
+	prob_sigmoid = 0;
+	// Check that the probabilities add to 1 if they are not all 0.
+  
+    if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
+    	if (Math.abs(prob_colon + prob_fobt + prob_sigmoid - 1) > 1e-5) {
+      		error("Invalid probability distribution for person " + getIndex() + ": P(colon)=" + prob_colon + " P(FOBT)=" + prob_fobt + " P(sigmoid)=" + prob_sigmoid);
+    	}
+    }
+}// end probaiblity distribution
+*/
 
 //----------------------------------------------
 // Find the sum of all the probabilities that have
@@ -10543,12 +10558,12 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 	  	//if get here than uninsured
 	  	compliance_prob = compliance_prob+0.05;
 	  }
-	  this.compliance_prob_inital = compliance_prob; //Add so can output inital compliance rate
 	  	      
     } else {
       // Assign the compliance probability based on the user-specified rate.
       compliance_prob = get_Population().get_Main().initial_compliance_rate;
 	}
+	this.compliance_prob_inital = compliance_prob; //Add so can output inital compliance rate
 	/*
 	System.out.println (" active state: " + screen_state.getActiveSimpleState () +
 		" treatment: " + Person.Treatment + 
@@ -10724,7 +10739,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
   	isMailedReminderActive = true;
   }
-  compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.06);
+  compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.05);
 
   // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
   boolean isMassMediaActive = false;
@@ -10732,7 +10747,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   	isMassMediaActive = true;
   	//System.out.println("-------------->Mass Media Active at time: " + time());
   }
-  compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.07, 0.04);
+  compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.02, 0.01);
   
   // INTERVENTION 3: Make uninsured compliant with Colonoscopy
   boolean isFreeScreeActive = false;
@@ -14876,6 +14891,8 @@ for (int i=0; i<people.size(); i++) {
 					<Body><![CDATA[for (int i=0; i<people.size(); i++) {
   people.get(i).on_end_year();
 }
+//new population insurance snapshot calcualtor
+compute_insurance_year_counters();
 
 output_person_data ();
 output_person_close ();]]></Body>
@@ -15227,19 +15244,19 @@ for (int i = 0; i < people.size(); i++){
 					num_utd_any_other[j] = num_utd_any_other[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
 				}
 				//INSURANCE COUNTERS
-				if (people.get(i).insure_private_orig ){
+				if (people.get(i).insure_private ){
 					num_private[j] = num_private[j] + 1;
 					num_utd_any_private[j] = num_utd_any_private[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_medicaid_orig){
+				}else if (people.get(i).insure_medicaid){
 					num_medicaid[j] = num_medicaid[j] + 1;
 					num_utd_any_medicaid[j] = num_utd_any_medicaid[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_medicare_orig){
+				}else if (people.get(i).insure_medicare){
 					num_medicare[j] = num_medicare[j] + 1;
 					num_utd_any_medicare[j] = num_utd_any_medicare[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_dual_orig){
+				}else if (people.get(i).insure_dual){
 					num_dual[j] = num_dual[j] + 1;
 					num_utd_any_dual[j] = num_utd_any_dual[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else{
+				}else if (people.get(i).insure_none){
 					num_none[j] = num_none[j] + 1;
 					num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
 				}
@@ -15284,6 +15301,7 @@ count_black = num_black[9];
 count_utd_any_black = num_utd_any_black[9];
 count_other = num_other[9];
 count_utd_any_other = num_utd_any_other[9];
+/*
 count_private = num_private[9];
 count_utd_any_private = num_utd_any_private[9];
 count_medicaid = num_medicaid[9];
@@ -15294,6 +15312,7 @@ count_dual = num_dual[9];
 count_utd_any_dual = num_utd_any_dual[9];
 count_none = num_none[9];
 count_utd_any_none = num_utd_any_none[9];
+*/
 
 num_alive_year2014 = num_alive[0];
 num_alive_year2015 = num_alive[1];
@@ -15384,6 +15403,109 @@ for (int i = 0; i < 10; i++){
 	sum+=utdArray[i];
 }
 return sum;]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1393602135642</Id>
+					<Name><![CDATA[compute_insurance_year_counters]]></Name>
+					<X>40</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//initalize and instance of the main object to have access to the top level parameters
+Main main = get_Main();
+
+int[] num_private = new int[20];
+int[] num_utd_any_private = new int[20];
+int[] num_medicaid = new int[20];
+int[] num_utd_any_medicaid = new int[20];
+int[] num_medicare = new int[20];
+int[] num_utd_any_medicare = new int[20];
+int[] num_dual = new int[20];
+int[] num_utd_any_dual = new int[20];
+int[] num_none = new int[20];
+int[] num_utd_any_none = new int[20];
+
+//if ((people.get(1).get_year_from_age() >= 2014) && (people.get(1).get_year_from_age() <= 2032) ){
+	for (int i = 0; i < people.size(); i++){
+		
+		if ((people.get(i).get_year_from_age() >= 2014) && (people.get(i).get_year_from_age() <= 2032) ){
+			int j = people.get(i).get_year_from_age() - 2014;
+			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j;
+			//INSURANCE COUNTERS
+			if (people.get(i).insure_private ){
+				num_private[j] = num_private[j] + 1;
+				num_utd_any_private[j] = num_utd_any_private[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			}else if (people.get(i).insure_medicaid){
+				num_medicaid[j] = num_medicaid[j] + 1;
+				num_utd_any_medicaid[j] = num_utd_any_medicaid[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			}else if (people.get(i).insure_medicare){
+				num_medicare[j] = num_medicare[j] + 1;
+				num_utd_any_medicare[j] = num_utd_any_medicare[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			}else if (people.get(i).insure_dual){
+				num_dual[j] = num_dual[j] + 1;
+				num_utd_any_dual[j] = num_utd_any_dual[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			}else if (people.get(i).insure_none){
+				num_none[j] = num_none[j] + 1;
+				num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+			}
+			
+			if (j == 9){
+				count_private = num_private[9];
+				count_utd_any_private = num_utd_any_private[9];
+				count_medicaid = num_medicaid[9];
+				count_utd_any_medicaid = num_utd_any_medicaid[9];
+				count_medicare = num_medicare[9];
+				count_utd_any_medicare = num_utd_any_medicare[9];
+				count_dual = num_dual[9];
+				count_utd_any_dual = num_utd_any_dual[9];
+				count_none = num_none[9];
+				count_utd_any_none = num_utd_any_none[9];
+			}
+		}
+	}
+//}
+
+//num_utd_any = num_utd_fobt+num_utd_colon;  
+//Sum the exact counters only over 10
+/*
+count_male = sum_over10(num_male);
+count_utd_any_male = sum_over10(num_utd_any_male);
+count_female = sum_over10(num_female);
+count_utd_any_female = sum_over10(num_utd_any_female);
+count_white = sum_over10(num_white);
+count_utd_any_white = sum_over10(num_utd_any_white);
+count_black = sum_over10(num_black);
+count_utd_any_black = sum_over10(num_utd_any_black);
+count_other = sum_over10(num_other);
+count_utd_any_other = sum_over10(num_utd_any_other);
+count_private = sum_over10(num_private);
+count_utd_any_private = sum_over10(num_utd_any_private);
+count_medicaid = sum_over10(num_medicaid);
+count_utd_any_medicaid = sum_over10(num_utd_any_medicaid);
+count_medicare = sum_over10(num_medicare);
+count_utd_any_medicare = sum_over10(num_utd_any_medicare);
+count_dual = sum_over10(num_dual);
+count_utd_any_dual = sum_over10(num_utd_any_dual);
+count_none = sum_over10(num_none);
+count_utd_any_none = sum_over10(num_utd_any_none);
+*/
+
+//Just do the counters in the year 2023
+/*
+count_private = num_private[9];
+count_utd_any_private = num_utd_any_private[9];
+count_medicaid = num_medicaid[9];
+count_utd_any_medicaid = num_utd_any_medicaid[9];
+count_medicare = num_medicare[9];
+count_utd_any_medicare = num_utd_any_medicare[9];
+count_dual = num_dual[9];
+count_utd_any_dual = num_utd_any_dual[9];
+count_none = num_none[9];
+count_utd_any_none = num_utd_any_none[9];
+*/
+]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -22779,7 +22901,7 @@ engine.runFast();]]></Code>
 		<CustomExperiment>
 			<Id>1349374749666</Id>
 			<Name><![CDATA[HassmillerCRC]]></Name>
-			<MaximumMemory>400000</MaximumMemory>
+			<MaximumMemory>500000</MaximumMemory>
 			<CommandLineArguments><![CDATA[seed 12334 ]]></CommandLineArguments>
 			<VmArgs><![CDATA[-Xms1024m]]></VmArgs>
 			<Import><![CDATA[import java.io.File;
@@ -22822,6 +22944,10 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
+// For my runs on the RENCI Machine
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
+
 // For production runs on the RENCI Machine
 private String inputDirectory = "C:\\cleanpops-2014-02-05-1203-smallcohort";
 private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
@@ -22842,9 +22968,11 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim
 //private String experimentId = "005";
 //private String experimentId = "006";//just tests the distance file
 //private String experimentId = "007"; // all interventions with end year of testing program changed
-private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
+//private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
+//private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
 //private String experimentId = "fs";
-//private String experimentId = "base";
+private String experimentId = "base";
+//private String experimentId = "C1";
 
 /**
  * Forms the path to experiment specific data.
