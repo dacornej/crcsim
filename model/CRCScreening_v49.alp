@@ -15507,6 +15507,21 @@ count_utd_any_none = num_utd_any_none[9];
 */
 ]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1393884789610</Id>
+					<Name><![CDATA[agent_compliance_prob]]></Name>
+					<X>30</X><Y>100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//initalize and instance of the main object to have access to the top level parameters
+Main main = get_Main();
+
+
+]]></Body>
+				</Function>
 			</Functions>
 			<EmbeddedObjects>
 				<EmbeddedObject>
@@ -22949,12 +22964,12 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
 // For production runs on the RENCI Machine
-private String inputDirectory = "C:\\cleanpops-2014-02-05-1203-smallcohort";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+//private String inputDirectory = "C:\\cleanpops-2014-02-05-1203-smallcohort";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
-//Depreicated links to broken systemscience shared drive (replaced by SystemsScience_Windows)
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\pops";
-//private String outputDirectory = "\\\\ad.renci.org\\projects\\systemsscience\\archive\\compliance_model\\out";
+//For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
+private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 
 
 
