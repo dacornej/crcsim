@@ -5914,76 +5914,76 @@ catch (Exception e) {
     + "\t" + population.cost_surveilance_freescreen
     + "\t" + population.cost_total_freescreen
     //Year counters
-    + "\t" + population.num_utd_any_year2014
-    + "\t" + population.num_utd_any_year2015
-    + "\t" + population.num_utd_any_year2016
-    + "\t" + population.num_utd_any_year2017
-    + "\t" + population.num_utd_any_year2018
-    + "\t" + population.num_utd_any_year2019
-    + "\t" + population.num_utd_any_year2020
-    + "\t" + population.num_utd_any_year2021
-    + "\t" + population.num_utd_any_year2022
-    + "\t" + population.num_utd_any_year2023
-    + "\t" + population.num_utd_any_year2024
-    + "\t" + population.num_utd_any_year2025
-    + "\t" + population.num_utd_any_year2026
-    + "\t" + population.num_utd_any_year2027
-    + "\t" + population.num_utd_any_year2028
-    + "\t" + population.num_utd_any_year2029
-    + "\t" + population.num_utd_any_year2030
-    + "\t" + population.num_utd_any_year2031
-    + "\t" + population.num_utd_any_year2032
-    + "\t" + population.num_utd_any_year2033
-    + "\t" + population.num_utd_colon_year2014
-    + "\t" + population.num_utd_colon_year2015
-    + "\t" + population.num_utd_colon_year2016
-    + "\t" + population.num_utd_colon_year2017
-    + "\t" + population.num_utd_colon_year2018
-    + "\t" + population.num_utd_colon_year2019
-    + "\t" + population.num_utd_colon_year2020
-    + "\t" + population.num_utd_colon_year2021
-    + "\t" + population.num_utd_colon_year2022
-    + "\t" + population.num_utd_colon_year2023
-    + "\t" + population.num_utd_colon_year2024
-    + "\t" + population.num_utd_colon_year2025
-    + "\t" + population.num_utd_colon_year2026
-    + "\t" + population.num_utd_colon_year2027
-    + "\t" + population.num_utd_colon_year2028
-    + "\t" + population.num_utd_colon_year2029
-    + "\t" + population.num_utd_colon_year2030
-    + "\t" + population.num_utd_colon_year2031
-    + "\t" + population.num_utd_colon_year2032
-    + "\t" + population.num_utd_colon_year2033
-    + "\t" + population.num_alive_year2014
-    + "\t" + population.num_alive_year2015
-    + "\t" + population.num_alive_year2016
-    + "\t" + population.num_alive_year2017
-    + "\t" + population.num_alive_year2018
-    + "\t" + population.num_alive_year2019
-    + "\t" + population.num_alive_year2020
-    + "\t" + population.num_alive_year2021
-    + "\t" + population.num_alive_year2022
-    + "\t" + population.num_alive_year2023
-    + "\t" + population.num_alive_year2024
-    + "\t" + population.num_alive_year2025
-    + "\t" + population.num_alive_year2026
-    + "\t" + population.num_alive_year2027
-    + "\t" + population.num_alive_year2028
-    + "\t" + population.num_alive_year2029
-    + "\t" + population.num_alive_year2030
-    + "\t" + population.num_alive_year2031
-    + "\t" + population.num_alive_year2032
-    + "\t" + population.num_alive_year2033
-    + "\t" + population.num_mail_reminder_year2014
-    + "\t" + population.num_mail_reminder_year2015
-    + "\t" + population.num_mail_reminder_year2016
-    + "\t" + population.num_mail_reminder_year2017
-    + "\t" + population.num_mail_reminder_year2018
-    + "\t" + population.num_mail_reminder_year2019
-    + "\t" + population.num_mail_reminder_year2020
-    + "\t" + population.num_mail_reminder_year2021
-    + "\t" + population.num_mail_reminder_year2022
-    + "\t" + population.num_mail_reminder_year2023
+    + "\t" + population.num_utd_any_by_year[0] //year 0 = 2014
+    + "\t" + population.num_utd_any_by_year[1]
+    + "\t" + population.num_utd_any_by_year[2]
+    + "\t" + population.num_utd_any_by_year[3]
+    + "\t" + population.num_utd_any_by_year[4]
+    + "\t" + population.num_utd_any_by_year[5]
+    + "\t" + population.num_utd_any_by_year[6]
+    + "\t" + population.num_utd_any_by_year[7]
+    + "\t" + population.num_utd_any_by_year[8]
+    + "\t" + population.num_utd_any_by_year[9]
+    + "\t" + population.num_utd_any_by_year[10]
+    + "\t" + population.num_utd_any_by_year[11]
+    + "\t" + population.num_utd_any_by_year[12]
+    + "\t" + population.num_utd_any_by_year[13]
+    + "\t" + population.num_utd_any_by_year[14]
+    + "\t" + population.num_utd_any_by_year[15]
+    + "\t" + population.num_utd_any_by_year[16]
+    + "\t" + population.num_utd_any_by_year[17]
+    + "\t" + population.num_utd_any_by_year[18]
+    + "\t" + population.num_utd_any_by_year[19]
+    + "\t" + population.num_utd_colon_by_year[0] //year 0 = 2014
+    + "\t" + population.num_utd_colon_by_year[1]
+    + "\t" + population.num_utd_colon_by_year[2]
+    + "\t" + population.num_utd_colon_by_year[3]
+    + "\t" + population.num_utd_colon_by_year[4]
+    + "\t" + population.num_utd_colon_by_year[5]
+    + "\t" + population.num_utd_colon_by_year[6]
+    + "\t" + population.num_utd_colon_by_year[7]
+    + "\t" + population.num_utd_colon_by_year[8]
+    + "\t" + population.num_utd_colon_by_year[9]
+    + "\t" + population.num_utd_colon_by_year[10]
+    + "\t" + population.num_utd_colon_by_year[11]
+    + "\t" + population.num_utd_colon_by_year[12]
+    + "\t" + population.num_utd_colon_by_year[13]
+    + "\t" + population.num_utd_colon_by_year[14]
+    + "\t" + population.num_utd_colon_by_year[15]
+    + "\t" + population.num_utd_colon_by_year[16]
+    + "\t" + population.num_utd_colon_by_year[17]
+    + "\t" + population.num_utd_colon_by_year[18]
+    + "\t" + population.num_utd_colon_by_year[19]
+    + "\t" + population.num_alive_by_year[0] //year 0 = 2014
+    + "\t" + population.num_alive_by_year[1]
+    + "\t" + population.num_alive_by_year[2]
+    + "\t" + population.num_alive_by_year[3]
+    + "\t" + population.num_alive_by_year[4]
+    + "\t" + population.num_alive_by_year[5]
+    + "\t" + population.num_alive_by_year[6]
+    + "\t" + population.num_alive_by_year[7]
+    + "\t" + population.num_alive_by_year[8]
+    + "\t" + population.num_alive_by_year[9]
+    + "\t" + population.num_alive_by_year[10]
+    + "\t" + population.num_alive_by_year[11]
+    + "\t" + population.num_alive_by_year[12]
+    + "\t" + population.num_alive_by_year[13]
+    + "\t" + population.num_alive_by_year[14]
+    + "\t" + population.num_alive_by_year[15]
+    + "\t" + population.num_alive_by_year[16]
+    + "\t" + population.num_alive_by_year[17]
+    + "\t" + population.num_alive_by_year[18]
+    + "\t" + population.num_alive_by_year[19]
+    + "\t" + population.num_mail_reminder_by_year[0] //year 0 = 2014
+    + "\t" + population.num_mail_reminder_by_year[1]
+    + "\t" + population.num_mail_reminder_by_year[2]
+    + "\t" + population.num_mail_reminder_by_year[3]
+    + "\t" + population.num_mail_reminder_by_year[4]
+    + "\t" + population.num_mail_reminder_by_year[5]
+    + "\t" + population.num_mail_reminder_by_year[6]
+    + "\t" + population.num_mail_reminder_by_year[7]
+    + "\t" + population.num_mail_reminder_by_year[8]
+    + "\t" + population.num_mail_reminder_by_year[9]
     + "\t" + population.count_male
     + "\t" + population.count_female
     + "\t" + population.count_white
@@ -6851,6 +6851,13 @@ catch (Exception e) {
 //java.util.Arrays.fill(COLON_UTD, Boolean.FALSE);
 //System.out.println("New Array " + fobt_utd);
 //System.out.println("Length of Array " + fobt_utd.length);
+public static final int MAX_AGE = 100;
+
+public enum ScreeningMethod {
+	FOBT, COLON, COLON_DIAG, COLON_SURV, SIGMOID, NONE
+}
+
+ScreeningMethod[] screeningMethodUsedByYear = new ScreeningMethod[MAX_AGE + 1];
 ]]></AdditionalClassCode>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
@@ -10476,10 +10483,8 @@ for (int i=0; i<lesion_sources.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//initalize arrays
-java.util.Arrays.fill(fobt_utd, Boolean.FALSE);
-java.util.Arrays.fill(colon_utd, Boolean.FALSE);
-java.util.Arrays.fill(sigmoid_utd, Boolean.FALSE);
+					<Body><![CDATA[// initalize arrays
+java.util.Arrays.fill(screeningMethodUsedByYear,ScreeningMethod.NONE);
 
 // Decide if the person is ever compliant.
 never_compliant = (uniform() < get_Population().get_Main().never_compliant_rate);
@@ -11344,16 +11349,16 @@ else {
 						<Type><![CDATA[double]]></Type>
 					</Parameter>
 					<Body><![CDATA[Main main = get_Population().get_Main();
-
+ScreeningMethod method = screeningMethodUsedByYear[main.age - 1]; //Why is this a minus 1?
 if ((isActive)&& ((isMedicaid)||(isDual))){
 	//Colonoscopy people get automatic p-bumps at 50 and 60 and every age where they are not up-to date in the previous period
-	if (((main.age == 50) || (main.age == 60)||(main.age == 70))|| ((main.age > 50) && (!(colon_utd[main.age-1])))){
+	if (((main.age == 50) || (main.age == 60)||(main.age == 70))|| ((main.age > 50) && (!(method.equals(ScreeningMethod.COLON))))){
 		if (uniform() < pctRespond){
 			//System.out.println("Old Prob of Compliance: " + compliance_prob);
 			compliance_prob = Math.min(compliance_prob + pctIncrease, 1);
 			//System.out.println("New Prob of Compliance: " + compliance_prob);	
 		}
-	}else if (((main.age == 50))|| ((main.age > 50) && (!(fobt_utd[main.age-1])))){
+	}else if (((main.age == 50))|| ((main.age > 50) && (!(method.equals(ScreeningMethod.FOBT))))){
 	//FOBT people get automatic p-bumps at 50 and every age where they are not up-to date in the previous period
 		if (uniform() < pctRespond){
 			compliance_prob = Math.min(compliance_prob + pctIncrease, 1);
@@ -11380,28 +11385,23 @@ return compliance_prob;]]></Body>
 						<Name><![CDATA[isCompliant]]></Name>
 						<Type><![CDATA[boolean]]></Type>
 					</Parameter>
-					<Body><![CDATA[
-Main main = get_Population().get_Main();
-// Need to fix this type miss match
-//String testType = test.name;
-//System.out.println("PRINT AGE: " + age);
-//System.out.println("PRINT TEST TYPE: " + testType);
-//if (((age +main.dynamic_compliance_rate_year_offset_new)  < 50) && ((age +main.dynamic_compliance_rate_year_offset_new)  > 75)){
-	//return;
-//}
-if (testType.equals("FOBT")){
-	fobt_utd[main.age] = isCompliant;
-}else if (testType.equals("Colonoscopy")){
-	 int end = Math.min(colon_utd.length, main.age + COLON_UTD_DURATION);
-	 for(int c = main.age; c < end; c++){
-	 	colon_utd[c] = isCompliant;
-	 }
-	 //System.out.println("isCompliant: "+ isCompliant+ "COLON Array: " + Arrays.toString(newArray2));
-}else if(testType.equals("Sigmoidoscopy")){
-	int end = Math.min(sigmoid_utd.length, main.age + SIGMOID_UTD_DURATION);
-	for(int c = main.age; c < end; c++){
-		sigmoid_utd[c] = isCompliant;
-	 }
+					<Body><![CDATA[/* CHANGED TO SINGLE ARRAY WITH ENUM 
+	How do I tell if a person's colonoscopy
+	was routine, diagnostic, or surveillence?
+*/
+
+if (isCompliant) {
+	if(testType.equals("FOBT")) {
+		fillInScreeningMethod(ScreeningMethod.FOBT, 1);
+	}
+
+	else if (testType.equals("Colonoscopy")) {
+		fillInScreeningMethod(ScreeningMethod.COLON, COLON_UTD_DURATION);
+	}
+
+	else if (testType.equals("Sigmoidoscopy")){
+		fillInScreeningMethod(ScreeningMethod.SIGMOID, SIGMOID_UTD_DURATION);
+	}
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -12019,6 +12019,36 @@ if (routine_test == null) {
 
 ]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1394206264369</Id>
+					<Name><![CDATA[fillInScreeningMethod]]></Name>
+					<X>80</X><Y>710</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[method]]></Name>
+						<Type><![CDATA[ScreeningMethod]]></Type>
+					</Parameter>
+					<Parameter>
+						<Name><![CDATA[methodDuration]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[Main main = get_Population().get_Main();
+int modelAge = main.age;
+
+int ageScreeningExpires = modelAge + methodDuration;
+int end = Math.min(MAX_AGE, ageScreeningExpires);
+
+for(int curAge = modelAge; curAge < end; curAge++) {
+	//Don't overwrite another screening method with FOBT if a person is already up to date at time of FOBT
+	if (!((method == ScreeningMethod.FOBT) && (screeningMethodUsedByYear[curAge] != ScreeningMethod.NONE))) {
+		screeningMethodUsedByYear[curAge] = method;
+	}
+}]]></Body>
+				</Function>
 			</Functions>
 			<EmbeddedObjects>
 				<EmbeddedObject>
@@ -12072,6 +12102,190 @@ if (routine_test == null) {
 		<ActiveObjectClass>
 			<Id>1328041345860</Id>
 			<Name><![CDATA[Population]]></Name>
+			<AdditionalClassCode><![CDATA[// This section is for counters used in the compute_utd method
+int num_utd_at_50 = 0;
+int num_utd_colon_50 = 0;
+int num_medicaid_utd_50 = 0;
+int num_medicaid_utd_colon_50 = 0;
+int num_black_utd_50 = 0;
+int num_black_utd_colon_50 = 0;
+
+public final static int OBSERVATION_WINDOW = 20;
+
+int years_utd_fobt = 0;
+int years_utd_colon = 0; 
+
+int countAlive = 0;
+int countAliveAt50 = 0;
+int countMedicaid = 0;
+int countBlack = 0;
+
+//Arrays used for output file (Position 0 = year 2014)
+
+int[] num_alive_by_year = new int[OBSERVATION_WINDOW];
+int[] num_utd_any_by_year = new int[OBSERVATION_WINDOW];
+int[] num_utd_colon_by_year = new int[OBSERVATION_WINDOW];
+int[] num_mail_reminder_by_year = new int[OBSERVATION_WINDOW/2];
+
+void computeOutputArrays(yearSnapshot[] yearSnapshots) {
+	yearSnapshot curSnapshot;
+	for (int yearIndex = 0; yearIndex < OBSERVATION_WINDOW; yearIndex++) {
+		curSnapshot = yearSnapshots[yearIndex];
+		num_alive_by_year[yearIndex] = curSnapshot.num_alive;
+		num_utd_any_by_year[yearIndex] = curSnapshot.num_utd_any;
+		num_utd_colon_by_year[yearIndex] = curSnapshot.num_utd_colon;
+		if (yearIndex < OBSERVATION_WINDOW/2) {
+			num_mail_reminder_by_year[yearIndex] = curSnapshot.num_mail_reminders;
+		}
+	}
+}
+
+void sumFirstXYears(yearSnapshot[] yearSnapshots, int numYears) {
+	yearSnapshot curSnapshot;
+	for (int yearIndex = 0; yearIndex < numYears; yearIndex++) {
+		curSnapshot = yearSnapshots[yearIndex];
+		count_male 				+= curSnapshot.num_male;
+		count_utd_any_male 		+= curSnapshot.num_utd_any_male;
+		count_female  			+= curSnapshot.num_female;
+		count_utd_any_female 	+= curSnapshot.num_utd_any_female;
+		count_white 			+= curSnapshot.num_white;
+		count_utd_any_white     += curSnapshot.num_utd_any_white;
+		count_black 			+= curSnapshot.num_black;
+		count_utd_any_black 	+= curSnapshot.num_utd_any_black;
+		count_other 			+= curSnapshot.num_other;
+		count_utd_any_other 	+= curSnapshot.num_utd_any_other;
+		count_private 			+= curSnapshot.num_private;
+		count_utd_any_private 	+= curSnapshot.num_utd_any_private;
+		count_medicaid 			+= curSnapshot.num_medicaid;
+		count_utd_any_medicaid 	+= curSnapshot.num_utd_any_medicaid;
+		count_medicare 			+= curSnapshot.num_medicare;
+		count_utd_any_medicare 	+= curSnapshot.num_utd_any_medicare;
+		count_dual 				+= curSnapshot.num_dual;
+		count_utd_any_dual 		+= curSnapshot.num_utd_any_dual;
+		count_none 				+= curSnapshot.num_none;
+		count_utd_any_none 		+= curSnapshot.num_utd_any_none;
+	}
+}
+
+public class yearSnapshot {
+
+	int num_alive = 0;
+	int num_utd_any = 0;
+	int num_utd_colon = 0;
+	int num_utd_fobt = 0;
+	int num_mail_reminders = 0;
+
+	int num_male = 0;
+	int num_utd_any_male = 0;
+	int num_female = 0;
+	int num_utd_any_female = 0;
+	int num_white = 0;
+	int num_utd_any_white = 0;
+	int num_black = 0;
+	int num_utd_any_black = 0;
+	int num_other = 0;
+	int num_utd_any_other = 0;
+	int num_private = 0;
+	int num_utd_any_private = 0;
+	int num_medicaid = 0;
+	int num_utd_any_medicaid = 0;
+	int num_medicare = 0;
+	int num_utd_any_medicare = 0;
+	int num_dual = 0;
+	int num_utd_any_dual = 0;
+	int num_none = 0;
+	int num_utd_any_none = 0;
+	
+	void mailReminders(Person curPerson, int ageIDX) {
+		// prevMethod is method used in previous year when determining whether to send reminders
+		String prevMethod = curPerson.screeningMethodUsedByYear[ageIDX - 1].toString();
+		//People eligble for mailed reminder
+		if (ageIDX == 50){
+			// Everybody gets letters at age 50
+			num_mail_reminders++;	
+		}else if ((ageIDX > 50) && (curPerson.routine_test.name.equals("Colonoscopy"))){
+		//send reminders if after age 50 and check utd array according to assigned test
+		//special case colonoscopy, everybody gets a letter at age 51 to account for the fact that people who comply at 50 got letter on average
+			if ((ageIDX ==51) || (ageIDX == 61)||(ageIDX == 71) ){
+				num_mail_reminders++;
+			}else{
+				if (!prevMethod.contains("COLON")) {
+					num_mail_reminders++;
+				}
+			}
+		}else if ((ageIDX > 50) && curPerson.routine_test.name.equals("FOBT")){
+			if (!prevMethod.equals("FOBT")) {
+				num_mail_reminders++;
+			}
+		}else if ((ageIDX > 50) && curPerson.routine_test.name.equals("Sigmoidoscopy")){
+			if (!prevMethod.equals("SIGMOID")) {
+				num_mail_reminders++;
+			}
+		}
+	}
+	
+	
+	void updateCounters(Person curPerson, int ageIDX) {
+		String method = curPerson.screeningMethodUsedByYear[ageIDX].toString();
+		//GENDER COUNTERS
+		if (curPerson.sex_male){
+			num_male++;
+			if (!method.equals("NONE")) {
+				num_utd_any_male++;
+			}
+		}else{
+			num_female++;
+			if (!method.equals("NONE")) {
+				num_utd_any_female++;
+			}
+		}
+				
+		//RACE COUNTERS
+		if (curPerson.race_white){
+			num_white++;
+			if (!method.equals("NONE")) {
+				num_utd_any_white++;
+			}
+		}else if (curPerson.race_black){
+			num_black++;
+			if (!method.equals("NONE")) {
+				num_utd_any_black++;
+			}
+		}else{
+			num_other++;
+			if(!method.equals("NONE")) {
+				num_utd_any_other++;
+			}
+		}
+		//INSURANCE COUNTERS
+		if (curPerson.insure_private_orig ){
+			num_private++;
+			if (!method.equals("NONE")) {
+				num_utd_any_private++;
+			}
+		}else if (curPerson.insure_medicaid_orig){
+			num_medicaid++;
+			if (!method.equals("NONE")) {
+				num_utd_any_medicaid++;
+			}
+		}else if (curPerson.insure_medicare_orig){
+			num_medicare++;
+			if (!method.equals("NONE")) {
+				num_utd_any_medicare++;
+			}
+		}else if (curPerson.insure_dual_orig){
+			num_dual++;
+			if (!method.equals("NONE")) {
+				num_utd_any_dual++;
+			}
+		}else{
+			num_none++;
+			if (!method.equals("NONE")) {
+				num_utd_any_none++;
+			}
+		}
+	}
+}]]></AdditionalClassCode>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
@@ -15205,34 +15419,44 @@ if (get_Main().output_population_snapshots&&
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[// This section is for counters used in the method
-int num_utd_at_50 = 0;
-int num_utd_colon_50 = 0;
-int num_medicaid_utd_50 = 0;
-int num_medicaid_utd_colon_50 = 0;
-int num_black_utd_50 = 0;
-int num_black_utd_colon_50 = 0;
-//int years_utd_anytest = 0; // defined as a variable in the Population
-int years_utd_fobt = 0;
-int years_utd_colon = 0; 
+					<Body><![CDATA[//int years_utd_anytest = 0; // defined as a variable in the Population
+
 int ageUTD = get_Main().age_for_compliance;
-int countAlive = 0;
-int countAliveAt50 = 0;
-int countMedicaid = 0;
-int countBlack = 0;
 int ageMax = 80;
+String method;
+
 for (int i = 0; i < people.size(); i++){
 	if (people.get(i).death_age > ageUTD){
-		countAlive++; // will accumulate the number of people alive at a given age
+		//Method used by person i at compliance age
+		method = people.get(i).screeningMethodUsedByYear[ageUTD].toString(); 
+		// will accumulate the number of people alive at a given age
+		countAlive++; 
 		//Percentage of population up to date with anytest at age 50
-		if (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]){
+		if (!method.equals("NONE")){
 			num_utd_at_50++;
+			//Percentage of Medicaid individual utd with anytest at age 50
+			if (people.get(i).insure_medicaid) {
+				num_medicaid_utd_50++;
+			}
+			//Percentage of Blacks utd with anytest at age 50
+			if (people.get(i).race_black){
+				num_black_utd_50++;
+			}
+			//Percentage of population up to date with Colonosocpy at age 50
+			if (method.contains("COLON")){ //Will count all three types of colonoscopy
+				num_utd_colon_50++;
+				//Percentage of Medicaid individual utd with Colonoscopy at age 50
+				if (people.get(i).insure_medicaid){
+					num_medicaid_utd_colon_50++;
+				}
+				//Percentage of Blacks utd with colonoscopy at age 50
+				if (people.get(i).race_black){
+					num_black_utd_colon_50++;
+				}
+			}
 		}
-		//Percentate of population up to date with Colonosocpy at age 50
-		if (people.get(i).colon_utd[ageUTD]){
-			num_utd_colon_50++;
-		}
-		// initalize counters
+		
+		// Update Counters
 		if (people.get(i).insure_medicaid){
 			countMedicaid++;
 		}
@@ -15240,22 +15464,6 @@ for (int i = 0; i < people.size(); i++){
 			countBlack++;
 		}
 		
-		//Percentage of Medicaid individual utd with anytest at age 50
-		if ((people.get(i).insure_medicaid) && (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]) ){
-			num_medicaid_utd_50++;
-		}
-		//Percentage of Medicaid individual utd with Colonoscopy at age 50
-		if ((people.get(i).insure_medicaid) && (people.get(i).colon_utd[ageUTD]) ){
-			num_medicaid_utd_colon_50++;
-		}
-		//Percentage of Blacks utd with anytest at age 50
-		if ((people.get(i).race_black) && (people.get(i).fobt_utd[ageUTD] || people.get(i).colon_utd[ageUTD] || people.get(i).sigmoid_utd[ageUTD]) ){
-			num_black_utd_50++;
-		}
-		//Percentage of Blacks utd with colonoscopy at age 50
-		if ((people.get(i).race_black) && (people.get(i).colon_utd[ageUTD]) ){
-			num_black_utd_colon_50++;
-		}
 	
 	}// end if statement that evalutes if people are alive
 	//Number of years from 50 to 80 utd with anytest
@@ -15264,7 +15472,8 @@ for (int i = 0; i < people.size(); i++){
 	}
 	 
 	for (int j = 50; j<=ageMax; j++ ){
-		if (people.get(i).colon_utd[j] || people.get(i).fobt_utd[j]){
+		method = people.get(i).screeningMethodUsedByYear[j].toString();
+		if (!method.equals("NONE")){
 			years_utd_anytest++;
 		}
 	}
@@ -15273,13 +15482,7 @@ for (int i = 0; i < people.size(); i++){
 	//Cacluate Number of people UTD in various years
 	
 }
-pct_utd_any_test = (double)num_utd_at_50/(double)countAlive;
-pct_utd_colon = (double)num_utd_colon_50/(double)countAlive;
-pct_utd_medicaid_any = num_medicaid_utd_50/(double)countMedicaid;
-pct_utd_medicaid_colon = num_medicaid_utd_colon_50/(double)countMedicaid;
-pct_utd_black_any = num_black_utd_50/(double)countBlack;
-pct_utd_black_colon = num_black_utd_colon_50/(double)countBlack;
-avg_years_utd_anytest = (double)years_utd_anytest/(double)countAliveAt50;
+computeFractionsUTD();
 
 /*
 System.out.println("Number at 50: " + num_utd_at_50);
@@ -15337,244 +15540,72 @@ for (int i = 0; i < people.size(); i++){
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[//initalize and instance of the main object to have access to the top level parameters
+					<Body><![CDATA[//initalize an instance of the main object to have access to the top level parameters
 Main main = get_Main();
 
-int[] num_alive;
-int[] num_utd_any;
-int[] num_utd_colon;
-int[] num_mail_reminders;
+yearSnapshot[] yearSnapshots = new yearSnapshot[OBSERVATION_WINDOW];
 
+for(int snapshotIndex = 0; snapshotIndex < OBSERVATION_WINDOW; snapshotIndex++){
+	yearSnapshots[snapshotIndex] = new yearSnapshot();
+}
 
-num_alive = new int[20];
-num_utd_any = new int[20];
-int[] num_utd_fobt = new int[20];
-num_utd_colon = new int[20];
-num_mail_reminders = new int[20];
+int minAge;
+int maxAge;
 
+int ageIDX;
 
+Person curPerson;
+yearSnapshot curSnapshot;
 
+String method;
+String prevMethod;
 
-int[] num_male = new int[20];
-int[] num_utd_any_male = new int[20];
-int[] num_female = new int[20];
-int[] num_utd_any_female = new int[20];
-int[] num_white = new int[20];
-int[] num_utd_any_white = new int[20];
-int[] num_black = new int[20];
-int[] num_utd_any_black = new int[20];
-int[] num_other = new int[20];
-int[] num_utd_any_other = new int[20];
-int[] num_private = new int[20];
-int[] num_utd_any_private = new int[20];
-int[] num_medicaid = new int[20];
-int[] num_utd_any_medicaid = new int[20];
-int[] num_medicare = new int[20];
-int[] num_utd_any_medicare = new int[20];
-int[] num_dual = new int[20];
-int[] num_utd_any_dual = new int[20];
-int[] num_none = new int[20];
-int[] num_utd_any_none = new int[20];
-
-
-for (int i = 0; i < people.size(); i++){
-	for(int j = 0; j<num_alive.length; j++){
-		if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j)){
-			if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){
-			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j;
-			//System.out.println("Base Cohort age: " + people.get(i).age +  "AGE 2014: " + ageIDX + "Current Time: "+ time());
-			num_alive[j] = num_alive[j] + 1;
-			//BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX])
-			//BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX])||(people.get(i).fobt_utd[ageIDX])||(people.get(i).sigmoid_utd[ageIDX]))
-			num_utd_fobt[j] = num_utd_fobt[j] + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]);
-			num_utd_colon[j] = num_utd_colon[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
-			//num_utd_any[j] = num_utd_fobt[j]+num_utd_colon[j];
-			num_utd_any[j] = num_utd_any[j] + BooleanUtils.toInteger(((people.get(i).colon_utd[ageIDX])||(people.get(i).fobt_utd[ageIDX])||(people.get(i).sigmoid_utd[ageIDX])));
+for (int personIndex = 0; personIndex < people.size(); personIndex++){
+	curPerson = people.get(personIndex);
+	
+	for(int yearIndex = 0; yearIndex < OBSERVATION_WINDOW; yearIndex++){
+		curSnapshot = yearSnapshots[yearIndex];
+		
+		//Cohort age = age in 2007 (Start observing compliance in 2014, when 43 year olds in 2007 turn 50)
+		//ageIDX is the cohort age + 7 (to get age in 2014) + the year index
+		ageIDX = curPerson.age + main.dynamic_compliance_rate_year_offset_new + yearIndex;
+		//If a person is alive at a given age
+		if (curPerson.death_age > ageIDX){
 			
+			//Includes cohorts starting at 43, then starting at 42, then 41, etc.
+			minAge = 43 - yearIndex; 
+			//Includes up to cohort 68, then up to cohort 67, then 66, etc.
+			maxAge = 68 - yearIndex; 
 			
-			//if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){//comented out for test of global checking
-				if ((people.get(i).insure_medicaid || people.get(i).insure_dual)){
-				//People eligble for mailded reminder
-					if (ageIDX == 50){
-					// Everybody gets letters at age 50
-						num_mail_reminders[j] = num_mail_reminders[j] + 1;
-					}else if ((ageIDX > 50) && people.get(i).routine_test.name.equals("Colonoscopy")){
-						//send reminders is after age 50 and check utd array according to assigned test
-						//special case colonoscopy, everybody gets a letter at age 51 to account for the fact that people who comply at 50 got letter on average
-						if ((ageIDX ==51) || (ageIDX == 61)||(ageIDX == 71) ){
-							num_mail_reminders[j] = num_mail_reminders[j] + 1;
-						}else{
-							num_mail_reminders[j] = num_mail_reminders[j] + BooleanUtils.toInteger(!(people.get(i).colon_utd[ageIDX - 1]));
-						}
-					}else if ((ageIDX > 50) && people.get(i).routine_test.name.equals("FOBT")){
-						num_mail_reminders[j] = num_mail_reminders[j] + BooleanUtils.toInteger(!(people.get(i).fobt_utd[ageIDX - 1]));
-					}else if ((ageIDX > 50) && people.get(i).routine_test.name.equals("Sigmoidoscopy")){
-						num_mail_reminders[j] = num_mail_reminders[j] + BooleanUtils.toInteger(!(people.get(i).sigmoid_utd[ageIDX - 1]));
-					}else{
-						//If they don't meet these conditions they don't get a letter
-					}
+			//And that person is between the ages of 43 and 75
+			if ((curPerson.age >= minAge) && (curPerson.age <= maxAge)){		
+				curSnapshot.num_alive++;
+				//method = the screening method the current person used at age ageIDX
+				method = curPerson.screeningMethodUsedByYear[ageIDX].toString();
+				if(method.equals("FOBT")) {
+					curSnapshot.num_utd_fobt++;
+					curSnapshot.num_utd_any++;
+				}
+				else if (method.contains("COLON")) {
+					curSnapshot.num_utd_colon++;
+					curSnapshot.num_utd_any++;
 				}
 			
-				//GENDER COUNTERS
-				if (people.get(i).sex_male){
-					num_male[j] = num_male[j] + 1;
-					num_utd_any_male[j] = num_utd_any_male[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else{
-					num_female[j] = num_female[j] + 1;
-					num_utd_any_female[j] = num_utd_any_female[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+				if (curPerson.insure_medicaid || curPerson.insure_dual){
+					curSnapshot.mailReminders(curPerson, ageIDX);
 				}
-				//RACE COUNTERS
-				if (people.get(i).race_white){
-					num_white[j] = num_white[j] + 1;
-					num_utd_any_white[j] = num_utd_any_white[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).race_black){
-					num_black[j] = num_black[j] + 1;
-					num_utd_any_black[j] = num_utd_any_black[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else{
-					num_other[j] = num_other[j] + 1;
-					num_utd_any_other[j] = num_utd_any_other[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}
-				//INSURANCE COUNTERS
-				if (people.get(i).insure_private ){
-					num_private[j] = num_private[j] + 1;
-					num_utd_any_private[j] = num_utd_any_private[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_medicaid){
-					num_medicaid[j] = num_medicaid[j] + 1;
-					num_utd_any_medicaid[j] = num_utd_any_medicaid[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_medicare){
-					num_medicare[j] = num_medicare[j] + 1;
-					num_utd_any_medicare[j] = num_utd_any_medicare[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_dual){
-					num_dual[j] = num_dual[j] + 1;
-					num_utd_any_dual[j] = num_utd_any_dual[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}else if (people.get(i).insure_none){
-					num_none[j] = num_none[j] + 1;
-					num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
-				}
-			}
-			
+				
+				curSnapshot.updateCounters(curPerson, ageIDX);
+			}	
 		}
 	}
 }
-//num_utd_any = num_utd_fobt+num_utd_colon;  
+
 //Sum the exact counters only over 10
-/*
-count_male = sum_over10(num_male);
-count_utd_any_male = sum_over10(num_utd_any_male);
-count_female = sum_over10(num_female);
-count_utd_any_female = sum_over10(num_utd_any_female);
-count_white = sum_over10(num_white);
-count_utd_any_white = sum_over10(num_utd_any_white);
-count_black = sum_over10(num_black);
-count_utd_any_black = sum_over10(num_utd_any_black);
-count_other = sum_over10(num_other);
-count_utd_any_other = sum_over10(num_utd_any_other);
-count_private = sum_over10(num_private);
-count_utd_any_private = sum_over10(num_utd_any_private);
-count_medicaid = sum_over10(num_medicaid);
-count_utd_any_medicaid = sum_over10(num_utd_any_medicaid);
-count_medicare = sum_over10(num_medicare);
-count_utd_any_medicare = sum_over10(num_utd_any_medicare);
-count_dual = sum_over10(num_dual);
-count_utd_any_dual = sum_over10(num_utd_any_dual);
-count_none = sum_over10(num_none);
-count_utd_any_none = sum_over10(num_utd_any_none);
-*/
+sumFirstXYears(yearSnapshots, 10);
 
-//Just do the counters in the year 2023
-count_male = num_male[9];
-count_utd_any_male = num_utd_any_male[9];
-count_female = num_female[9];
-count_utd_any_female = num_utd_any_female[9];
-count_white = num_white[9];
-count_utd_any_white = num_utd_any_white[9];
-count_black = num_black[9];
-count_utd_any_black = num_utd_any_black[9];
-count_other = num_other[9];
-count_utd_any_other = num_utd_any_other[9];
-/*
-count_private = num_private[9];
-count_utd_any_private = num_utd_any_private[9];
-count_medicaid = num_medicaid[9];
-count_utd_any_medicaid = num_utd_any_medicaid[9];
-count_medicare = num_medicare[9];
-count_utd_any_medicare = num_utd_any_medicare[9];
-count_dual = num_dual[9];
-count_utd_any_dual = num_utd_any_dual[9];
-count_none = num_none[9];
-count_utd_any_none = num_utd_any_none[9];
-*/
-
-num_alive_year2014 = num_alive[0];
-num_alive_year2015 = num_alive[1];
-num_alive_year2016 = num_alive[2];
-num_alive_year2017 = num_alive[3];
-num_alive_year2018 = num_alive[4];
-num_alive_year2019 = num_alive[5];
-num_alive_year2020 = num_alive[6];
-num_alive_year2021 = num_alive[7];
-num_alive_year2022 = num_alive[8];
-num_alive_year2023 = num_alive[9];
-num_alive_year2024 = num_alive[10];
-num_alive_year2025 = num_alive[11];
-num_alive_year2026 = num_alive[12];
-num_alive_year2027 = num_alive[13];
-num_alive_year2028 = num_alive[14];
-num_alive_year2029 = num_alive[15];
-num_alive_year2030 = num_alive[16];
-num_alive_year2031 = num_alive[17];
-num_alive_year2032 = num_alive[18];
-num_alive_year2033 = num_alive[19];
-num_utd_any_year2014 = num_utd_any[0];
-num_utd_any_year2015 = num_utd_any[1];
-num_utd_any_year2016 = num_utd_any[2];
-num_utd_any_year2017 = num_utd_any[3];
-num_utd_any_year2018 = num_utd_any[4];
-num_utd_any_year2019 = num_utd_any[5];
-num_utd_any_year2020 = num_utd_any[6];
-num_utd_any_year2021 = num_utd_any[7];
-num_utd_any_year2022 = num_utd_any[8];
-num_utd_any_year2023 = num_utd_any[9];
-num_utd_any_year2024 = num_utd_any[10];
-num_utd_any_year2025 = num_utd_any[11];
-num_utd_any_year2026 = num_utd_any[12];
-num_utd_any_year2027 = num_utd_any[13];
-num_utd_any_year2028 = num_utd_any[14];
-num_utd_any_year2029 = num_utd_any[15];
-num_utd_any_year2030 = num_utd_any[16];
-num_utd_any_year2031 = num_utd_any[17];
-num_utd_any_year2032 = num_utd_any[18];
-num_utd_any_year2033 = num_utd_any[19];
-num_utd_colon_year2014 = num_utd_colon[0];
-num_utd_colon_year2015 = num_utd_colon[1];
-num_utd_colon_year2016 = num_utd_colon[2];
-num_utd_colon_year2017 = num_utd_colon[3];
-num_utd_colon_year2018 = num_utd_colon[4];
-num_utd_colon_year2019 = num_utd_colon[5];
-num_utd_colon_year2020 = num_utd_colon[6];
-num_utd_colon_year2021 = num_utd_colon[7];
-num_utd_colon_year2022 = num_utd_colon[8];
-num_utd_colon_year2023 = num_utd_colon[9];
-num_utd_colon_year2024 = num_utd_colon[10];
-num_utd_colon_year2025 = num_utd_colon[11];
-num_utd_colon_year2026 = num_utd_colon[12];
-num_utd_colon_year2027 = num_utd_colon[13];
-num_utd_colon_year2028 = num_utd_colon[14];
-num_utd_colon_year2029 = num_utd_colon[15];
-num_utd_colon_year2030 = num_utd_colon[16];
-num_utd_colon_year2031 = num_utd_colon[17];
-num_utd_colon_year2032 = num_utd_colon[18];
-num_utd_colon_year2033 = num_utd_colon[19];
-num_mail_reminder_year2014 = num_mail_reminders[0];
-num_mail_reminder_year2015 = num_mail_reminders[1];
-num_mail_reminder_year2016 = num_mail_reminders[2];
-num_mail_reminder_year2017 = num_mail_reminders[3];
-num_mail_reminder_year2018 = num_mail_reminders[4];
-num_mail_reminder_year2019 = num_mail_reminders[5];
-num_mail_reminder_year2020 = num_mail_reminders[6];
-num_mail_reminder_year2021 = num_mail_reminders[7];
-num_mail_reminder_year2022 = num_mail_reminders[8];
-num_mail_reminder_year2023 = num_mail_reminders[9];]]></Body>
+//Compute the arrays used for the output file
+computeOutputArrays(yearSnapshots);]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[double]]></ReturnType>
@@ -15711,6 +15742,31 @@ count_utd_any_none = num_utd_any_none[9];
 Main main = get_Main();
 
 
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1394206643760</Id>
+					<Name><![CDATA[computeFractionsUTD]]></Name>
+					<X>30</X><Y>70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[//Number up to date at 50 over number alive at 50
+pct_utd_any_test = (double)num_utd_at_50/(double)countAlive; 
+//Number up to date by colonoscopy at 50 over number alive at 50
+pct_utd_colon = (double)num_utd_colon_50/(double)countAlive; 
+//Number with medicaid up to date at 50 over number with medicaid at 50
+pct_utd_medicaid_any = num_medicaid_utd_50/(double)countMedicaid; 
+//Number with medicaid up to date at 50 by colonoscopy over number with medicaid at 50
+pct_utd_medicaid_colon = num_medicaid_utd_colon_50/(double)countMedicaid;
+//Number of blacks up to date at 50 over number of blacks alive at 50
+pct_utd_black_any = num_black_utd_50/(double)countBlack;
+//Number of blakcs up to date by colonoscopy at 50 over number of blacks alive at 50
+pct_utd_black_colon = num_black_utd_colon_50/(double)countBlack;
+//Number of years all people who survived to at least age 50 were up to date over number of people alive at 50
+avg_years_utd_anytest = (double)years_utd_anytest/(double)countAliveAt50;
 ]]></Body>
 				</Function>
 			</Functions>
@@ -23142,13 +23198,13 @@ static int outcomesIndex = 0;
 //private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
-private boolean debugMode = false; // Denotes if only use part of population files.
+private boolean debugMode = true; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
-//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
-private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops2";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out2";
+private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops2";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out2";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
