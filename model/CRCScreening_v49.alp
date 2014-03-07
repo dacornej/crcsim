@@ -10485,7 +10485,7 @@ java.util.Arrays.fill(sigmoid_utd, Boolean.FALSE);
 never_compliant = (uniform() < get_Population().get_Main().never_compliant_rate);
 
 // Choose which tests the person will take.
-choose_tests();
+//choose_tests(); // commented out 5 Mar 14 for test
 
 // Initialize the model for each lesion type.
 for (int i=0; i<lesion_sources.size(); i++) {
@@ -10551,7 +10551,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
       // Compute the compliance probability based on the person's characteristics.
 
 	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
-	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
+	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
 
 
 	  compliance_prob =
@@ -11865,6 +11865,158 @@ return currentYear;
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[// A function created just to test the functionality of working on a branch
+]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1394039711561</Id>
+					<Name><![CDATA[choose_tests_new]]></Name>
+					<X>-204</X><Y>583</Y>
+					<Label><X>20</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// Assign the test used for both the diagnostic and surveillance tests.
+diagnostic_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
+surveillance_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
+
+
+// To assign the routine test, we develop a probability distribution
+// for choosing each of the tests, then use that distribution to
+// randomly select one. The probability distribution can be constructed
+// using two methods:
+//
+//   1) using models from Sujha's paper for FOBT, sigmoidoscopy, and
+//      colononoscopy, and using directly specified probabilities for
+//      any other tests
+//   2) using directly specified probabilities for all tests
+//
+// The choice of method is determined by the parameter
+// get_Population().model_test_probabilityf. In the case of method (2), we simply
+// use the specified probabilities without adjustment. In the case of
+// method (1), however, we do the following:
+//
+// We first assume our only choices are the tests from the paper,
+// namely colonoscopy, FOBT, and sigmoidoscopy. We will find the
+// probability distribution of taking these tests by using two
+// statistical models and some algebra. The models will give us:
+//
+//   1) P(choosing FOBT over colonoscopy)
+//   2) P(choosing sigmoidoscopy over colonoscopy)
+//
+// Using these two probabilities we can derive:
+//
+//   3) P(choosing colonoscopy over FOBT and sigmoidoscopy)
+//
+// Using these three probabilities we can derive:
+//
+//   4) P(choosing FOBT over colonoscopy and sigmoidoscopy)
+//   5) P(choosing sigmoidoscopy over FOBT and colonoscopy)
+//
+// Finally, we examine the other tests, where the probability has
+// been specified directly. We find the sum of the probabilities
+// of such tests, then scale down the probabilities in
+// (3), (4), and (5) so that all of them add up to 1.
+//
+// The resulting probabilities form the probability distribution
+// we need to randomly choose a test.
+
+double prob_colon = 0;
+double prob_fobt = 0;
+double prob_sigmoid = 0;
+
+Main main = get_Population().get_Main ();
+
+if (main.model_test_probability) {	
+  ModalityModel model = new ModalityModel (main.infile_location_name);
+  prob_colon =
+     model.getProbabilityOfColonoscopy (this.sex_male,
+										this.race_black,
+										this.race_other,
+										this.zipcode,
+										this.stcotrbg,
+										this.married,
+										this.SEHP,
+										this.insure_private,
+										this.insure_medicaid,
+										this.insure_medicare,
+										this.insure_dual,
+										this.insure_none);
+  /*
+  To resolve a structural issue with the modality model code, the uninsured probability of choosing colonoscopy screening is set in the model here.
+  */
+  if (this.insure_none){
+  	prob_colon = main.prob_colon_uninsured;
+  }
+  prob_fobt = 1 - prob_colon;
+  prob_sigmoid = 0;
+    
+  if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
+    if (Math.abs(prob_colon + prob_fobt + prob_sigmoid - 1) > 1e-5) {
+      error("Invalid probability distribution for person " + getIndex() + ": P(colon)=" + prob_colon + " P(FOBT)=" + prob_fobt + " P(sigmoid)=" + prob_sigmoid);
+    }
+  }
+}else{
+//This condition allow us to not have test set by stat model 27 FEB 2014
+	prob_colon = 1;
+	prob_fobt = 0;
+	prob_sigmoid = 0;
+	// Check that the probabilities add to 1 if they are not all 0.
+  
+    if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
+    	if (Math.abs(prob_colon + prob_fobt + prob_sigmoid - 1) > 1e-5) {
+      		error("Invalid probability distribution for person " + getIndex() + ": P(colon)=" + prob_colon + " P(FOBT)=" + prob_fobt + " P(sigmoid)=" + prob_sigmoid);
+    	}
+    }
+}// end probaiblity distribution
+
+
+
+//----------------------------------------------
+// Create a vector containing the probability for
+// each test. All model-based probabilities must
+// be adjusted to account for the sum of the direct
+// probabilities. This vector should parallel the
+// test_set vector.
+
+double[] distribution = new double[get_Population().get_Main().test_set.size()];
+
+for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
+  Test t = get_Population().get_Main().test_set.get_test_by_id(i);
+      if (t.name.equals("FOBT")) {
+      distribution[i] = prob_fobt;
+    }
+    else if (t.name.equals("Sigmoidoscopy")) {
+      distribution[i] = prob_sigmoid;
+    }
+    else if (t.name.equals("Colonoscopy")) {
+      distribution[i] = prob_colon;
+    }
+    else {
+      error("Unexpected model-based test name: " + t.name);
+    }
+}
+
+//----------------------------------------------
+// Randomly choose which test this person will take.
+
+double rand = uniform();
+double cumulative_distribution = 0;
+
+for (int i=0; i<distribution.length; i++) {
+  cumulative_distribution += distribution[i];
+
+  if (rand < cumulative_distribution) {
+    routine_test = get_Population().get_Main().test_set.get_test_by_id(i);
+    routine_test.tot_adopted++;
+    break;
+  }
+}
+
+if (routine_test == null) {
+  routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
+}
+
 ]]></Body>
 				</Function>
 			</Functions>
@@ -14964,7 +15116,9 @@ output_person_open ();]]></Body>
 					<Body><![CDATA[// For each person in the population, see if they are due for
 // their routine test. If so, give them the test.
 for (int i=0; i < people.size(); i++) {
+  people.get(i).choose_tests_new();
   if (people.get(i).routine_test.is_routine_age(get_Main().age)) {
+    //people.get(i).choose_tests_new();
     people.get(i).test_routine();
     
   }
@@ -22976,7 +23130,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (10); //00);
+execute_populations_parallel (1); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -22991,8 +23145,10 @@ static int outcomesIndex = 0;
 private boolean debugMode = false; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
-//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
+private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops2";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out2";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
@@ -23005,8 +23161,8 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 
 
 
@@ -23023,8 +23179,9 @@ private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Win
 //private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
 //private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
 //private String experimentId = "fs";
-private String experimentId = "base";
+//private String experimentId = "base";
 //private String experimentId = "C1";
+private String experimentId = "C2";
 
 /**
  * Forms the path to experiment specific data.
