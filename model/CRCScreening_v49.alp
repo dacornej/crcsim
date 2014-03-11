@@ -10142,7 +10142,7 @@ double prob_sigmoid = 0;
 Main main = get_Population().get_Main ();
 
 if (main.model_test_probability) {	
-  ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
+  ModalityModel model = new ModalityModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
   prob_colon =
      model.getProbabilityOfColonoscopy (this.sex_male,
 										this.race_black,
@@ -22977,11 +22977,11 @@ static int outcomesIndex = 0;
 //private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
-private boolean debugMode = false; // Denotes if only use part of population files.
+private boolean debugMode = true; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops";
-//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
+private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
+private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
@@ -22994,8 +22994,8 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 
 
 
@@ -23268,7 +23268,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 101;
+		lines = 20001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
