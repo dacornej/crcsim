@@ -10142,7 +10142,7 @@ double prob_sigmoid = 0;
 Main main = get_Population().get_Main ();
 
 if (main.model_test_probability) {	
-  ModalityModel model = new ModalityModel (main.infile_location_name);
+  ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
   prob_colon =
      model.getProbabilityOfColonoscopy (this.sex_male,
 										this.race_black,
@@ -10550,9 +10550,9 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 
       // Compute the compliance probability based on the person's characteristics.
 
+
 	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
 	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
-
 
 	  compliance_prob =
 	      complianceModel.getProbabilityOfCompliance (this.sex_male,
@@ -15211,8 +15211,8 @@ int[] num_none = new int[20];
 int[] num_utd_any_none = new int[20];
 
 
-for (int i = 0; i < people.size(); i++){
-	for(int j = 0; j<num_alive.length; j++){
+for (int i = 0; i < people.size(); i++){ // i is the current person
+	for(int j = 0; j<num_alive.length; j++){ // index into 20-year window of observation
 		if (people.get(i).death_age > (people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j)){
 			if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){
 			int ageIDX = people.get(i).age + main.dynamic_compliance_rate_year_offset_new + j;
@@ -15227,6 +15227,7 @@ for (int i = 0; i < people.size(); i++){
 			
 			
 			//if ((people.get(i).age >=(43-j) ) && (people.get(i).age <=(68 - j))){//comented out for test of global checking
+
 				if ((people.get(i).insure_medicaid || people.get(i).insure_dual)){
 				//People eligble for mailded reminder
 					if (ageIDX == 50){
@@ -23013,6 +23014,7 @@ private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Win
 //private String experimentId = "fs";
 private String experimentId = "base";
 //private String experimentId = "C1";
+
 
 /**
  * Forms the path to experiment specific data.
