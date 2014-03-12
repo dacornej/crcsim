@@ -22977,11 +22977,11 @@ static int outcomesIndex = 0;
 //private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
-private boolean debugMode = true; // Denotes if only use part of population files.
+private boolean debugMode = false; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out2";
 
@@ -22994,8 +22994,8 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 
 
 
