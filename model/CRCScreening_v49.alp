@@ -23186,7 +23186,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (1); //00);
+execute_populations_parallel (3); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -23201,8 +23201,8 @@ static int outcomesIndex = 0;
 private boolean debugMode = true; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
-private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
-private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
+//private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
+//private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops2";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out2";
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\pops2";
@@ -23217,8 +23217,9 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 
 
 
@@ -23237,7 +23238,9 @@ private String outputDirectory = "C:\\Users\\dacornej\\Documents\\out";
 //private String experimentId = "fs";
 //private String experimentId = "base";
 //private String experimentId = "C1";
-private String experimentId = "C2";
+//private String experimentId = "C2";
+private String experimentId = "S1";
+
 
 /**
  * Forms the path to experiment specific data.
@@ -23491,7 +23494,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 101;
+		lines = 1001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
