@@ -19,6 +19,7 @@
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
+			<Import><![CDATA[import java.util.Random;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -943,6 +944,7 @@ duration_clin_dead = get_Person().get_Population().get_Main().lifespan_multiplie
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>10</X><Y>0</Y></Point>
 						<Point><X>30</X><Y>0</Y></Point>
 					</Points>
 					<Properties Source="1328041345268" Target="1328041345266" Trigger="timeout">
@@ -1533,6 +1535,7 @@ return uniform() < sensitivity;
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<PresentationTopGroupPersistent>true</PresentationTopGroupPersistent>
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
+			<Import><![CDATA[import java.util.Random;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -6679,6 +6682,7 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).event_polyp
     			+ "\t" + population.people.get(j).cancer_free_start
     			+ "\t" + population.people.get(j).cancer_free_years
+    			+ "\t" + population.people.get(j).toString()
     );
   } 
 
@@ -6743,6 +6747,7 @@ catch (Exception e) {
         + "\t" + "event_polyp"
         + "\t" + "cancer_free_start"
         + "\t" + "cancer_free_years"
+        + "\t" + "Person.toString"
       );
 
     outfile_agent_writer.write("\r");
@@ -9131,6 +9136,7 @@ for (int i=0; i<lesion_sources.size(); i++) {
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
 						<Point><X>-20</X><Y>0</Y></Point>
+						<Point><X>-20</X><Y>110</Y></Point>
 						<Point><X>-20</X><Y>280</Y></Point>
 						<Point><X>20</X><Y>280</Y></Point>
 					</Points>
@@ -10142,7 +10148,7 @@ double prob_sigmoid = 0;
 Main main = get_Population().get_Main ();
 
 if (main.model_test_probability) {	
-  ModalityModel model = new ModalityModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
+  ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
   prob_colon =
      model.getProbabilityOfColonoscopy (this.sex_male,
 										this.race_black,
@@ -10552,7 +10558,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 
 
 	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
-	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts_new6.csv", main.infile_location_name);
+	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
 
 	  compliance_prob =
 	      complianceModel.getProbabilityOfCompliance (this.sex_male,
@@ -22965,7 +22971,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (10); //00);
+execute_populations_parallel (1); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -22994,10 +23000,13 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 
-
+//For small test production runs
+private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
+private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
 
 /**
  * Change this to select a different experment.
@@ -23010,10 +23019,11 @@ private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Win
 //private String experimentId = "006";//just tests the distance file
 //private String experimentId = "007"; // all interventions with end year of testing program changed
 //private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
-//private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
+private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
 //private String experimentId = "fs";
-private String experimentId = "base";
+//private String experimentId = "base";
 //private String experimentId = "C1";
+//private String experimentId = "S1";
 
 
 /**
