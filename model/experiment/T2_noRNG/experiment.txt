@@ -25,4 +25,11 @@ secular_trend_active=true
 secular_trend_years=1900,2002,2004,2006,2008,2010,2012,2200
 secular_trend_values=.10,.10,.155,.181,.22,.235,.24,.24
 test_proportion_lethal=0,0,0,0
+#test_sensitivity_polyp1=1,1,1,1
+#test_sensitivity_polyp2=1,1,1,1
+#test_sensitivity_polyp3=1,1,1,1
+#test_sensitivity_cancer=1,1,1,1
 test_specificity=1,1,1,1
+
+
+
