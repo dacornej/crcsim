@@ -57,5 +57,33 @@ public class IterationUtil {
 	}
 	return iterations;
     }
+	
+	public static List<String> generateIterationsFromValueList (String fileName) {
+	List<String> iterations = new ArrayList<String> ();
+	try {
+	    File file = new File (fileName);
+	    logger.debug ("Iteration config matrix: " + fileName);
+	    JavaScriptEngine engine = new JavaScriptEngine ();
+	    
+	    if (engine.getScriptText (fileName) != null) {
+
+		Map<String, Object> parameters = new HashMap <String, Object> ();
+		parameters.put ("iterations", iterations);
+		String [] libs = new String [] {
+		    "/script/librandom.js",
+		    fileName
+		};
+		String script = "randomUtils.generateIterationsFromValueList (numIterations, iterationParameters, iterations);";
+		engine.invoke (script, parameters, libs);
+
+	    } else {
+		iterations.add ("");
+	    }
+
+	} catch (Exception e) {
+	    throw new RuntimeException (e);
+	}
+	return iterations;
+    }
 
 }

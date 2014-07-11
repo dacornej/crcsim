@@ -16,7 +16,7 @@ compute_population_rates=false
 #Turn off Dynamic Compliance Rate year
 dynamic_compliance_rate_year_offset=-1
 dynamic_compliance_rate_year_offset_new=7
-output_population_snapshots=false
+output_population_snapshots=true
 outfile_agent=false
 outfile_county=false
 outfile_agent_year=false

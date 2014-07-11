@@ -104,4 +104,52 @@ RandomUtils.prototype.generateIterations = function (numIterations, variablePara
     } 
 };
 
+/**
+ *
+ * Generate iteration parameter sets given an configuratoin matrix.
+ * @param numIterations The number of parameter sets to generate.
+ * @param variableParameters The matrix of parameters. Example matrix:
+ *
+ *   var iterationParameters = [ 
+ *       [ 'param-A', 0.9, 2.9 ], 
+ *       [ 'param-B', 2, 0.9 ]
+ *   ];
+ *
+ * @param iterations A java.util.List into which the resulting parameter sets will be inserted as strings.
+ *
+ */
+RandomUtils.prototype.generateIterationsFromValueList = function (numIterations, variableParameters, iterations) {
+	 /**
+	* Validate the input parameter set. 
+	* Disallow duplicates.
+	*/
+    var parameterNames = {};
+	for (var c = 0; c < variableParameters.length; c++) {
+	var row = variableParameters [c];
+	if (row != null && row.length > 0) {
+	    var parameterName = row [0];
+	    print ('validating parameter: ' + parameterName + '\n');
+	    if (parameterName in parameterNames) {
+		throw 'Parameter: ' + parameterName + ' appears twice in the configuration matrix. ';
+	    }
+	    parameterNames [parameterName] = parameterName;
+	}
+	}
+	/**
+     * Calclate the iterations, generating parameter sets with values 
+     * imported from the provided lists.
+     */ 
+	for (var j = 1; j < variableParameters[0].length; j++){
+		var iterationValues = []; 
+		for (var c = 0; c < variableParameters.length; c++) { 
+            //print ('c: ' + c + ' vp[c] ' + variableParameters [c] + ' vp: ' + variableParameters + newline); 
+            var parameterName = variableParameters [c][0]; 
+            var distributionMode = variableParameters [c][1]; 
+			var iterValue = variableParameters [c][j];
+			iterationValues.push ([ parameterName, '=', iterValue ].join ('')); 
+			} 
+		iterations.add (iterationValues.join (newline)); 
+	}
+};
+
 var randomUtils = new RandomUtils ();

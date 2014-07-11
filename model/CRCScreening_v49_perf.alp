@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201212241532" AlpVersion="6.6.0">
 <Model>
 	<Id>1328041345188</Id>
-	<Name><![CDATA[CRCScreening_v49]]></Name>
+	<Name><![CDATA[CRCScreening_v49_perf]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[CRC]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -642,8 +642,8 @@ get_Person().get_Population().tot_lesions_cured++;
 						<Point><X>0</X><Y>74</Y></Point>
 					</Points>
 					<Properties Target="1328041345221">
-						<Action><![CDATA[int myRNGseed = 1358 + 10*get_Person().person_idx + 9*lesion_idx + 7*get_Person().get_Population().get_Main().rep_idx;
-myRNG = new Random(myRNGseed);
+						<Action><![CDATA[//int myRNGseed = 1358 + 10*get_Person().person_idx + 9*lesion_idx + 7*get_Person().get_Population().get_Main().rep_idx;
+myRNG = get_Person().get_Population().get_Main().myRNGtest;
 //System.out.println("Person ID: "+ get_Person().person_idx + " Lesion Seed: " +myRNGseed);]]></Action>
 					</Properties>	
 				</StatechartElement>
@@ -1906,8 +1906,9 @@ start_timer();
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[//Start Random number stream
-int myRNG2seed = 2357 + 10*get_Person().person_idx + 7*get_Person().get_Population().get_Main().rep_idx+ 9*type;
-myRNG2 = new Random(myRNG2seed);
+//int myRNG2seed = 2357 + 10*get_Person().person_idx + 7*get_Person().get_Population().get_Main().rep_idx+ 9*type;
+//myRNG2 = new Random(myRNG2seed);
+myRNG2 = get_Person().get_Population().get_Main().myRNGtest;
 //System.out.println("Person ID: "+ get_Person().person_idx + " LesionSource Seed: " +myRNG2seed);
 // Generate the risk index.
 
@@ -2376,6 +2377,19 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[BufferedWriter]]></Type>        
 						<InitialValue><![CDATA[null]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1402673914917</Id>
+					<Name><![CDATA[myRNGtest]]></Name>
+					<X>1140</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[Random]]></Type>        
+						<InitialValue><![CDATA[new Random(1)]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -11521,10 +11535,12 @@ java.util.Arrays.fill(fobt_utd, Boolean.FALSE);
 java.util.Arrays.fill(colon_utd, Boolean.FALSE);
 java.util.Arrays.fill(sigmoid_utd, Boolean.FALSE);
 //initalize random numbers
-int myRNG3seed = 4265 + 10*person_idx + 9*get_Population().get_Main().rep_idx;
-myRNG3 = new Random(myRNG3seed);
-int myRNG4seed = 6987 + 10*person_idx + 9*get_Population().get_Main().rep_idx;
-myRNG4 = new Random(myRNG4seed);
+//int myRNG3seed = 4265 + 10*person_idx + 9*get_Population().get_Main().rep_idx;
+//myRNG3 = new Random(myRNG3seed);
+myRNG3 = get_Population().get_Main().myRNGtest;
+//int myRNG4seed = 6987 + 10*person_idx + 9*get_Population().get_Main().rep_idx;
+//myRNG4 = new Random(myRNG4seed);
+myRNG4 = get_Population().get_Main().myRNGtest;
 //System.out.println("Person ID: "+ person_idx + " Person Seed: " +myRNG3seed);
 // Decide if the person is ever compliant.
 never_compliant = (uniform() < get_Population().get_Main().never_compliant_rate);
@@ -11562,7 +11578,7 @@ for (int i=0; i<lesion_sources.size(); i++) {
 						<Name><![CDATA[test]]></Name>
 						<Type><![CDATA[Test]]></Type>
 					</Parameter>
-					<Body><![CDATA[
+					<Body><![CDATA[double compliance_prob = 0;
 Main main = get_Population().get_Main();
 Population people = get_Population();
 
@@ -11587,7 +11603,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   // the rules for initial compliance. Otherwise use the rules for
   // conditional compliance.
 
-  double compliance_prob = 0;
+
   if (never_compliant) {
     compliance_prob = 0;
   } else if ( (  main.use_conditional_compliance && routine_compliance_history.size() == 0)
@@ -11604,7 +11620,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 
 	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
 	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
-
+/*
 	  compliance_prob =
 	      complianceModel.getProbabilityOfCompliance (this.sex_male,
 													  this.race_black,
@@ -11627,11 +11643,13 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 		      complianceModel.getTestAdjustedComplianceProbability (
 		          compliance_prob,
 		  	      test.name);
-		  	      
+		}	  	      
 		 // Trend adjustment
 		 if (main.secular_trend_active){
 		 	compliance_prob = Math.min(compliance_prob + apply_trend(),1);
 		 }
+		 */
+		compliance_prob = 0.5;
 	  }else{
 	  	//if get here than uninsured
 	  	compliance_prob = compliance_prob-0.05;
@@ -11749,7 +11767,6 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 	 * is greater than or equal to the dynamic compliance rate year offset plus the age
 	 * at which we start simulating death possibilities, then the intervention is active.
 	 */
-
 	boolean interventionActive = false; // By default intervention will be off
 	int dynamicComplianceRateYearOffset =
 		get_Population().get_Main().dynamic_compliance_rate_year_offset;	
@@ -11836,11 +11853,10 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   set_utd(test.name, isCompliant); // indexes into up-to-date vector if person chooses to comply
   return isCompliant;
 
-}
-else {
-  error("Unexpected screen state for person " + getIndex() + ": state=" + screen_state);
-  return false;
-}
+//}else {
+  //error("Unexpected screen state for person " + getIndex() + ": state=" + screen_state);
+  //return false;
+//}
 
 ]]></Body>
 				</Function>
@@ -12539,7 +12555,7 @@ return compliance_prob;]]></Body>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[dynamic_insurance();
+					<Body><![CDATA[//dynamic_insurance();
 
 ]]></Body>
 				</Function>
@@ -24537,17 +24553,16 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort-p1";
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\partialpop";
-//private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\out";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out3";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\database_out";
 
 //For small test production runs
-private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\smallpops";
-//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
+private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
+private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
 
 /**
  * Change this to select a different experment.
@@ -24565,9 +24580,9 @@ private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "011_endo_all";
 //private String experimentId = "fs";
 //private String experimentId = "base";
-//private String experimentId = "new_base";
+private String experimentId = "new_base";
 //private String experimentId = "threshold_001";
-private String experimentId = "test_database";
+//private String experimentId = "C1";
 //private String experimentId = "T2";
 //private String experimentId = "T3_noRNG";
 

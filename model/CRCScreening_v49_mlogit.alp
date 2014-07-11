@@ -2194,7 +2194,8 @@ import java.io.File;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Level;]]></Import>
+import org.apache.log4j.Level;
+import org.apache.commons.lang3.BooleanUtils;]]></Import>
 			<StartupCode><![CDATA[set_beta_compliance_intercept(excelFile.getCellNumericValue( "Sheet1!C2") ); 
 set_beta_sex_female(excelFile.getCellNumericValue( "Sheet1!C3") ); 
 set_beta_race_black(excelFile.getCellNumericValue( "Sheet1!C4") );
@@ -6195,7 +6196,9 @@ if (outfile_year
   output_year_data();
 }
 
-if (outfile_agent_year) {
+if (outfile_agent_year 
+    && age >= outfile_year_start_age
+    && age <= outfile_year_end_age) {
   output_agent_year_data(); //prints out agent_year data
 }
 // todo. scox]]></Body>
@@ -6248,7 +6251,7 @@ catch (Exception e) {
   java.text.SimpleDateFormat date_fmt = new java.text.SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
   
   outfile_replication_writer.write(
-             model_description
+             infile_population_name
     + "\t" + date_fmt.format(now)
     + "\t" + population_size
     + "\t" + population.tot_state_polyp
@@ -7010,35 +7013,36 @@ catch (Exception e) {
  // java.util.Date now = new java.util.Date();
  // java.text.SimpleDateFormat date_fmt = new java.text.SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
   
-
   for (int j = 0; j <= population_size -1; j++) {
 	outfile_agent_writer.write(
     "\n" + (j+1) 	
-    			+ "\t" + population.people.get(j).SEHP
-    			+ "\t" + population.people.get(j).insure_dual
-    			+ "\t" + population.people.get(j).insure_medicaid
-    			+ "\t" + population.people.get(j).insure_medicare
-    			+ "\t" + population.people.get(j).insure_none
-    			+ "\t" + population.people.get(j).insure_private
-    			+ "\t" + population.people.get(j).insure_dual_orig
-    			+ "\t" + population.people.get(j).insure_medicaid_orig
-    			+ "\t" + population.people.get(j).insure_medicare_orig
-    			+ "\t" + population.people.get(j).insure_none_orig
-    			+ "\t" + population.people.get(j).insure_private_orig
-    			+ "\t" + population.people.get(j).insure_dual_age50
-    			+ "\t" + population.people.get(j).insure_medicaid_age50
-    			+ "\t" + population.people.get(j).insure_medicare_age50
-    			+ "\t" + population.people.get(j).insure_none_age50
-    			+ "\t" + population.people.get(j).insure_private_age50
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).SEHP)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private_age50)
+    			
     			+ "\t" + population.people.get(j).routine_test.name
-    			+ "\t" + population.people.get(j).is_free_screen
+    			
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).is_free_screen)
     			+ "\t" + population.people.get(j).compliance_prob_inital
     			+ "\t" + population.people.get(j).compliance_prob_intv
-    			+ "\t" + population.people.get(j).race_black
-    			+ "\t" + population.people.get(j).race_hispanic
-    			+ "\t" + population.people.get(j).race_other
-    			+ "\t" + population.people.get(j).race_white
-    			+ "\t" + population.people.get(j).sex_male
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_black)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_hispanic)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_other)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_white)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).sex_male)
     			+ "\t" + population.people.get(j).cost_routine
     			+ "\t" + population.people.get(j).cost_diagnostic
     			+ "\t" + population.people.get(j).cost_surveillance
@@ -7046,15 +7050,23 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).lost_years
-    			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
-    			+ "\t" + population.people.get(j).event_polyp
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_polyp)
     			+ "\t" + population.people.get(j).cancer_free_start
     			+ "\t" + population.people.get(j).cancer_free_years
+    			//
+    			+ "\t" + population.people.get(j).num_colonoscopies
+    			+ "\t" + population.people.get(j).routine_test_count
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).utd_in_2023)
+    			+ "\t" + population.people.get(j).years_utd_colon
+    			+ "\t" + population.people.get(j).years_utd_any
+    			
 
     );
-            	for (int i = 0; i < population.people.get(j).lesions.size(); i++) {
+      		/*
+      		for (int i = 0; i < population.people.get(j).lesions.size(); i++) {
     			outfile_agent_writer.write(
         		 "\t" + population.people.get(j).lesions.get(i).initial_state
         		+ "\t" + uniform(population.people.get(j).lesions.get(i).myRNG)
@@ -7073,8 +7085,9 @@ catch (Exception e) {
       			+ "\t" + population.people.get(j).lesions.get(i).removed   
     			);
   			}
+  			*/
   } 
-
+  
   outfile_agent_writer.write("\r\n");
 }
 catch (Exception e) {
@@ -7136,8 +7149,14 @@ catch (Exception e) {
         + "\t" + "event_polyp"
         + "\t" + "cancer_free_start"
         + "\t" + "cancer_free_years"
+        //
+        + "\t" + "num_colonoscopies"
+        + "\t" + "routine_test_count"
+        + "\t" + "utd_in_2023"
+        + "\t" + "years_utd_colon"
+        + "\t" + "years_utd_any"
       );
-      
+      /*
         for (int i = 0; i < 3; i++) {
 			outfile_agent_writer.write(
     		 "\t" + "initial_state"
@@ -7156,7 +7175,7 @@ catch (Exception e) {
   			+ "\t" + "onset_stage_clin"
   			+ "\t" + "removed"   
 			);
-  		}
+  		}*/
 
     outfile_agent_writer.write("\r");
   }
@@ -7175,7 +7194,7 @@ catch (Exception e) {
 					<Id>1395943688770</Id>
 					<Name><![CDATA[output_agent_year_data]]></Name>
 					<X>918</X><Y>348</Y>
-					<Label><X>20</X><Y>0</Y></Label>
+					<Label><X>22</X><Y>2</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -7190,9 +7209,9 @@ catch (Exception e) {
 				+ "\t" + population.get_Main().age	
     			+ "\t" + population.people.get(j).cost_diagnostic
     			+ "\t" + population.people.get(j).cost_routine
-    			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).num_colonoscopies
@@ -7205,7 +7224,7 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).routine_test_count
     			+ "\t" + population.people.get(j).routine_test_yes
     			+ "\t" + population.people.get(j).routine_test.name
-    			+ "\t" + population.people.get(j).is_free_screen
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).is_free_screen)
     			+ "\t" + population.people.get(j).compliance_prob_inital
     			+ "\t" + population.people.get(j).compliance_prob_intv
     			+ "\t" + population.people.get(j).tot_lesions
@@ -7218,14 +7237,15 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).lost_years
-    			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
-    			+ "\t" + population.people.get(j).event_polyp
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_polyp)
     			+ "\t" + population.people.get(j).cancer_free_start
     			+ "\t" + population.people.get(j).cancer_free_years
 
     );
+    /*
       		for (int i = 0; i < 2; i++) {
     			outfile_agent_year_writer.write(
         		 "\t" + population.people.get(j).lesion_sources.get(i).initial_state
@@ -7254,8 +7274,8 @@ catch (Exception e) {
       			+ "\t" + population.people.get(j).lesions.get(i).removed   
     			);
   			}
+  			*/
   } 
-
   outfile_agent_year_writer.write("\r\n");
 }
 catch (Exception e) {
@@ -7538,7 +7558,7 @@ import java.util.Random;]]></Import>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[Test]]></Type>        
-						<InitialValue><![CDATA[null]]></InitialValue>                 	
+						<InitialValue><![CDATA[get_Population().get_Main().test_set.get_test_by_name("None")]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -8295,6 +8315,45 @@ import java.util.Random;]]></Import>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[double]]></Type>        
 						<InitialValue><![CDATA[0.0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403532707435</Id>
+					<Name><![CDATA[utd_in_2023]]></Name>
+					<X>-710</X><Y>-150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403532754907</Id>
+					<Name><![CDATA[years_utd_colon]]></Name>
+					<X>-710</X><Y>-120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403532777778</Id>
+					<Name><![CDATA[years_utd_any]]></Name>
+					<X>-710</X><Y>-90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -11452,6 +11511,7 @@ if (    screen_state.isStateActive(Person.Routine)
    ) {
  
   choose_routine_test_mlogit();
+  set_utd(routine_test.name,true);
   is_detected_setup1(routine_test,is_detected_array_routine);
   
   if (routine_test.name.equals ("Colonoscopy")) {
@@ -12388,11 +12448,61 @@ double sensitivity = 0;
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[double prob_none = prob_none_input;
+					<Body><![CDATA[Main main = get_Population().get_Main();
+Population people = get_Population();
+double prob_none = prob_none_input;
 double prob_sigmoid = 0;
 double prob_fdna = 0;
 double prob_colon = prob_colon_input;
 double prob_fobt = prob_fobt_input;
+
+
+//Apply intervetnions here
+// I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
+// INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
+boolean isMailedReminderActive = false;
+if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
+  isMailedReminderActive = true;
+  prob_fobt = intervene_medicaid_reminder(prob_fobt, isMailedReminderActive,true,true, 1.0, 0.05*0.5);//orginal call
+  prob_colon = intervene_medicaid_reminder(prob_colon, isMailedReminderActive,true,true, 1.0, 0.05*0.5);//orginal call
+  prob_none = 1- prob_fobt - prob_colon;
+}
+
+
+// INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
+boolean isMassMediaActive = false;
+if (main.intervene_mass_media && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
+  isMassMediaActive = true;
+  prob_fobt = intervene_mass_media(prob_fobt, isMassMediaActive, this.race_black, 0.8,0.4, 0.02*0.5, 0.01*0.5);//original call
+  prob_colon = intervene_mass_media(prob_colon, isMassMediaActive, this.race_black, 0.8,0.4, 0.02*0.5, 0.01*0.5);//original call
+  prob_none = 1- prob_fobt - prob_colon; 
+}
+//compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.8, 0.4); //Test parameter call
+  
+// INTERVENTION 3: Make uninsured compliant with Colonoscopy
+boolean isFreeScreeActive = false;
+if (main.intervene_free_screenings && (time() == 60) && (this.age <= 53)){
+  isFreeScreeActive = true;
+}  
+if ((isFreeScreeActive) && (people.free_screen_count < main.num_free_colonoscopy)){
+  people.free_screen_count++;
+  is_free_screen = true;
+  prob_colon = 1;
+  prob_fobt = 0;
+  prob_none = 0;
+}
+double trend_ammount = 0;
+double compliance_slack = 0;
+double bump = 0;
+if (main.secular_trend_active){
+  trend_ammount = apply_trend();
+  compliance_slack = 1-prob_colon - prob_fobt;
+  bump = Math.min(0.5*trend_ammount,0.5*compliance_slack);
+  prob_colon = prob_colon + bump;
+  prob_fobt = prob_fobt + bump;
+  prob_none = 1 - prob_colon - prob_fobt;
+}
+
 
 if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
   if (Math.abs(prob_colon + prob_fobt + prob_sigmoid +prob_none- 1) > 1e-5) {
@@ -12433,7 +12543,7 @@ for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
 //----------------------------------------------
 // Randomly choose which test this person will take.
 
-double rand = uniform();
+double rand = uniform(myRNG4);
 double cumulative_distribution = 0;
 
 for (int i=0; i<distribution.length; i++) {
@@ -12448,6 +12558,7 @@ for (int i=0; i<distribution.length; i++) {
 
 if (routine_test == null) {
   routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
+  //routine_test = get_Population().get_Main().test_set.null_test;
 }
 ]]></Body>
 				</Function>
@@ -16128,8 +16239,10 @@ int[] num_utd_any_none = new int[20];
 				num_none[j] = num_none[j] + 1;
 				num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
 			}
-			
+			people.get(i).years_utd_colon = people.get(i).years_utd_colon + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
+			people.get(i).years_utd_any = people.get(i).years_utd_any + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]));
 			if (j == 9){
+				people.get(i).utd_in_2023 = (people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]);
 				count_private = num_private[9];
 				count_utd_any_private = num_utd_any_private[9];
 				count_medicaid = num_medicaid[9];
@@ -16502,7 +16615,7 @@ for (Map.Entry<String, Integer> mapEntry: county_count_alive.entrySet()){
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA[null]]></DefaultValue>
+						<DefaultValue><![CDATA["None"]]></DefaultValue>
 						<ParameterEditor>
 							<Id>0</Id>
 							<Name><![CDATA[]]></Name>
@@ -23744,7 +23857,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (5); //00);
+execute_populations_parallel (3); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -23775,14 +23888,14 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203";
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cornejo_pop";
+private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\cornejo_pop";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out3";
 
 //For small test production runs
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
-private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\smallout";
 
 /**
  * Change this to select a different experment.
@@ -23799,9 +23912,9 @@ private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Win
 //private String experimentId = "011";
 //private String experimentId = "fs";
 //private String experimentId = "base";
-private String experimentId = "base_seq";
-//private String experimentId = "C1";
-//private String experimentId = "T2";
+//private String experimentId = "base_seq";
+private String experimentId = "mlogit_001";
+//private String experimentId = "modality_analysis_mlogit";
 //private String experimentId = "T3_noRNG";
 
 
