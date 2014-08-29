@@ -1,5 +1,6 @@
-#Senario 0001: MAILED REMINDER with SECULAR TREND
-#secular_trend_active=true
-intervene_medicaid_mailer=true
-intervene_mass_media=false
-intervene_free_screenings=false
+#Senario 0003: Average Mlog, Mass media targeted at Women
+use_avg_mlog_probs=true
+interventionName=MassMediaWomen
+interventionEffect1=0.05
+interventionEffect2=0.02
+

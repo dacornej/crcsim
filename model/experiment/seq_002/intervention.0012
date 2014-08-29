@@ -1,0 +1,6 @@
+#Senario 0005: Full Mlog, GO BIG Mass media(focused on women)
+average_model=false
+sequential_model=true
+interventionName=GoBigMassMediaWomen
+interventionEffect1=0.1
+interventionEffect2=0.05

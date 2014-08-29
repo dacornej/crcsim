@@ -1,0 +1,8 @@
+#Senario 0000: Full Mlog, Voucher Program
+average_model=false
+sequential_model=true
+interventionName=FreeScreenEveryone
+num_free_colonoscopy=1500
+
+
+

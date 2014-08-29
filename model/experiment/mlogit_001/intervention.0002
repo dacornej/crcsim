@@ -1,6 +1,5 @@
-#Senario 0002: FREE SCREEN with SECULAR TREND
-#secular_trend_active=true
-intervene_medicaid_mailer=false
-intervene_mass_media=false
-intervene_free_screenings=true
-prob_colon_uninsured=0.6
+#Senario 0002: Avg Mlog, Mailed Reminder just to Rural
+use_avg_mlog_probs=true
+interventionName=MailedReminderRural
+interventionEffect1=0.1
+interventionEffect2=0.0

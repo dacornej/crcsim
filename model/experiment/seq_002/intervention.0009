@@ -1,0 +1,6 @@
+#Senario 0002: Full Mlog, Mailed Reminder just to Rural
+average_model=false
+sequential_model=true
+interventionName=MailedReminderRural
+interventionEffect1=0.1
+interventionEffect2=0.0

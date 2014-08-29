@@ -5682,6 +5682,90 @@ This is used to calculate continuing, rather than initial compliance.
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1408735354302</Id>
+					<Name><![CDATA[use_avg_mlog_probs]]></Name>
+					<X>-730</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1408735354286</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409232327188</Id>
+					<Name><![CDATA[interventionName]]></Name>
+					<X>-730</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[String]]></Type>        
+						<DefaultValue><![CDATA["none"]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409232327186</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409233007388</Id>
+					<Name><![CDATA[interventionEffect1]]></Name>
+					<X>-730</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[double]]></Type>        
+						<DefaultValue><![CDATA[0.0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409233007386</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409238547787</Id>
+					<Name><![CDATA[interventionEffect2]]></Name>
+					<X>-730</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[double]]></Type>        
+						<DefaultValue><![CDATA[0.0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409238547770</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1336336262301</Id>
 					<Name><![CDATA[routine_test_list]]></Name>
@@ -5696,6 +5780,21 @@ You can change the element type to the type of objects you store in this collect
 						<CollectionClass><![CDATA[java.util.ArrayList]]></CollectionClass>
 						<ElementClass><![CDATA[Object]]></ElementClass>
 						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+					</Properties>
+
+				</Variable>
+				<Variable Class="CollectionVariable">
+					<Id>1408739214874</Id>
+					<Name><![CDATA[zipcodeToIsUrban]]></Name>
+					<X>-730</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
+						<CollectionClass><![CDATA[java.util.HashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Boolean]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -5843,6 +5942,9 @@ population.start_model();
 // when the AnyLogic "Play" button is clicked (or something analogous).
 
 initializing = true;
+
+// Load zipcode and isUrban data
+loadZipURData();
 
 // Cap the population_rates_sample_size at the population_size.
 if (population_rates_sample_size > population_size) {
@@ -7032,7 +7134,8 @@ catch (Exception e) {
     			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare_age50)
     			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none_age50)
     			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private_age50)
-    			
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).isUrban)
+    			+ "\t" + BooleanUtils.toInteger(use_avg_mlog_probs)
     			+ "\t" + population.people.get(j).routine_test.name
     			
     			+ "\t" + BooleanUtils.toInteger(population.people.get(j).is_free_screen)
@@ -7127,6 +7230,8 @@ catch (Exception e) {
         + "\t" + "insure_medicare_age50"
         + "\t" + "insure_none_age50"
         + "\t" + "insure_private_age50"
+        + "\t" + "isUrban"
+        + "\t" + "isAverageScenario"
         + "\t" + "modality"
         + "\t" + "is_free_screen"
         + "\t" + "compliance_prob_orig"
@@ -7398,8 +7503,55 @@ catch (Exception e) {
 
 ]]></Body>
 				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1408739453875</Id>
+					<Name><![CDATA[getZipURData]]></Name>
+					<X>-730</X><Y>410</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[zip]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[return zipcodeToIsUrban.get(zip);]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnType><![CDATA[void]]></ReturnType>
+					<Id>1409188797955</Id>
+					<Name><![CDATA[loadZipURData]]></Name>
+					<X>-730</X><Y>380</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[while( txtZipURData.canReadMore() ) {
+ String zip = txtZipURData.readString();
+ //System.out.println("Zipcode In: "+ zip);
+ boolean isUrban = txtZipURData.readBoolean();
+ //System.out.println("Boolean in: "+ isUrban);
+ zipcodeToIsUrban.put(zip,isUrban);
+}]]></Body>
+				</Function>
 			</Functions>
 			<Connectivity>
+				<TextFile>
+					<Id>1408739528257</Id>
+					<Name><![CDATA[txtZipURData]]></Name>
+					<X>-730</X><Y>360</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<FileType>FILE</FileType>
+					<FileName><![CDATA[zipcodeIsUrbanData.txt]]></FileName>
+					<FileMode>READ</FileMode>
+					<CharsetName>null</CharsetName>
+					<Separators>
+	</Separators>
+				</TextFile>
 				<ExcelFile>
 					<Id>1372779460482</Id>
 					<Name><![CDATA[excelFile]]></Name>
@@ -9224,6 +9376,27 @@ import java.util.Random;]]></Import>
 							<Id>1395427557599</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409190291550</Id>
+					<Name><![CDATA[isUrban]]></Name>
+					<X>110</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409190291548</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -12443,7 +12616,7 @@ double sensitivity = 0;
 					<ReturnType><![CDATA[void]]></ReturnType>
 					<Id>1398288469171</Id>
 					<Name><![CDATA[choose_routine_test_mlogit]]></Name>
-					<X>-200</X><Y>820</Y>
+					<X>-590</X><Y>680</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -12456,41 +12629,77 @@ double prob_fdna = 0;
 double prob_colon = prob_colon_input;
 double prob_fobt = prob_fobt_input;
 
-
 //Apply intervetnions here
-// I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
-// INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
-boolean isMailedReminderActive = false;
-if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
-  isMailedReminderActive = true;
-  prob_fobt = intervene_medicaid_reminder(prob_fobt, isMailedReminderActive,true,true, 1.0, 0.05*0.5);//orginal call
-  prob_colon = intervene_medicaid_reminder(prob_colon, isMailedReminderActive,true,true, 1.0, 0.05*0.5);//orginal call
-  prob_none = 1- prob_fobt - prob_colon;
+boolean isInInterventionWindow = false;
+if((main.age >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (main.age < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
+	isInInterventionWindow = true;
+}
+if (main.interventionName == null){
+  error("No intervetnion name specified");
+}
+///Private enumeration of intervetnion names
+
+InterventionList intervention = InterventionList.valueOf(main.interventionName.toLowerCase());
+switch (intervention){
+  case none:
+    break;
+  case freescreeneveryone:
+	if ((main.age == 60) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    people.free_screen_count++;
+        is_free_screen = true;
+        prob_colon = 1;
+        prob_fobt = 0;
+        prob_none = 0;
+	}
+	break;
+  case mailedremindereveryone:
+	if (isInInterventionWindow){
+		prob_colon += 0.5*main.interventionEffect1;
+        prob_fobt +=0.5*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+  case mailedreminderrural:
+	if (isInInterventionWindow && !isUrban){
+		prob_colon += 0.5*main.interventionEffect1;
+        prob_fobt +=0.5*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+  case massmediawomen:
+	if (isInInterventionWindow && !sex_male){
+		prob_colon += 0.5*main.interventionEffect1;
+        prob_fobt +=0.5*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}else if (isInInterventionWindow) {
+		prob_colon += 0.5*main.interventionEffect2;
+        prob_fobt +=0.5*main.interventionEffect2;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+  case gobigmailedremindereveryone:
+    if (isInInterventionWindow){
+		prob_colon += 0.5*main.interventionEffect1;
+        prob_fobt +=0.5*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+	break;
+  case gobigmassmediawomen:
+  	if (isInInterventionWindow && !sex_male){
+		prob_colon += 0.5*main.interventionEffect1;
+        prob_fobt +=0.5*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}else if (isInInterventionWindow) {
+		prob_colon += 0.5*main.interventionEffect2;
+        prob_fobt +=0.5*main.interventionEffect2;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+  default:
+  	System.out.println("Intervetnion name not entered correctly , entered as: "+ main.interventionName);
+    break;
 }
 
-
-// INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
-boolean isMassMediaActive = false;
-if (main.intervene_mass_media && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
-  isMassMediaActive = true;
-  prob_fobt = intervene_mass_media(prob_fobt, isMassMediaActive, this.race_black, 0.8,0.4, 0.02*0.5, 0.01*0.5);//original call
-  prob_colon = intervene_mass_media(prob_colon, isMassMediaActive, this.race_black, 0.8,0.4, 0.02*0.5, 0.01*0.5);//original call
-  prob_none = 1- prob_fobt - prob_colon; 
-}
-//compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.8, 0.4); //Test parameter call
-  
-// INTERVENTION 3: Make uninsured compliant with Colonoscopy
-boolean isFreeScreeActive = false;
-if (main.intervene_free_screenings && (time() == 60) && (this.age <= 53)){
-  isFreeScreeActive = true;
-}  
-if ((isFreeScreeActive) && (people.free_screen_count < main.num_free_colonoscopy)){
-  people.free_screen_count++;
-  is_free_screen = true;
-  prob_colon = 1;
-  prob_fobt = 0;
-  prob_none = 0;
-}
 double trend_ammount = 0;
 double compliance_slack = 0;
 double bump = 0;
@@ -15591,7 +15800,8 @@ for (int i=0; i<people.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
+					<Body><![CDATA[Main main = get_Main();
+try {
   String fileName = get_Main().infile_population_name;
   int populationSize = get_Main().population_size;
   org.renci.epi.util.DelimitedFileImporter in =
@@ -15645,9 +15855,16 @@ for (int i=0; i<people.size(); i++) {
     }
     p.stcotrbg = in.getString ("stcotrbg");
     p.zipcode = in.getString ("zipcode");
-    p.prob_colon_input = in.getDouble("prob_colon_mlog");
-    p.prob_fobt_input = in.getDouble("prob_fobt_mlog");
-    p.prob_none_input = in.getDouble("prob_noscrn_mlog");
+    p.isUrban = main.getZipURData(p.zipcode);
+    if (main.use_avg_mlog_probs){
+      p.prob_colon_input = in.getDouble("prob_colon_avg_mlog");
+      p.prob_fobt_input = in.getDouble("prob_fobt_avg_mlog");
+      p.prob_none_input = in.getDouble("prob_noscrn_avg_mlog");
+    }else {	
+      p.prob_colon_input = in.getDouble("prob_colon_mlog");
+      p.prob_fobt_input = in.getDouble("prob_fobt_mlog");
+      p.prob_none_input = in.getDouble("prob_noscrn_mlog");
+    }
     populationSizeActual++;
 	if (populationSizeActual >= populationSize) {
        break;
@@ -16530,6 +16747,10 @@ for (Map.Entry<String, Integer> mapEntry: county_count_alive.entrySet()){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[person_idx]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[isUrban]]></Name>
 							<Value><![CDATA[]]></Value>	
 						</Parameter>
 					</Parameters>
@@ -18077,6 +18298,22 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 				</Parameter>
 				<Parameter>
 					<ParameterName><![CDATA[outfile_agent_year]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[use_avg_mlog_probs]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[interventionName]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[interventionEffect1]]></ParameterName>
+					<ParameterValue><![CDATA[]]></ParameterValue>
+				</Parameter>
+				<Parameter>
+					<ParameterName><![CDATA[interventionEffect2]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -22217,6 +22454,42 @@ copyToClipboard( s );
 				<Step><![CDATA[]]></Step>
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
+			<Parameter>	
+				<Id>1408735354302</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1409232327188</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1409233007388</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
+			<Parameter>	
+				<Id>1409238547787</Id>
+				<Type>FIXED</Type>
+				<Value><![CDATA[]]></Value>
+				<Min><![CDATA[]]></Min>
+				<Max><![CDATA[]]></Max>
+				<Step><![CDATA[]]></Step>
+				<Suggested><![CDATA[]]></Suggested>
+			</Parameter>
 			<ObjectiveFunctionCode><![CDATA[//this.calibration.getValue ()
 root.population.people.average ("lifespan")]]></ObjectiveFunctionCode>
 			<Objective>MAXIMIZE</Objective>
@@ -22811,6 +23084,18 @@ if (root.simulation_count % 2 == 0) {
 			<FreeformParamValue>	
 				<Id>1396293671733</Id>
 			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1408735354302</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1409232327188</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1409233007388</Id>
+			</FreeformParamValue>
+			<FreeformParamValue>	
+				<Id>1409238547787</Id>
+			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1328041345577</Id>
 				<Type>FIXED</Type>
@@ -23419,6 +23704,22 @@ if (root.simulation_count % 2 == 0) {
 				<Id>1396293671733</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1408735354302</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1409232327188</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1409233007388</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
+			<RangeVariationParamValue>	
+				<Id>1409238547787</Id>
+				<Type>FIXED</Type>
+			</RangeVariationParamValue>
 			<ModelTimeProperties 
 				UseCalendar="false">
 				<StopOption><![CDATA[Stop at specified time]]></StopOption>
@@ -23857,7 +24158,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (3); //00);
+execute_populations_parallel (10); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -23888,14 +24189,14 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203";
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\cornejo_pop";
+private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cornejo_pop";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out3";
 
 //For small test production runs
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\smallout";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\mlogitout";
 
 /**
  * Change this to select a different experment.
@@ -24446,6 +24747,20 @@ List<Future> execute_parallel  (File input,
 }]]></AdditionalClassCode>
 		</CustomExperiment>
 	</Experiments>
+	<JavaClasses>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1409241792279</Id>
+			<Name><![CDATA[InterventionList]]></Name>
+			<Text><![CDATA[/**
+ * InterventionList
+ */	
+public enum InterventionList {
+	none,freescreeneveryone,mailedremindereveryone,mailedreminderrural,massmediawomen,gobigmailedremindereveryone,gobigmassmediawomen;
+	}
+]]></Text>
+		</JavaClass>
+	</JavaClasses>
 	<ClassPathEntry>
 		<Location><![CDATA[al6utils-v7.jar]]></Location>
 		<Imported>true</Imported>

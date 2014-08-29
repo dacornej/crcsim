@@ -18,7 +18,7 @@ dynamic_compliance_rate_year_offset=-1
 dynamic_compliance_rate_year_offset_new=7
 output_population_snapshots=false
 outfile_agent=true
-outfile_agent_year=true
+outfile_agent_year=false
 prob_colon_uninsured=0.6
 num_free_colonoscopy=500
 #infile_location_name=nearest_dist_simulation.csv
@@ -30,4 +30,7 @@ test_proportion_lethal=0,0,0,0
 test_specificity=1,1,1,1
 outfile_year_start_age=50
 outfile_year_end_age=75
-
+use_avg_mlog_probs=true
+interventionName=none
+interventionEffect1=0.0
+interventionEffect2=0.0

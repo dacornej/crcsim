@@ -1,0 +1,4 @@
+#Senario 0002: Mailed Reminder BIG 10% point increase
+secular_trend_active=true
+intervene_medicaid_mailer=false
+medicaid_mailer_effect=0.1

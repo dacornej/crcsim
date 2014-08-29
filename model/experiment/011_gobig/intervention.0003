@@ -1,0 +1,5 @@
+#Senario 0001: MAILED REMINDER with 10% SECULAR TREND
+secular_trend_active=true
+intervene_mass_media=true
+mass_media_black_effect=0.2
+mass_media_other_effect=0.1

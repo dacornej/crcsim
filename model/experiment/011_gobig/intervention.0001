@@ -1,0 +1,4 @@
+#Senario 0001: 10000 Free screens
+secular_trend_active=true
+intervene_free_screenings=true
+num_free_colonoscopy=10000

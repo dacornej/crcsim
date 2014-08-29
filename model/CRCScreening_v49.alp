@@ -11180,7 +11180,8 @@ double prob_sigmoid = 0;
 Main main = get_Population().get_Main ();
 
 if (main.model_test_probability) {	
-  ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
+  ModalityModel model = new ModalityModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
+  //ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
   prob_colon =
      model.getProbabilityOfColonoscopy (this.sex_male,
 										this.race_black,
@@ -11602,8 +11603,8 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
       // Compute the compliance probability based on the person's characteristics.
 
 
-	  //ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
-	  ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
+	  ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
+	  //ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
 
 	  compliance_prob =
 	      complianceModel.getProbabilityOfCompliance (this.sex_male,
@@ -11805,8 +11806,8 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   
   // INTERVENTION 3: Make uninsured compliant with Colonoscopy
   boolean isFreeScreeActive = false;
-  //if (main.intervene_free_screenings && (time() == 50) && (this.age <= 43)){
-  if (main.intervene_free_screenings && (time() == 60) && (this.age <= 53)){
+  if (main.intervene_free_screenings && (time() == 50) && (this.age <= 43)){
+  //if (main.intervene_free_screenings && (time() == 60) && (this.age <= 53)){
   	isFreeScreeActive = true;
   	//System.out.println("------------->Free Screen active: " + time());
   }  
@@ -16608,19 +16609,6 @@ num_alive_year2020 = num_alive[6];
 num_alive_year2021 = num_alive[7];
 num_alive_year2022 = num_alive[8];
 num_alive_year2023 = num_alive[9];
-
-/*
-num_alive_year2024 = num_none[0];
-num_alive_year2025 = num_none[1];
-num_alive_year2026 = num_none[2];
-num_alive_year2027 = num_none[3];
-num_alive_year2028 = num_none[4];
-num_alive_year2029 = num_none[5];
-num_alive_year2030 = num_none[6];
-num_alive_year2031 = num_none[7];
-num_alive_year2032 = num_none[8];
-num_alive_year2033 = num_none[9];
-*/
 num_alive_year2024 = num_alive[10];
 num_alive_year2025 = num_alive[11];
 num_alive_year2026 = num_alive[12];
@@ -16642,19 +16630,7 @@ num_utd_any_year2021 = num_utd_any[7];
 num_utd_any_year2022 = num_utd_any[8];
 num_utd_any_year2023 = num_utd_any[9];
 
-/*
-//Repurposed
-num_utd_any_year2024 = num_utd_any_none[0];
-num_utd_any_year2025 = num_utd_any_none[1];
-num_utd_any_year2026 = num_utd_any_none[2];
-num_utd_any_year2027 = num_utd_any_none[3];
-num_utd_any_year2028 = num_utd_any_none[4];
-num_utd_any_year2029 = num_utd_any_none[5];
-num_utd_any_year2030 = num_utd_any_none[6];
-num_utd_any_year2031 = num_utd_any_none[7];
-num_utd_any_year2032 = num_utd_any_none[8];
-num_utd_any_year2033 = num_utd_any_none[9];
-*/
+
 num_utd_any_year2024 = num_utd_any[10];
 num_utd_any_year2025 = num_utd_any[11];
 num_utd_any_year2026 = num_utd_any[12];
@@ -24486,7 +24462,7 @@ engine.runFast();]]></Code>
 			<Name><![CDATA[HassmillerCRC]]></Name>
 			<MaximumMemory>1038565</MaximumMemory>
 			<CommandLineArguments><![CDATA[seed 12334 ]]></CommandLineArguments>
-			<VmArgs><![CDATA[-Xms1024m -XX:MaxPermSize=330040k]]></VmArgs>
+			<VmArgs><![CDATA[-Xms2048m -XX:PermSize=128M]]></VmArgs>
 			<Import><![CDATA[import java.io.File;
 import java.io.FilenameFilter;
 import java.io.OutputStreamWriter;
@@ -24507,7 +24483,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (1); //00);
+execute_populations_parallel (10); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -24536,17 +24512,18 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort-p1";
-//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\partialpop";
-//private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203";
+private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p1";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p2";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\partialpop";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\out";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out3";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\database_out";
+//private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\database_out";
 
 //For small test production runs
-private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience_Windows\\smallpops";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\smallpops";
 //private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
 
 /**
@@ -24563,11 +24540,13 @@ private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
 //private String experimentId = "011";
 //private String experimentId = "011_endo_all";
+//private String experimentId = "011_sc";
+private String experimentId = "011_gobig";
 //private String experimentId = "fs";
 //private String experimentId = "base";
 //private String experimentId = "new_base";
 //private String experimentId = "threshold_001";
-private String experimentId = "test_database";
+//private String experimentId = "test_database";
 //private String experimentId = "T2";
 //private String experimentId = "T3_noRNG";
 
@@ -24824,7 +24803,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 2001;
+		lines = 1001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");

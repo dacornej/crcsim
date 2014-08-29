@@ -1,0 +1,7 @@
+#Senario 0003: Average Mlog, Mass media targeted at Women
+average_model=true
+sequential_model=false
+interventionName=MassMediaWomen
+interventionEffect1=0.05
+interventionEffect2=0.02
+
