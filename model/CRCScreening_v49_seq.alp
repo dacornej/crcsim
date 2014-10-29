@@ -7280,7 +7280,7 @@ catch (Exception e) {
         + "\t" + "routine_test_count"
         + "\t" + "utd_in_2023"
         + "\t" + "years_utd_colon"
-        + "\t" + "years_udt_any"
+        + "\t" + "years_utd_any"
       );
       /*
         for (int i = 0; i < 3; i++) {
@@ -11223,6 +11223,17 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   double compliance_prob = 0;
   compliance_prob = compliance_prob_input;
   
+  //// Normalize/Adjust compliance probablities
+  if (routine_test.name.equals("Colonoscopy")){
+	//System.out.println("Yes, Colonoscopy");
+	compliance_prob = Math.pow((1-(1-compliance_prob)),(10.0/6.0));
+}else if (routine_test.name.equals("FOBT")){
+	//System.out.println("Yes,FOBT");
+	compliance_prob = Math.pow((1-(1-compliance_prob)),(1.0/6.0));
+}else{
+	error("No test defined");
+}  
+  
 boolean isInInterventionWindow = false;
 if((main.age >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (main.age < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
 	isInInterventionWindow = true;
@@ -11237,19 +11248,59 @@ switch (intervention){
   case none:
     break;
   case freescreeneveryone:
-	if ((routine_test.name == "Colonoscopy") && (main.age == 60) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	if ((routine_test.name == "Colonoscopy") && (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreenwomen:
+	if ((routine_test.name == "Colonoscopy") && (!this.sex_male)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreenrural:
+	if ((routine_test.name == "Colonoscopy") && (!this.isUrban)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreennonwhite:
+	if ((routine_test.name == "Colonoscopy") && (!this.race_white)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
 	    people.free_screen_count++;
         is_free_screen = true;
 		compliance_prob = 1;
 	}
 	break;
   case mailedremindereveryone:
-	if (isInInterventionWindow){
+	if (isInInterventionWindow && uniform()<0.28){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case mailedreminderwomen:
+	if (isInInterventionWindow && uniform()<0.28){
 		compliance_prob+=main.interventionEffect1;
 	}
     break;
   case mailedreminderrural:
 	if (isInInterventionWindow && !isUrban){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case mailedremindernonwhite:
+	if (isInInterventionWindow && !race_white){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case massmediaeveryone:
+	if (isInInterventionWindow){
 		compliance_prob+=main.interventionEffect1;
 	}
     break;
@@ -11260,13 +11311,15 @@ switch (intervention){
 		compliance_prob+=main.interventionEffect2;
 	}
     break;
-  case gobigmailedremindereveryone:
-    if (isInInterventionWindow){
+  case massmediarural:
+	if (isInInterventionWindow && !isUrban){
 		compliance_prob+=main.interventionEffect1;
+	}else if (isInInterventionWindow) {
+		compliance_prob+=main.interventionEffect2;
 	}
-	break;
-  case gobigmassmediawomen:
-  	if (isInInterventionWindow && !sex_male){
+    break;
+  case massmedianonwhite:
+	if (isInInterventionWindow && !race_white){
 		compliance_prob+=main.interventionEffect1;
 	}else if (isInInterventionWindow) {
 		compliance_prob+=main.interventionEffect2;
@@ -11276,8 +11329,11 @@ switch (intervention){
   	System.out.println("Intervetnion name not entered correctly , entered as: "+ main.interventionName);
     break;
 }
+
   
-  this.compliance_prob_intv = compliance_prob;
+  if (isInInterventionWindow){
+  	this.compliance_prob_intv = compliance_prob;
+  }
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform (myRNG4) < compliance_prob;
   routine_compliance_history.add (new Boolean (isCompliant));
@@ -16171,6 +16227,7 @@ int[] num_utd_any_none = new int[20];
 			people.get(i).years_utd_any = people.get(i).years_utd_any + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]));
 			if (j == 9){
 				people.get(i).utd_in_2023 = (people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]);
+				
 				count_private = num_private[9];
 				count_utd_any_private = num_utd_any_private[9];
 				count_medicaid = num_medicaid[9];
@@ -24203,7 +24260,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 20001;
+		lines = 201;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
@@ -24488,7 +24545,7 @@ List<Future> execute_parallel  (File input,
  * InterventionList
  */	
 public enum InterventionList {
-	none,freescreeneveryone,mailedremindereveryone,mailedreminderrural,massmediawomen,gobigmailedremindereveryone,gobigmassmediawomen;
+	none,freescreeneveryone, freescreenwomen, freescreenrural, freescreennonwhite, mailedremindereveryone,mailedreminderrural,mailedreminderwomen, mailedremindernonwhite, massmediaeveryone,massmediawomen, massmediarural,massmedianonwhite;
 	}]]></Text>
 		</JavaClass>
 	</JavaClasses>

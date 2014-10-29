@@ -11182,18 +11182,18 @@ for (int i=0; i<lesion_sources.size(); i++) {
 					<Body><![CDATA[
 Main main = get_Population().get_Main();
 Population people = get_Population();
-
 if (test.name.equals("None")) {
   return false;
 }
 
-if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
+//if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
+if (screen_state.isStateActive (Person.Diagnostic)) {
   boolean isCompliant1 = uniform(myRNG4) < main.diagnostic_compliance_rate;
-  set_utd(test.name,isCompliant1); // Set utd for appriate number of years, diagnostic test
+  //set_utd(test.name,isCompliant1); // Set utd for appriate number of years, diagnostic test
   return isCompliant1;
 } else if (screen_state.isStateActive (Person.Surveillance)) {
   boolean isCompliant2 = uniform(myRNG4) < main.surveillance_compliance_rate;
-  set_utd(test.name, isCompliant2);	
+  //set_utd(test.name, isCompliant2);	
   return isCompliant2;
 } else if (screen_state.isStateActive (Person.Routine) || 
           (screen_state.isStateActive (Person.Diagnostic) && routine_is_diagnostic)) {  
@@ -11205,6 +11205,7 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   // conditional compliance.
 
   double compliance_prob = 0;
+  /*START COMMENTING OUT
   if (never_compliant) {
     compliance_prob = 0;
   } else if ( (  main.use_conditional_compliance && routine_compliance_history.size() == 0)
@@ -11331,12 +11332,11 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
       compliance_prob = 0;
     }
   } else {
-	/**
-	 * By default, no intervention is active. If dynamic compliance rates are enabled,
-	 * then test whether we have entered the intervention period. If the age of the person
-	 * is greater than or equal to the dynamic compliance rate year offset plus the age
-	 * at which we start simulating death possibilities, then the intervention is active.
-	 */
+	 //* By default, no intervention is active. If dynamic compliance rates are enabled,
+	 //* then test whether we have entered the intervention period. If the age of the person
+	 //* is greater than or equal to the dynamic compliance rate year offset plus the age
+	 //* at which we start simulating death possibilities, then the intervention is active.
+
 
 	boolean interventionActive = false; // By default intervention will be off
 	int dynamicComplianceRateYearOffset =
@@ -11413,14 +11413,16 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
 	  	}
   	  }
   
-  this.compliance_prob_intv = compliance_prob;
+  //this.compliance_prob_intv = compliance_prob;
   if (insure_none){
   	//System.out.println("Modality: " + test.name + "Compliance_Prob: " + compliance_prob );
   }
+  */
+  error("IsCompliant Triggered");
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform (myRNG4) < compliance_prob;
   routine_compliance_history.add (new Boolean (isCompliant));
-  set_utd(test.name, isCompliant); // indexes into up-to-date vector if person chooses to comply
+  //set_utd(test.name, isCompliant); // indexes into up-to-date vector if person chooses to comply
   return isCompliant;
 
 }
@@ -11700,7 +11702,7 @@ if (    screen_state.isStateActive(Person.Routine)
     // of the routine test. Instead we will jump right to the actions
     // of the diagnostic test. However, we will let this be handled by
     // the statechart.
-    screen_state.fireEvent("routine_is_diagnostic");
+    //screen_state.fireEvent("routine_is_diagnostic");
   }
   else {
     //if (is_compliant(routine_test)) {
@@ -12644,7 +12646,7 @@ switch (intervention){
   case none:
     break;
   case freescreeneveryone:
-	if ((main.age == 60) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	if ((main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
 	    people.free_screen_count++;
         is_free_screen = true;
         prob_colon = 1;
@@ -12653,7 +12655,7 @@ switch (intervention){
 	}
 	break;
   case mailedremindereveryone:
-	if (isInInterventionWindow){
+	if (isInInterventionWindow && uniform()< 0.38){
 		prob_colon += 0.5*main.interventionEffect1;
         prob_fobt +=0.5*main.interventionEffect1;
         prob_none = 1- prob_fobt - prob_colon;
@@ -12712,6 +12714,10 @@ if (main.secular_trend_active){
   prob_none = 1 - prob_colon - prob_fobt;
 }
 
+if (isInInterventionWindow){
+	this.compliance_prob_inital = prob_colon;
+	this.compliance_prob_intv = prob_fobt;
+}
 
 if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
   if (Math.abs(prob_colon + prob_fobt + prob_sigmoid +prob_none- 1) > 1e-5) {
@@ -16460,6 +16466,7 @@ int[] num_utd_any_none = new int[20];
 			people.get(i).years_utd_any = people.get(i).years_utd_any + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]));
 			if (j == 9){
 				people.get(i).utd_in_2023 = (people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]);
+				//System.out.println( "inital Compliance(colon):" + people.get(i).compliance_prob_inital + "intervetnion prob(fobt): "+ people.get(i).compliance_prob_intv);
 				count_private = num_private[9];
 				count_utd_any_private = num_utd_any_private[9];
 				count_medicaid = num_medicaid[9];
@@ -24158,7 +24165,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (10); //00);
+execute_populations_parallel (1); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -24170,7 +24177,7 @@ static int outcomesIndex = 0;
 //private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
-private boolean debugMode = false; // Denotes if only use part of population files.
+private boolean debugMode = true; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
@@ -24196,7 +24203,7 @@ private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 
 //For small test production runs
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\mlogitout";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\mlogitout2";
 
 /**
  * Change this to select a different experment.
@@ -24214,7 +24221,8 @@ private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "fs";
 //private String experimentId = "base";
 //private String experimentId = "base_seq";
-private String experimentId = "mlogit_001";
+//private String experimentId = "mlogit_001";
+private String experimentId = "mlogit_test";
 //private String experimentId = "modality_analysis_mlogit";
 //private String experimentId = "T3_noRNG";
 
@@ -24471,7 +24479,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 20001;
+		lines = 2001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");

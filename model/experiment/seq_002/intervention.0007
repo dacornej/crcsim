@@ -1,8 +1,9 @@
 #Senario 0000: Full Mlog, Voucher Program
-average_model=false
-sequential_model=true
-interventionName=FreeScreenEveryone
-num_free_colonoscopy=1500
+average_model=true
+sequential_model=false
+interventionName=MailedReminderNonWhite
+interventionEffect1=0.05
+interventionEffect2=0.0
 
 
 

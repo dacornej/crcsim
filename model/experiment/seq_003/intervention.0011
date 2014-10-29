@@ -1,5 +1,6 @@
 #Senario 0004: Full Mlog, GO Big Mailed Reminder to Everyone
-use_avg_mlog_probs=false
+average_model=false
+sequential_model=true
 interventionName=GoBigMailedReminderEveryone
 interventionEffect1=0.1
 interventionEffect2=0.0

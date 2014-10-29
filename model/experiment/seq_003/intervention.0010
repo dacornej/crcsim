@@ -1,6 +1,7 @@
 #Senario 0003: Full Mlog, Mass media targeted at Women
-average_model=true
-sequential_model=false
-interventionName=MassMediaRural
+average_model=false
+sequential_model=true
+interventionName=MassMediaWomen
 interventionEffect1=0.05
 interventionEffect2=0.02
+

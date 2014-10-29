@@ -1,5 +1,6 @@
 #Senario 0002: Full Mlog, Mailed Reminder just to Rural
-use_avg_mlog_probs=false
+average_model=false
+sequential_model=true
 interventionName=MailedReminderRural
 interventionEffect1=0.05
 interventionEffect2=0.0

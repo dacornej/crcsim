@@ -1,5 +1,6 @@
 #Senario 0000: Full Mlog, Voucher Program
-use_avg_mlog_probs=false
+average_model=false
+sequential_model=true
 interventionName=FreeScreenEveryone
 num_free_colonoscopy=400
 

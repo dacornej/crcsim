@@ -1,10 +1,6 @@
-#Senario 0006:  Full Mlog, Basecase
+#Senario 0002: Avg Mlog, Mailed Reminder just to Rural
 average_model=true
 sequential_model=false
 interventionName=MailedReminderRural
 interventionEffect1=0.05
 interventionEffect2=0.0
-
-
-
-

@@ -1,7 +1,8 @@
-#Senario 0003: Average Mlog, Mass media targeted at Women
+#Senario 0000: Average Mlog, Voucher Program
 average_model=true
 sequential_model=false
-interventionName=MassMediaWomen
-interventionEffect1=0.05
-interventionEffect2=0.02
+interventionName=FreeScreenNonWhite
+num_free_colonoscopy=400
+
+
 

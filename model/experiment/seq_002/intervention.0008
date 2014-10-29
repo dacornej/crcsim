@@ -1,7 +1,8 @@
 #Senario 0001: Full Mlog, Mailed Reminder to Everyone
-average_model=false
-sequential_model=true
-interventionName=MailedReminderEveryone
+average_model=true
+sequential_model=false
+interventionName=MassMediaEveryone
 interventionEffect1=0.05
-interventionEffect2=0.0
+
+
 

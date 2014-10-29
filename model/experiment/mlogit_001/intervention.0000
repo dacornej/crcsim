@@ -1,7 +1,7 @@
 #Senario 0000: Average Mlog, Voucher Program
 use_avg_mlog_probs=true
 interventionName=FreeScreenEveryone
-num_free_colonoscopy=1500
+num_free_colonoscopy=400
 
 
 

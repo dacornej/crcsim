@@ -7,7 +7,7 @@
 <AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="6.9.0.201212241532" AlpVersion="6.6.0">
 <Model>
 	<Id>1328041345188</Id>
-	<Name><![CDATA[CRCScreening_v49]]></Name>
+	<Name><![CDATA[CRCScreening_v49_seq2]]></Name>
 	<EngineVersion>6</EngineVersion>
 	<JavaPackageName><![CDATA[CRC]]></JavaPackageName>
 	<ModelTimeUnit><![CDATA[Minute]]></ModelTimeUnit>
@@ -2194,7 +2194,9 @@ import java.io.File;
 
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Level;]]></Import>
+import org.apache.log4j.Level;
+
+import org.apache.commons.lang3.BooleanUtils;]]></Import>
 			<StartupCode><![CDATA[set_beta_compliance_intercept(excelFile.getCellNumericValue( "Sheet1!C2") ); 
 set_beta_sex_female(excelFile.getCellNumericValue( "Sheet1!C3") ); 
 set_beta_race_black(excelFile.getCellNumericValue( "Sheet1!C4") );
@@ -2245,7 +2247,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[int]]></Type>        
-						<InitialValue><![CDATA[1]]></InitialValue>                 	
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
@@ -2355,7 +2357,7 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 				<Variable Class="PlainVariable">
 					<Id>1396292123367</Id>
 					<Name><![CDATA[outfile_agent_year_writer]]></Name>
-					<X>500</X><Y>350</Y>
+					<X>500</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2363,31 +2365,6 @@ set_beta_distance_gt_25(excelFile.getCellNumericValue( "Sheet1!C20") );
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[BufferedWriter]]></Type>        
 						<InitialValue><![CDATA[null]]></InitialValue>                 	
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1398685303113</Id>
-					<Name><![CDATA[outfile_county_writer]]></Name>
-					<X>500</X><Y>370</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[BufferedWriter]]></Type>        
-						<InitialValue><![CDATA[null]]></InitialValue>                 	
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1408025123354</Id>
-					<Name><![CDATA[scenario]]></Name>
-					<X>400</X><Y>430</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[String]]></Type>        
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -5344,7 +5321,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1381343205637</Id>
 					<Name><![CDATA[intervene_medicaid_mailer]]></Name>
-					<X>-490</X><Y>2290</Y>
+					<X>-210</X><Y>2330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5365,7 +5342,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1381343259247</Id>
 					<Name><![CDATA[intervene_mass_media]]></Name>
-					<X>-280</X><Y>2290</Y>
+					<X>-210</X><Y>2370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5386,7 +5363,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1381343300621</Id>
 					<Name><![CDATA[intervene_free_screenings]]></Name>
-					<X>-120</X><Y>2290</Y>
+					<X>-210</X><Y>2400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5407,7 +5384,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1381450721220</Id>
 					<Name><![CDATA[age_for_compliance]]></Name>
-					<X>-290</X><Y>2410</Y>
+					<X>-210</X><Y>2430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5428,7 +5405,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1381505036742</Id>
 					<Name><![CDATA[prob_colon_uninsured]]></Name>
-					<X>-120</X><Y>2310</Y>
+					<X>-210</X><Y>2450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5449,7 +5426,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1386083694895</Id>
 					<Name><![CDATA[num_free_colonoscopy]]></Name>
-					<X>-120</X><Y>2330</Y>
+					<X>-208</X><Y>2476</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5470,7 +5447,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1386349940714</Id>
 					<Name><![CDATA[mailed_reminder_program_cost]]></Name>
-					<X>-490</X><Y>2320</Y>
+					<X>-210</X><Y>2300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5556,7 +5533,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1393269136568</Id>
 					<Name><![CDATA[secular_trend_values]]></Name>
-					<X>-210</X><Y>2540</Y>
+					<X>-213</X><Y>2552</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5600,7 +5577,7 @@ This is used to calculate continuing, rather than initial compliance.
 				<Variable Class="Parameter">
 					<Id>1393299045985</Id>
 					<Name><![CDATA[secular_trend_active]]></Name>
-					<X>-210</X><Y>2560</Y>
+					<X>-210</X><Y>2570</Y>
 					<Label><X>20</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5707,21 +5684,20 @@ This is used to calculate continuing, rather than initial compliance.
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1398685490581</Id>
-					<Name><![CDATA[outfile_county_name]]></Name>
-					<X>-459</X><Y>373</Y>
-					<Label><X>20</X><Y>0</Y></Label>
+					<Id>1400593310018</Id>
+					<Name><![CDATA[average_model]]></Name>
+					<X>-700</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
-						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["summary_county.tsv"]]></DefaultValue>
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1398685490579</Id>
+							<Id>1400593310016</Id>
 							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[outfile_replication_name]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5729,10 +5705,10 @@ This is used to calculate continuing, rather than initial compliance.
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1398685490587</Id>
-					<Name><![CDATA[outfile_county_overwrite]]></Name>
-					<X>-459</X><Y>393</Y>
-					<Label><X>20</X><Y>0</Y></Label>
+					<Id>1400593314121</Id>
+					<Name><![CDATA[sequential_model]]></Name>
+					<X>-700</X><Y>350</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -5740,10 +5716,9 @@ This is used to calculate continuing, rather than initial compliance.
 						<Type><![CDATA[boolean]]></Type>        
 						<DefaultValue><![CDATA[true]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1398685490585</Id>
+							<Id>1400593314119</Id>
 							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[outfile_replication_overwrite]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -5751,106 +5726,60 @@ This is used to calculate continuing, rather than initial compliance.
 					</Properties>                 
 				</Variable>
 				<Variable Class="Parameter">
-					<Id>1398685490590</Id>
-					<Name><![CDATA[outfile_county]]></Name>
-					<X>-459</X><Y>353</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Dynamic="false">
-						<Type><![CDATA[boolean]]></Type>        
-						<DefaultValue><![CDATA[true]]></DefaultValue>
-						<ParameterEditor>
-							<Id>1398685490588</Id>
-							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[outfile_replication]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<Separator>false</Separator>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1399130238640</Id>
-					<Name><![CDATA[medicaid_mailer_effect]]></Name>
-					<X>-490</X><Y>2350</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Dynamic="false">
-						<Type><![CDATA[double]]></Type>        
-						<DefaultValue><![CDATA[0.05]]></DefaultValue>
-						<ParameterEditor>
-							<Id>1399130238638</Id>
-							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[secular_trend_years]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<Separator>false</Separator>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1399130247300</Id>
-					<Name><![CDATA[mass_media_black_effect]]></Name>
-					<X>-290</X><Y>2350</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Dynamic="false">
-						<Type><![CDATA[double]]></Type>        
-						<DefaultValue><![CDATA[0.02]]></DefaultValue>
-						<ParameterEditor>
-							<Id>1399130247298</Id>
-							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[secular_trend_years]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<Separator>false</Separator>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1399130254813</Id>
-					<Name><![CDATA[mass_media_other_effect]]></Name>
-					<X>-290</X><Y>2370</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Dynamic="false">
-						<Type><![CDATA[double]]></Type>        
-						<DefaultValue><![CDATA[0.01]]></DefaultValue>
-						<ParameterEditor>
-							<Id>1399130254811</Id>
-							<Name><![CDATA[]]></Name>
-							<Label><![CDATA[secular_trend_years]]></Label>
-							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
-							<MinSliderValue><![CDATA[0]]></MinSliderValue>
-							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
-							<Separator>false</Separator>
-						</ParameterEditor>
-					</Properties>                 
-				</Variable>
-				<Variable Class="Parameter">
-					<Id>1400523738774</Id>
-					<Name><![CDATA[params_QALY_string]]></Name>
-					<X>-500</X><Y>2220</Y>
+					<Id>1409281752979</Id>
+					<Name><![CDATA[interventionName]]></Name>
+					<X>-700</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Dynamic="false">
 						<Type><![CDATA[String]]></Type>        
-						<DefaultValue><![CDATA["1,0.84,0.74,0.67,0.25"]]></DefaultValue>
+						<DefaultValue><![CDATA["none"]]></DefaultValue>
 						<ParameterEditor>
-							<Id>1400523738772</Id>
+							<Id>1409281752977</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409281785927</Id>
+					<Name><![CDATA[interventionEffect1]]></Name>
+					<X>-700</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[double]]></Type>        
+						<DefaultValue><![CDATA[0.0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409281785912</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409281790577</Id>
+					<Name><![CDATA[interventionEffect2]]></Name>
+					<X>-700</X><Y>310</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[double]]></Type>        
+						<DefaultValue><![CDATA[0.0]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409281790575</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
@@ -5877,17 +5806,17 @@ You can change the element type to the type of objects you store in this collect
 
 				</Variable>
 				<Variable Class="CollectionVariable">
-					<Id>1400525353667</Id>
-					<Name><![CDATA[params_QALY_list]]></Name>
-					<X>-500</X><Y>2240</Y>
+					<Id>1409282002640</Id>
+					<Name><![CDATA[zipcodeToIsUrban]]></Name>
+					<X>-710</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[java.util.ArrayList]]></CollectionClass>
-						<ElementClass><![CDATA[Double]]></ElementClass>
-						<ValueElementClass><![CDATA[String]]></ValueElementClass>
+						<CollectionClass><![CDATA[java.util.HashMap]]></CollectionClass>
+						<ElementClass><![CDATA[String]]></ElementClass>
+						<ValueElementClass><![CDATA[Boolean]]></ValueElementClass>
 					</Properties>
 
 				</Variable>
@@ -5912,7 +5841,7 @@ You can change the element type to the type of objects you store in this collect
 						<Action><![CDATA[// Perform activities that should occur at the end of each year.
 // Placing this code here, before the age is incremented, means
 // we're actually running this for the end of the previous year.
-if (age > 1) {
+if (age > 0) {
   on_end_year();
 }
 
@@ -5979,10 +5908,6 @@ if (outfile_replication) {
 if (outfile_agent) {
   output_agent_data(); //prints out agent data
 }
-if (outfile_county) {
-  output_county_open();
-  output_county_data();
-}
 
 // Close any requested output files.
 if (outfile_replication) {
@@ -5999,9 +5924,6 @@ if (outfile_state) {
 }
 if (outfile_agent_year){
   output_agent_year_close();
-}
-if (outfile_county){
-  output_county_close();
 }]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -6042,6 +5964,8 @@ population.start_model();
 // when the AnyLogic "Play" button is clicked (or something analogous).
 
 initializing = true;
+//Read in Zipcode UR data
+loadZipURData();
 
 // Cap the population_rates_sample_size at the population_size.
 if (population_rates_sample_size > population_size) {
@@ -6282,13 +6206,6 @@ for (int t = 0; t < fields.length; t++) {
 }
 
 //---------------------------------------------------------
-// Load heath utility information
-// Assign the list of available routine tests.
-fields = params_QALY_string.split(",");
-for (int t = 0; t < fields.length; t++) {
-  params_QALY_list.add(Double.parseDouble(fields[t]));
-}
-//---------------------------------------------------------
 // Initialize the population.
 
 
@@ -6402,7 +6319,9 @@ if (outfile_year
   output_year_data();
 }
 
-if (outfile_agent_year) {
+if (outfile_agent_year
+	&& age >= outfile_year_start_age
+	&& age <= outfile_year_end_age) {
   output_agent_year_data(); //prints out agent_year data
 }
 // todo. scox]]></Body>
@@ -6455,7 +6374,7 @@ catch (Exception e) {
   java.text.SimpleDateFormat date_fmt = new java.text.SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
   
   outfile_replication_writer.write(
-             model_description
+             infile_population_name
     + "\t" + date_fmt.format(now)
     + "\t" + population_size
     + "\t" + population.tot_state_polyp
@@ -6640,7 +6559,6 @@ catch (Exception e) {
     + "\t" + population.people.sum("discounted_cost_surveillance") / population.people.sum("surveillance_test_yes")
     + "\t" + population.people.sum("cost_treatment") / population.people.sum("treatment_yes")
     + "\t" + population.people.sum("discounted_cost_treatment") / population.people.sum("treatment_yes")
-    + "\t" + population.people.average("total_QALY")
     
    
         
@@ -6664,7 +6582,13 @@ catch (Exception e) {
       + "\t" + population.crc_survival_rate_variance[j]
     );
   }
-  
+  /* New Code
+    for (int j = 0; j < population.county_count_utd.size(); j++) {
+    outfile_replication_writer.write(
+        "\t" + population.values_utd[j]
+    );
+  }
+  */
   outfile_replication_writer.write("\r\n");
 }
 catch (Exception e) {
@@ -6869,8 +6793,7 @@ catch (Exception e) {
         + "\t" + "cost_surveillance_a"
         + "\t" + "discounted_cost_surveillance_a"
         + "\t" + "cost_treatment_a"
-        + "\t" + "discounted_cost_treatment_a"
-        + "\t" + "total_QALY"      
+        + "\t" + "discounted_cost_treatment_a"    
       );
 
     for (int i = 1; i <= NUM_CANCER_STAGES; i++) {
@@ -6891,9 +6814,7 @@ catch (Exception e) {
           + "\t" + "crc_survival_stage" + i + "_rate_variance"
         );
     }
-    
-    
-  /////end new code
+  
     outfile_replication_writer.write("\r\n");
   }
   else {
@@ -7142,7 +7063,7 @@ catch (Exception e) {
 					<Id>1350052091252</Id>
 					<Name><![CDATA[configure_parameters]]></Name>
 					<X>690</X><Y>440</Y>
-					<Label><X>5</X><Y>0</Y></Label>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -7161,28 +7082,26 @@ catch (Exception e) {
 					<Body><![CDATA[
 if (parameterSet != null) {
 	for (String parameters : parameterSet) {
- 	    String [] lines = parameters.split ("\n");
-        //System.err.println("configure_parameters(...) lines: ");
-	    for (String line : lines) {
-            //System.err.println("line: " + line);
-		    if (line.length() > 0) {
-			    if (line.trim().charAt(0) == '#') { // comment
-				    continue;
-			    }
-			    String [] nameVal = line.split ("=");
-			    if (nameVal != null && nameVal.length == 2) {
-				    String fieldName = nameVal [0];
-				    String fieldValue = nameVal [1];
-				    // This line prints out the settings
-				    // System.out.println ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
+	String [] lines = parameters.split ("\n");
+	for (String line : lines) {
+		if (line.length () > 0) {
+			if (line.charAt (0) == '#') { // comment.
+				continue;
+			}
+			String [] nameVal = line.split ("=");
+			if (nameVal != null && nameVal.length == 2) {
+				String fieldName = nameVal [0];
+				String fieldValue = nameVal [1];
+				//This line prints out the settings
+				//System.out.println ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
 
-				    outputLines.add ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
-                    modelIO.setFieldValue (this, fieldName, fieldValue);
-			    } else {
-                    //System.err.println("ERROR: ill formed line: " + line);
-                }
-            }
-        }
+				outputLines.add ("  [" + type + "] setting: " + fieldName + " => [" + fieldValue + "]");
+				modelIO.setFieldValue (this, fieldName, fieldValue);
+			} else {
+				//traceln ("ERROR: ill formed line: " + line);
+			}
+		}
+	}
 	}
 }]]></Body>
 				</Function>
@@ -7221,31 +7140,33 @@ catch (Exception e) {
   for (int j = 0; j <= population_size -1; j++) {
 	outfile_agent_writer.write(
     "\n" + (j+1) 	
-    			+ "\t" + population.people.get(j).SEHP
-    			+ "\t" + population.people.get(j).insure_dual
-    			+ "\t" + population.people.get(j).insure_medicaid
-    			+ "\t" + population.people.get(j).insure_medicare
-    			+ "\t" + population.people.get(j).insure_none
-    			+ "\t" + population.people.get(j).insure_private
-    			+ "\t" + population.people.get(j).insure_dual_orig
-    			+ "\t" + population.people.get(j).insure_medicaid_orig
-    			+ "\t" + population.people.get(j).insure_medicare_orig
-    			+ "\t" + population.people.get(j).insure_none_orig
-    			+ "\t" + population.people.get(j).insure_private_orig
-    			+ "\t" + population.people.get(j).insure_dual_age50
-    			+ "\t" + population.people.get(j).insure_medicaid_age50
-    			+ "\t" + population.people.get(j).insure_medicare_age50
-    			+ "\t" + population.people.get(j).insure_none_age50
-    			+ "\t" + population.people.get(j).insure_private_age50
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).SEHP)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private_orig)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_dual_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicaid_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_medicare_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_none_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).insure_private_age50)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).isUrban)
+    			+ "\t" + BooleanUtils.toInteger(average_model)
     			+ "\t" + population.people.get(j).routine_test.name
-    			+ "\t" + population.people.get(j).is_free_screen
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).is_free_screen)
     			+ "\t" + population.people.get(j).compliance_prob_inital
     			+ "\t" + population.people.get(j).compliance_prob_intv
-    			+ "\t" + population.people.get(j).race_black
-    			+ "\t" + population.people.get(j).race_hispanic
-    			+ "\t" + population.people.get(j).race_other
-    			+ "\t" + population.people.get(j).race_white
-    			+ "\t" + population.people.get(j).sex_male
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_black)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_hispanic)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_other)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).race_white)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).sex_male)
     			+ "\t" + population.people.get(j).cost_routine
     			+ "\t" + population.people.get(j).cost_diagnostic
     			+ "\t" + population.people.get(j).cost_surveillance
@@ -7253,15 +7174,22 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).lost_years
-    			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
-    			+ "\t" + population.people.get(j).event_polyp
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_polyp)
     			+ "\t" + population.people.get(j).cancer_free_start
     			+ "\t" + population.people.get(j).cancer_free_years
-    			+ "\t" + population.people.get(j).total_QALY
+    			//
+    			+ "\t" + population.people.get(j).routine_test
+    			+ "\t" + population.people.get(j).routine_test_count
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).utd_in_2023)
+    			+ "\t" + population.people.get(j).years_utd_colon
+    			+ "\t" + population.people.get(j).years_utd_any
+    			    			
 
     );
+    /*
             	for (int i = 0; i < population.people.get(j).lesions.size(); i++) {
     			outfile_agent_writer.write(
         		 "\t" + population.people.get(j).lesions.get(i).initial_state
@@ -7281,6 +7209,7 @@ catch (Exception e) {
       			+ "\t" + population.people.get(j).lesions.get(i).removed   
     			);
   			}
+  			*/
   } 
 
   outfile_agent_writer.write("\r\n");
@@ -7322,6 +7251,8 @@ catch (Exception e) {
         + "\t" + "insure_medicare_age50"
         + "\t" + "insure_none_age50"
         + "\t" + "insure_private_age50"
+        + "\t" + "isUrban"
+        + "\t" + "isAverageScenario"
         + "\t" + "modality"
         + "\t" + "is_free_screen"
         + "\t" + "compliance_prob_orig"
@@ -7344,9 +7275,14 @@ catch (Exception e) {
         + "\t" + "event_polyp"
         + "\t" + "cancer_free_start"
         + "\t" + "cancer_free_years"
-        + "\t" + "total_QALY"
+        //
+        + "\t" + "routine_test"
+        + "\t" + "routine_test_count"
+        + "\t" + "utd_in_2023"
+        + "\t" + "years_utd_colon"
+        + "\t" + "years_utd_any"
       );
-      
+      /*
         for (int i = 0; i < 3; i++) {
 			outfile_agent_writer.write(
     		 "\t" + "initial_state"
@@ -7366,6 +7302,7 @@ catch (Exception e) {
   			+ "\t" + "removed"   
 			);
   		}
+  		*/
 
     outfile_agent_writer.write("\r");
   }
@@ -7399,9 +7336,9 @@ catch (Exception e) {
 				+ "\t" + population.get_Main().age	
     			+ "\t" + population.people.get(j).cost_diagnostic
     			+ "\t" + population.people.get(j).cost_routine
-    			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).death_age
     			+ "\t" + population.people.get(j).num_colonoscopies
@@ -7409,12 +7346,12 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).onset_age_clin
     			+ "\t" + population.people.get(j).onset_age_polyp
     			+ "\t" + population.people.get(j).onset_age_pre
-    			+ "\t" + population.people.get(j).routine_is_diagnostic
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).routine_is_diagnostic)
     			+ "\t" + population.people.get(j).routine_test
     			+ "\t" + population.people.get(j).routine_test_count
     			+ "\t" + population.people.get(j).routine_test_yes
     			+ "\t" + population.people.get(j).routine_test.name
-    			+ "\t" + population.people.get(j).is_free_screen
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).is_free_screen)
     			+ "\t" + population.people.get(j).compliance_prob_inital
     			+ "\t" + population.people.get(j).compliance_prob_intv
     			+ "\t" + population.people.get(j).tot_lesions
@@ -7428,15 +7365,14 @@ catch (Exception e) {
     			+ "\t" + population.people.get(j).lifespan
     			+ "\t" + population.people.get(j).lost_years
     			+ "\t" + population.people.get(j).event_crc
-    			+ "\t" + population.people.get(j).event_dead
-    			+ "\t" + population.people.get(j).event_dead_crc
-    			+ "\t" + population.people.get(j).event_polyp
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_dead_crc)
+    			+ "\t" + BooleanUtils.toInteger(population.people.get(j).event_polyp)
     			+ "\t" + population.people.get(j).cancer_free_start
     			+ "\t" + population.people.get(j).cancer_free_years
-    			+ "\t" + population.people.get(j).total_QALY
-    			+ "\t" + population.people.get(j).current_QALY_mult
 
     );
+    /*
       		for (int i = 0; i < 2; i++) {
     			outfile_agent_year_writer.write(
         		 "\t" + population.people.get(j).lesion_sources.get(i).initial_state
@@ -7465,6 +7401,7 @@ catch (Exception e) {
       			+ "\t" + population.people.get(j).lesions.get(i).removed   
     			);
   			}
+  			*/
   } 
 
   outfile_agent_year_writer.write("\r\n");
@@ -7527,9 +7464,8 @@ catch (Exception e) {
 			+ "\t" + "event_polyp"
 			+ "\t" + "cancer_free_start"
 			+ "\t" + "cancer_free_years"
-			+ "\t" + "total_QALY"
-			+ "\t" + "current_QALY_mult"
-);
+
+);/*
   		for (int i = 0; i < 2; i++) {
 			outfile_agent_year_writer.write(
     		 "\t" + "lesion_source_initial_state"
@@ -7559,7 +7495,7 @@ catch (Exception e) {
     			);
   			}
  
-
+*/
     outfile_agent_year_writer.write("\r");
   }
   else {
@@ -7592,125 +7528,53 @@ catch (Exception e) {
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1398685354918</Id>
-					<Name><![CDATA[output_county_open]]></Name>
-					<X>900</X><Y>400</Y>
-					<Label><X>20</X><Y>0</Y></Label>
+					<Id>1409282103639</Id>
+					<Name><![CDATA[loadZipURData]]></Name>
+					<X>-710</X><Y>470</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
-  if (outfile_county_overwrite) {
-    outfile_county_writer = new BufferedWriter(new FileWriter(output_dir + File.separator + outfile_county_name ));
-       
-	outfile_county_writer.write(
-                 "description"
-        + "\t" + "date"
-        + "\t" + "n"
-        + "\t" + "polyp"
-        + "\t" + "crc"
-        + "\t" + "deadcrc"
-        + "\t" + "lifeexp"
-        + "\t" + "discounted_lifeexp"
-        + "\t" + "lifeobs"
-        + "\t" + "discounted_lifeobs"
-        + "\t" + "lifelost"
-        );
- ////new code
-    for (Map.Entry<String,Integer> mapEntry: population.county_count_utd.entrySet()){
-      outfile_county_writer.write(
-        "\t" + "county_count_utd_" + mapEntry.getKey()
-      );
-    }    
-
-
-    for (Map.Entry<String,Integer> mapEntry: population.county_count_alive.entrySet()){
-      outfile_county_writer.write(
-        "\t" + "county_count_alive_" + mapEntry.getKey()
-       );
-    } 
-
-    outfile_county_writer.write("\r");
-  }
-  else {
-    outfile_county_writer = new BufferedWriter(new FileWriter(outfile_county_name, true));
-  }
-}
-catch (Exception e) {
-  error(e.getMessage());
-}
-
-]]></Body>
+					<Body><![CDATA[while( txtZipURData.canReadMore() ) {
+ String zip = txtZipURData.readString();
+ //System.out.println("Zipcode In: "+ zip);
+ boolean isUrban = txtZipURData.readBoolean();
+ //System.out.println("Boolean in: "+ isUrban);
+ zipcodeToIsUrban.put(zip,isUrban);
+}]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1398685370538</Id>
-					<Name><![CDATA[output_county_data]]></Name>
-					<X>900</X><Y>420</Y>
-					<Label><X>20</X><Y>0</Y></Label>
+					<ReturnType><![CDATA[boolean]]></ReturnType>
+					<Id>1409282106791</Id>
+					<Name><![CDATA[getZipURData]]></Name>
+					<X>-710</X><Y>500</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
- java.util.Date now = new java.util.Date();
- java.text.SimpleDateFormat date_fmt = new java.text.SimpleDateFormat("MM/dd/yyyy kk:mm:ss");
-  
-  outfile_county_writer.write(
-    "\n" + model_description
-    + "\t" + date_fmt.format(now)
-    + "\t" + population_size
-    + "\t" + population.tot_state_polyp
-    + "\t" + population.tot_state_cancer
-    + "\t" + population.tot_state_dead_crc
-    + "\t" + population.people.average("lifespan")	
-    + "\t" + population.people.average("discounted_lifespan")
-    + "\t" + population.people.average("death_age")
-    + "\t" + population.people.average("discounted_death_age")
-    + "\t" + -population.people.average("lost_years")
-    );
-    
-   //New code
-  for (Map.Entry<String,Integer> mapEntry: population.county_count_utd.entrySet()){
-    outfile_county_writer.write(
-      "\t" + mapEntry.getValue()
-    );
-  }    
-
-
-  for (Map.Entry<String,Integer> mapEntry: population.county_count_alive.entrySet()){
-    outfile_county_writer.write(
-      "\t" + mapEntry.getValue()
-    );
-  }  
-
-  outfile_county_writer.write("\r\n");
-}
-catch (Exception e) {
-  error(e.getMessage());
-}
-
-]]></Body>
-				</Function>
-				<Function AccessType="default" StaticFunction="false">
-					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1398685388964</Id>
-					<Name><![CDATA[output_county_close]]></Name>
-					<X>900</X><Y>450</Y>
-					<Label><X>20</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
-  outfile_county_writer.close();
-}
-catch (Exception e) {
-  error(e.getMessage());
-}
-
-]]></Body>
+					<Parameter>
+						<Name><![CDATA[zip]]></Name>
+						<Type><![CDATA[String]]></Type>
+					</Parameter>
+					<Body><![CDATA[return zipcodeToIsUrban.get(zip);]]></Body>
 				</Function>
 			</Functions>
 			<Connectivity>
+				<TextFile>
+					<Id>1409282067913</Id>
+					<Name><![CDATA[txtZipURData]]></Name>
+					<X>-710</X><Y>440</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<FileType>FILE</FileType>
+					<FileName><![CDATA[zipcodeIsUrbanData.txt]]></FileName>
+					<FileMode>READ</FileMode>
+					<CharsetName>null</CharsetName>
+					<Separators>
+	</Separators>
+				</TextFile>
 				<ExcelFile>
 					<Id>1372779460482</Id>
 					<Name><![CDATA[excelFile]]></Name>
@@ -8590,65 +8454,67 @@ import java.util.Random;]]></Import>
 					</Properties>
 				</Variable>
 				<Variable Class="PlainVariable">
-					<Id>1400515243773</Id>
-					<Name><![CDATA[total_QALY]]></Name>
-					<X>-450</X><Y>110</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue><![CDATA[0]]></InitialValue>                 	
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1400515309060</Id>
-					<Name><![CDATA[current_QALY_mult]]></Name>
-					<X>-450</X><Y>90</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
-						<InitialValue><![CDATA[0]]></InitialValue>                 	
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1407876230955</Id>
-					<Name><![CDATA[current_year]]></Name>
-					<X>-560</X><Y>920</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1407953711321</Id>
-					<Name><![CDATA[rep_idx]]></Name>
-					<X>-560</X><Y>950</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[int]]></Type>        
-					</Properties>
-				</Variable>
-				<Variable Class="PlainVariable">
-					<Id>1408025417843</Id>
-					<Name><![CDATA[intervention]]></Name>
-					<X>-560</X><Y>980</Y>
+					<Id>1398277729187</Id>
+					<Name><![CDATA[routine_test_string]]></Name>
+					<X>-101</X><Y>-319</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
 						<Type><![CDATA[String]]></Type>        
+						<InitialValue><![CDATA["None"]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1398280092381</Id>
+					<Name><![CDATA[compliance_prob_input]]></Name>
+					<X>-710</X><Y>-140</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403297248094</Id>
+					<Name><![CDATA[utd_in_2023]]></Name>
+					<X>-710</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<InitialValue><![CDATA[false]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403297302868</Id>
+					<Name><![CDATA[years_utd_colon]]></Name>
+					<X>-710</X><Y>-70</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1403297333397</Id>
+					<Name><![CDATA[years_utd_any]]></Name>
+					<X>-710</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue><![CDATA[0]]></InitialValue>                 	
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
@@ -9519,6 +9385,27 @@ import java.util.Random;]]></Import>
 							<Id>1395427557599</Id>
 							<Name><![CDATA[]]></Name>
 							<EditorContolType alpv7value="TEXT_BOX">TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<Separator>false</Separator>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1409282369199</Id>
+					<Name><![CDATA[isUrban]]></Name>
+					<X>110</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Dynamic="false">
+						<Type><![CDATA[boolean]]></Type>        
+						<DefaultValue><![CDATA[false]]></DefaultValue>
+						<ParameterEditor>
+							<Id>1409282369197</Id>
+							<Name><![CDATA[]]></Name>
+							<EditorContolType alpv7value="CHECK_BOX">CHECK_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
 							<Separator>false</Separator>
@@ -10674,7 +10561,7 @@ onset_stage_clin.add(new Integer(1));
 						<Action><![CDATA[surveillance_timer.reset();
 surveillance_negatives = 0;
 
-test_surveillance();
+//test_surveillance();
 
 ]]></Action>
 						<Timeout><![CDATA[1]]></Timeout>
@@ -10894,6 +10781,7 @@ test_surveillance();
 					<ShowLabel>false</ShowLabel>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-31</Y></Point>
 						<Point><X>0</X><Y>-60</Y></Point>
 					</Points>
 					<Properties Source="1328041345818" Target="1328041345819" Trigger="message">
@@ -11182,316 +11070,12 @@ tot_lesions++;
 diagnostic_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
 surveillance_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");
 
+routine_test = get_Population().get_Main().test_set.get_test_by_name(routine_test_string);
 
-// To assign the routine test, we develop a probability distribution
-// for choosing each of the tests, then use that distribution to
-// randomly select one. The probability distribution can be constructed
-// using two methods:
-//
-//   1) using models from Sujha's paper for FOBT, sigmoidoscopy, and
-//      colononoscopy, and using directly specified probabilities for
-//      any other tests
-//   2) using directly specified probabilities for all tests
-//
-// The choice of method is determined by the parameter
-// get_Population().model_test_probabilityf. In the case of method (2), we simply
-// use the specified probabilities without adjustment. In the case of
-// method (1), however, we do the following:
-//
-// We first assume our only choices are the tests from the paper,
-// namely colonoscopy, FOBT, and sigmoidoscopy. We will find the
-// probability distribution of taking these tests by using two
-// statistical models and some algebra. The models will give us:
-//
-//   1) P(choosing FOBT over colonoscopy)
-//   2) P(choosing sigmoidoscopy over colonoscopy)
-//
-// Using these two probabilities we can derive:
-//
-//   3) P(choosing colonoscopy over FOBT and sigmoidoscopy)
-//
-// Using these three probabilities we can derive:
-//
-//   4) P(choosing FOBT over colonoscopy and sigmoidoscopy)
-//   5) P(choosing sigmoidoscopy over FOBT and colonoscopy)
-//
-// Finally, we examine the other tests, where the probability has
-// been specified directly. We find the sum of the probabilities
-// of such tests, then scale down the probabilities in
-// (3), (4), and (5) so that all of them add up to 1.
-//
-// The resulting probabilities form the probability distribution
-// we need to randomly choose a test.
 
-double prob_colon = 0;
-double prob_fobt = 0;
-double prob_sigmoid = 0;
 
-Main main = get_Population().get_Main ();
 
-if (main.model_test_probability) {	
-  ModalityModel model = new ModalityModel ("compliance_county_intercepts.csv", main.infile_location_name);
-  prob_colon =
-     model.getProbabilityOfColonoscopy (this.sex_male,
-										this.race_black,
-										this.race_other,
-										this.zipcode,
-										this.stcotrbg,
-										this.married,
-										this.SEHP,
-										this.insure_private,
-										this.insure_medicaid,
-										this.insure_medicare,
-										this.insure_dual,
-										this.insure_none,
-										this.insure_private_orig,
-                                        this.insure_none_orig);
-  /*
-  To resolve a structural issue with the modality model code, the uninsured probability of choosing colonoscopy screening is set in the model here.
-  */
-  if (this.insure_none){
-  	prob_colon = main.prob_colon_uninsured;
-  }
-  prob_fobt = 1 - prob_colon;
-  prob_sigmoid = 0;
-  
-/*
-  // Set up age indicator variables for use in the models below.
-  // Since this function is called when get_Population().get_Main().age is 0, both of
-  // these age indicator variables are guaranteed to be false.
-  // This is fine because the people will actually be around
-  // age 50 when they decide on a test, so they would have been
-  // placed in the reference group anyway.
-  boolean age_65_80 = (get_Population().get_Main().age > 65 && get_Population().get_Main().age <= 80);
-  boolean age_gt_80 = (get_Population().get_Main().age > 80);
-  
-  //----------------------------------------------
-  // Find the probability of choosing an FOBT over a colonoscopy.
-  
-  // Calculate the sum of the X*Beta terms.
-  double xbeta_fobt =
-    log(get_Population().get_Main().or_fobt_intercept)
-    + (age_65_80 ? 1 : 0) * log(get_Population().get_Main().or_fobt_age_65_80)
-    + (age_gt_80 ? 1 : 0) * log(get_Population().get_Main().or_fobt_age_gt_80)
-    + (sex_male ? 1 : 0) * log(get_Population().get_Main().or_fobt_sex_male)
-    + (race_black ? 1 : 0) * log(get_Population().get_Main().or_fobt_race_black)
-    + (race_hispanic ? 1 : 0) * log(get_Population().get_Main().or_fobt_race_hispanic)
-    + (race_other ? 1 : 0) * log(get_Population().get_Main().or_fobt_race_other)
-    + (income_gt_20k ? 1 : 0) * log(get_Population().get_Main().or_fobt_income_gt_20k)
-    + (educ_college ? 1 : 0) * log(get_Population().get_Main().or_fobt_educ_college)
-    + (insure_none ? 1 : 0) * log(get_Population().get_Main().or_fobt_insure_none)
-    + (insure_private ? 1 : 0) * log(get_Population().get_Main().or_fobt_insure_private)
-    + (alone_yes ? 1 : 0) * log(get_Population().get_Main().or_fobt_alone_yes)
-    + (source_yes ? 1 : 0) * log(get_Population().get_Main().or_fobt_source_yes)
-    + (famhist_med_high ? 1 : 0) * log(get_Population().get_Main().or_fobt_famhist_med_high)
-    + (smoke_former ? 1 : 0) * log(get_Population().get_Main().or_fobt_smoke_former)
-    + (smoke_never ? 1 : 0) * log(get_Population().get_Main().or_fobt_smoke_never)
-    + (vitamin_yes ? 1 : 0) * log(get_Population().get_Main().or_fobt_vitamin_yes)
-    + (flushot_yes ? 1 : 0) * log(get_Population().get_Main().or_fobt_flushot_yes)
-    + (region_midwest ? 1 : 0) * log(get_Population().get_Main().or_fobt_region_midwest)
-    + (region_south ? 1 : 0) * log(get_Population().get_Main().or_fobt_region_south)
-    + (region_west ? 1 : 0) * log(get_Population().get_Main().or_fobt_region_west)
-    ;
-  
-  // Calculate the probability using the model.
-  double prob_fobt_colon = exp(xbeta_fobt)/(1+exp(xbeta_fobt));
-  
-  
-  //----------------------------------------------
-  // Find the probability of choosing a sigmoidoscopy over
-  // a colonoscopy.
-  
-  // Calculate the sum of the X*Beta terms.
-  double xbeta_sigmoid =
-    log(get_Population().get_Main().or_sigmoid_intercept)
-    + (age_65_80 ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_age_65_80)
-    + (age_gt_80 ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_age_gt_80)
-    + (sex_male ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_sex_male)
-    + (race_black ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_race_black)
-    + (race_hispanic ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_race_hispanic)
-    + (race_other ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_race_other)
-    + (income_gt_20k ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_income_gt_20k)
-    + (educ_college ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_educ_college)
-    + (insure_none ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_insure_none)
-    + (insure_private ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_insure_private)
-    + (alone_yes ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_alone_yes)
-    + (source_yes ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_source_yes)
-    + (famhist_med_high ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_famhist_med_high)
-    + (smoke_former ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_smoke_former)
-    + (smoke_never ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_smoke_never)
-    + (vitamin_yes ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_vitamin_yes)
-    + (flushot_yes ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_flushot_yes)
-    + (region_midwest ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_region_midwest)
-    + (region_south ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_region_south)
-    + (region_west ? 1 : 0) * log(get_Population().get_Main().or_sigmoid_region_west)
-    ;
-  
-  // Calculate the probability using the model.
-  double prob_sigmoid_colon = exp(xbeta_sigmoid)/(1+exp(xbeta_sigmoid));
-  
-  
-  //----------------------------------------------
-  // Find the probability of choosing each test over
-  // all the other tests.
-  
-  prob_colon = (1 - prob_fobt_colon) * (1 - prob_sigmoid_colon) / (1 - (prob_fobt_colon * prob_sigmoid_colon));
-  prob_fobt = prob_colon * prob_fobt_colon / (1 - prob_fobt_colon);
-  prob_sigmoid = prob_colon * prob_sigmoid_colon / (1 - prob_sigmoid_colon);
-  
-  // Adjust the probabilities when one or more of the
-  // tests are not available as routine tests.
-  
-  boolean routine_colon = get_Population().get_Main().routine_tests.contains("Colonoscopy");
-  boolean routine_fobt = get_Population().get_Main().routine_tests.contains("FOBT");
-  boolean routine_sigmoid = get_Population().get_Main().routine_tests.contains("Sigmoidoscopy");
-  
-  if (!routine_colon) {
-    double new_prob_fobt;
-    double new_prob_sigmoid;
-    if (prob_fobt + prob_sigmoid > 0) {
-      new_prob_fobt = prob_fobt + (prob_colon * (prob_fobt / (prob_fobt + prob_sigmoid)));
-      new_prob_sigmoid = prob_sigmoid + (prob_colon * (prob_sigmoid / (prob_fobt + prob_sigmoid)));
-    }
-    else {
-      new_prob_fobt = 0;
-      new_prob_sigmoid = 0;
-    }
-    prob_colon = 0;
-    prob_fobt = new_prob_fobt;
-    prob_sigmoid = new_prob_sigmoid;
-  }
-  
-  if (!routine_fobt) {
-    double new_prob_colon;
-    double new_prob_sigmoid;
-    if (prob_colon + prob_sigmoid > 0) {
-      new_prob_colon = prob_colon + (prob_fobt * (prob_colon / (prob_colon + prob_sigmoid)));
-      new_prob_sigmoid = prob_sigmoid + (prob_fobt * (prob_sigmoid / (prob_colon + prob_sigmoid)));
-    }
-    else {
-      new_prob_colon = 0;
-      new_prob_sigmoid = 0;
-    }
-    prob_colon = new_prob_colon;
-    prob_fobt = 0;
-    prob_sigmoid = new_prob_sigmoid;
-  }
-  
-  if (!routine_sigmoid) {
-    double new_prob_colon;
-    double new_prob_fobt;
-    if (prob_fobt + prob_colon > 0) {
-      new_prob_colon = prob_colon + (prob_sigmoid * (prob_colon / (prob_fobt + prob_colon)));
-      new_prob_fobt = prob_fobt + (prob_sigmoid * (prob_fobt / (prob_fobt + prob_colon)));
-    }
-    else {
-      new_prob_colon = 0;
-      new_prob_fobt = 0;
-    }
-    prob_colon = new_prob_colon;
-    prob_fobt = new_prob_fobt;
-    prob_sigmoid = 0;
-  }
-  
-  // Check that the probabilities add to 1 if they are not all 0.
-  */
-  
-  if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
-    if (Math.abs(prob_colon + prob_fobt + prob_sigmoid - 1) > 1e-5) {
-      error("Invalid probability distribution for person " + getIndex() + ": P(colon)=" + prob_colon + " P(FOBT)=" + prob_fobt + " P(sigmoid)=" + prob_sigmoid);
-    }
-  }
-}
-/*
-else{
-//This condition allow us to not have test set by stat model 27 FEB 2014
-	prob_colon = 1;
-	prob_fobt = 0;
-	prob_sigmoid = 0;
-	// Check that the probabilities add to 1 if they are not all 0.
-  
-    if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
-    	if (Math.abs(prob_colon + prob_fobt + prob_sigmoid - 1) > 1e-5) {
-      		error("Invalid probability distribution for person " + getIndex() + ": P(colon)=" + prob_colon + " P(FOBT)=" + prob_fobt + " P(sigmoid)=" + prob_sigmoid);
-    	}
-    }
-}// end probaiblity distribution
-*/
 
-//----------------------------------------------
-// Find the sum of all the probabilities that have
-// been specified directly.
-
-double direct_prob = 0;
-
-for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
-  Test t = get_Population().get_Main().test_set.get_test_by_id(i);
-
-  if (get_Population().get_Main().routine_tests.contains(t.name) && (!get_Population().get_Main().model_test_probability || !t.have_model)) {
-    direct_prob += t.proportion;
-  }
-}
-
-if (direct_prob > 1) {
-  error("Total direct probability > 1 in for person " + getIndex() + ": " + direct_prob);
-  direct_prob = 1;
-}
-
-//----------------------------------------------
-// Create a vector containing the probability for
-// each test. All model-based probabilities must
-// be adjusted to account for the sum of the direct
-// probabilities. This vector should parallel the
-// test_set vector.
-
-double[] distribution = new double[get_Population().get_Main().test_set.size()];
-
-for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
-  Test t = get_Population().get_Main().test_set.get_test_by_id(i);
-
-  if (get_Population().get_Main().model_test_probability && t.have_model) {
-    if (t.name.equals("FOBT")) {
-      distribution[i] = prob_fobt * (1 - direct_prob);
-    }
-    else if (t.name.equals("Sigmoidoscopy")) {
-      distribution[i] = prob_sigmoid * (1 - direct_prob);
-    }
-    else if (t.name.equals("Colonoscopy")) {
-      distribution[i] = prob_colon * (1 - direct_prob);
-    }
-    else {
-      error("Unexpected model-based test name: " + t.name);
-    }
-  }
-  else {
-    if (get_Population().get_Main().routine_tests.contains(t.name)) {
-      distribution[i] = t.proportion;
-    }
-    else {
-      distribution[i] = 0;
-    }
-  }
-}
-
-//----------------------------------------------
-// Randomly choose which test this person will take.
-
-double rand = uniform();
-double cumulative_distribution = 0;
-
-for (int i=0; i<distribution.length; i++) {
-  cumulative_distribution += distribution[i];
-
-  if (rand < cumulative_distribution) {
-    routine_test = get_Population().get_Main().test_set.get_test_by_id(i);
-    routine_test.tot_adopted++;
-    break;
-  }
-}
-
-if (routine_test == null) {
-  routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
-}
 
 ]]></Body>
 				</Function>
@@ -11636,249 +11220,119 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   // are using the unconditional compliance probabilities, then use
   // the rules for initial compliance. Otherwise use the rules for
   // conditional compliance.
-
   double compliance_prob = 0;
-  if (never_compliant) {
-    compliance_prob = 0;
-  } else if ( (  main.use_conditional_compliance && routine_compliance_history.size() == 0)
-           || (! main.use_conditional_compliance)) {
-    // If we are using conditional compliance and this is the first time
-    // the person has been eligible for a routine test, or if we are using
-    // unconditional compliance, then compute the compliance probability
-    // based on the person's characteristics or take the probability specified
-    // by the user.
-    if (main.model_initial_compliance) {
-
-      // Compute the compliance probability based on the person's characteristics.
-
-
-	  ComplianceModel complianceModel = new ComplianceModel (main.infile_location_compliance_intercepts_name, main.infile_location_name);
-	  //ComplianceModel complianceModel = new ComplianceModel ("compliance_county_intercepts.csv", main.infile_location_name);
-
-	  compliance_prob =
-	      complianceModel.getProbabilityOfCompliance (this.sex_male,
-													  this.race_black,
-													  this.race_other,
-													  this.zipcode,
-													  this.stcotrbg,
-													  this.married,
-													  this.SEHP,
-													  this.insure_private,
-													  this.insure_medicaid,
-													  this.insure_medicare,
-													  this.insure_dual,
-													  this.insure_none,
-													  this.insure_private_orig,
-                                                      this.insure_none_orig);
-      // Adjust probability based on the type of test. To annualize the probality produced by the statistical model
-	  if (!insure_none){
-		  //Annulaizing adjustmnt
-		  compliance_prob =
-		      complianceModel.getTestAdjustedComplianceProbability (
-		          compliance_prob,
-		  	      test.name);
-		  	      
-		 // Trend adjustment
-		 if (main.secular_trend_active){
-		 	compliance_prob = Math.min(compliance_prob + apply_trend(),1);
-		 }
-	  }else{
-	  	//if get here than uninsured
-	  	compliance_prob = compliance_prob-0.05;
-	  	/*
-	  	compliance_prob =
-	      complianceModel.getProbabilityOfCompliance (this.sex_male,
-													  this.race_black,
-													  this.race_other,
-													  this.zipcode,
-													  this.stcotrbg,
-													  this.married,
-													  this.SEHP,
-													  true,
-													  this.insure_medicaid,
-													  this.insure_medicare,
-													  this.insure_dual,
-													  false,
-													  true,
-                                                      false);
-                                                      
-	  	//Annulaizing adjustmnt
-		  compliance_prob =
-		      complianceModel.getTestAdjustedComplianceProbability (
-		          compliance_prob,
-		  	      test.name);
-		  	      
-		 // Trend adjustment
-		 if (main.secular_trend_active){
-		 	compliance_prob = Math.min(compliance_prob + apply_trend(),1);
-		 }
-		 */
-	 
-	  }
-	  	      
-    } else {
-      // Assign the compliance probability based on the user-specified rate.
-      compliance_prob = get_Population().get_Main().initial_compliance_rate;
-	}
-	this.compliance_prob_inital = compliance_prob; //Add so can output inital compliance rate
-      
-   	int routineVisitsCount = routine_compliance_history.size ();
-	int dynamicComplianceRateYearOffset =
-	  get_Population().get_Main().dynamic_compliance_rate_year_offset;	
-	boolean interventionActive = true; // By default the intervention is on unless the following statements evaluates otherwise
-	if (dynamicComplianceRateYearOffset > -1) {
-	  interventionActive =
-		time () >= (age + //get_Population().get_Main().death_rate_delay + 
-				 		  dynamicComplianceRateYearOffset);
-	  if (interventionActive) {	
-	  //Changed 1/22/2014
-	  //compliance_prob = get_Population().get_Main().intervention_compliance_rate;
-	    if (compliance_prob > 0) {
-	      //System.out.println ("dyn-comp: => " + compliance_prob + "\t @: " + time() + "IN SEC 11111");
-        }
-      }	  
-	}
-	
-	
-   //original use_conditional_compliance end 	
-   // }
-
-    // The compliance probability calculated through the statistical model
-    // or specified by the user is intended to be a probability based on
-    // the entire get_Population(). However, since we are computing it only among
-    // the people who are not "never compliant", we actually need a
-    // conditional probability -- the probability of compliance given
-    // not(never compliant). Here, we adjust our unconditional probability
-    // that we have calculated to make it conditional.
-    //
-    // In symbols, if C is the compliant group at this age, and Z is the
-    // never compliant group, then we have computed P(C). To obtain
-    // P(C | not(Z)), we use the relation:
-    //
-    //   P(C | not(Z)) = P(C and not(Z)) / P(not(Z))
-    //
-    // Since C is a subset of not(Z), P(C and not(Z)) = P(C), and so:
-    //
-    //   P(C | not(Z)) = P(C) / P(not(Z))
-    //
-
-    if (get_Population().get_Main().never_compliant_rate < 1) {
-      compliance_prob = compliance_prob / (1 - get_Population().get_Main().never_compliant_rate);
-
-      // If our never compliant rate is too high, then some of our computed
-      // compliance probabilities may be greater than 1. For example, if we
-      // want 50% of the population never to be compliant, but we also want
-      // an overall compliance rate of 75%, this is an impossible situation.
-      // The math will work out, but only if the compliance probability is
-      // greater than 1, and so we cap the probability at 1.
-      // 
-      // This may also occur when using the statistical model to compute
-      // compliance probabilities. Suppose that we want 50% of the population
-      // never to be compliant. On average, the model predicts about a 35%
-      // compliance rate, so the situation this time is possible. However,
-      // some individuals may have model-predicted probabilities in excess
-      // of 50%. These individuals will have an adjusted probability greater
-      // than 1 that will be truncated to 1. This may lead to compliance rates
-      // being less than desired. To get around this, the assignment of an
-      // individual's compliance rate cannot be done without knowledge of all
-      // other individuals. This is a big departure from the current design
-      // of this program, and may require a large re-write. Hopefully, though,
-      // the problem is not very bad to begin with. More investigation is
-      // needed.
-
-      if (compliance_prob > 1) {
-        compliance_prob = 1;
-      }
-    }else {
-      compliance_prob = 0;
-    }
-  } else {
-	/**
-	 * By default, no intervention is active. If dynamic compliance rates are enabled,
-	 * then test whether we have entered the intervention period. If the age of the person
-	 * is greater than or equal to the dynamic compliance rate year offset plus the age
-	 * at which we start simulating death possibilities, then the intervention is active.
-	 */
-
-	boolean interventionActive = false; // By default intervention will be off
-	int dynamicComplianceRateYearOffset =
-		get_Population().get_Main().dynamic_compliance_rate_year_offset;	
-	//	System.out.println ("****** dcryo: " + dynamicComplianceRateYearOffset + " yeah: " + time ());
-
-	if (dynamicComplianceRateYearOffset > -1) {
-		interventionActive =
-			time () >= (get_Population().get_Main().death_rate_delay + 
-				 		dynamicComplianceRateYearOffset);
-		if (interventionActive){
-			//System.out.println("stuff");
-		}
-			
-	}
-
-
-
-    // We are using conditional probabilities for assigning compliance,
-    // and the user has been eligible for routine testing before, so
-    // use the rules for conditional compliance. The probability is
-    // conditional on whether the person was compliant the last time
-    // he was eligible.
-
-	//If the intervention is active, use the new compliance rate.
-    if (((Boolean)routine_compliance_history.get(routine_compliance_history.size() - 1)).booleanValue()) {
-      compliance_prob = interventionActive ?
-		test.new_compliance_rate_given_prev_compliant :
-		test.compliance_rate_given_prev_compliant;
-    }
-    else {
-      compliance_prob = interventionActive ?
-      	test.new_compliance_rate_given_not_prev_compliant : 
-      	test.compliance_rate_given_not_prev_compliant;
-    }
-  }
-  // I apply intervetions here since it is the last place before we actually make a decsion with the compliance probability
-  // INTERVEINTION 1: Medicare Reminder to 50% of medicare patients, Will reduce p gap by half (analoge to doubling the probability)
-  boolean isMailedReminderActive = false;
-  if (main.intervene_medicaid_mailer && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
-  	isMailedReminderActive = true;
-  }
-  compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, main.medicaid_mailer_effect);//orginal call
-  //compliance_prob = intervene_medicaid_reminder(compliance_prob, isMailedReminderActive,this.insure_medicaid,this.insure_dual, 1.0, 0.4); //Test parameter call
-
-  // INTERVENTION 2: implementing a mass media campain that increases blacks screening rates by half of the "p gap"
-  boolean isMassMediaActive = false;
-  if (main.intervene_mass_media && (time() >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (time() < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
-  	isMassMediaActive = true;
-  	//System.out.println("-------------->Mass Media Active at time: " + time());
-  }
-  compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, main.mass_media_black_effect, main.mass_media_other_effect);//original call
-  //compliance_prob = intervene_mass_media(compliance_prob, isMassMediaActive, this.race_black, 0.8,0.4, 0.8, 0.4); //Test parameter call
+  compliance_prob = compliance_prob_input;
   
-  // INTERVENTION 3: Make uninsured compliant with Colonoscopy
-  boolean isFreeScreeActive = false;
-  if (main.intervene_free_screenings && (time() == 50) && (this.age <= 43)){
-  //if (main.intervene_free_screenings && (time() == 60) && (this.age <= 53)){
-  	isFreeScreeActive = true;
-  	//System.out.println("------------->Free Screen active: " + time());
-  }  
-  if ((isFreeScreeActive) && (this.insure_none) && (people.free_screen_count < main.num_free_colonoscopy)){
-  	//make_colonoscopy(); //makes it so all uninsured people choose colonoscopies if free screens have not been all given out.
-  	if (test.name.equals("Colonoscopy")){
-  		//System.out.println("DO I Get To here");
-  		people.free_screen_count++;
-  		is_free_screen = true;
-  		compliance_prob = 1;
-  		///routine_compliance_history.add (new Boolean (true));
-  		///set_utd(test.name, true); // indexes into up-to-date vector if person chooses to comply
-  		//choose_tests();
-  		///return true;
-  		//System.out.println("Number of Free Colonoscopies: " + people.free_screen_count);
-  		//System.out.println("New Compliance Prob: "+ compliance_prob);
-	  	}
-  	  }
+  //// Normalize/Adjust compliance probablities
+/*  if (routine_test.name.equals("Colonoscopy")){
+	//System.out.println("Yes, Colonoscopy");
+	compliance_prob = Math.pow((1-(1-compliance_prob)),(10.0/6.0));
+}else if (routine_test.name.equals("FOBT")){
+	//System.out.println("Yes,FOBT");
+	compliance_prob = Math.pow((1-(1-compliance_prob)),(1.0/6.0));
+}else{
+	error("No test defined");
+} */ 
   
-  this.compliance_prob_intv = compliance_prob;
-  if (insure_none){
-  	//System.out.println("Modality: " + test.name + "Compliance_Prob: " + compliance_prob );
+boolean isInInterventionWindow = false;
+if((main.age >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (main.age < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
+	isInInterventionWindow = true;
+}
+if (main.interventionName == null){
+  error("No intervetnion name specified");
+}
+///Private enumeration of intervetnion names
+
+InterventionList intervention = InterventionList.valueOf(main.interventionName.toLowerCase());
+switch (intervention){
+  case none:
+    break;
+  case freescreeneveryone:
+	if ((routine_test.name == "Colonoscopy") && (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreenwomen:
+	if ((routine_test.name == "Colonoscopy") && (!this.sex_male)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreenrural:
+	if ((routine_test.name == "Colonoscopy") && (!this.isUrban)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case freescreennonwhite:
+	if ((routine_test.name == "Colonoscopy") && (!this.race_white)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    System.out.println("Free Screen Works");
+	    people.free_screen_count++;
+        is_free_screen = true;
+		compliance_prob = 1;
+	}
+	break;
+  case mailedremindereveryone:
+	if (isInInterventionWindow && uniform()<0.28){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case mailedreminderwomen:
+	if (isInInterventionWindow && !sex_male && uniform()<0.53){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case mailedreminderrural:
+	if (isInInterventionWindow && !isUrban){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case mailedremindernonwhite:
+	if (isInInterventionWindow && !race_white){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case massmediaeveryone:
+	if (isInInterventionWindow){
+		compliance_prob+=main.interventionEffect1;
+	}
+    break;
+  case massmediawomen:
+	if (isInInterventionWindow && !sex_male){
+		compliance_prob+=main.interventionEffect1;
+	}else if (isInInterventionWindow) {
+		compliance_prob+=main.interventionEffect2;
+	}
+    break;
+  case massmediarural:
+	if (isInInterventionWindow && !isUrban){
+		compliance_prob+=main.interventionEffect1;
+	}else if (isInInterventionWindow) {
+		compliance_prob+=main.interventionEffect2;
+	}
+    break;
+  case massmedianonwhite:
+	if (isInInterventionWindow && !race_white){
+		compliance_prob+=main.interventionEffect1;
+	}else if (isInInterventionWindow) {
+		compliance_prob+=main.interventionEffect2;
+	}
+    break;
+  default:
+  	System.out.println("Intervetnion name not entered correctly , entered as: "+ main.interventionName);
+    break;
+}
+
+  
+  if (isInInterventionWindow){
+  	this.compliance_prob_intv = compliance_prob;
   }
   // Return a random indicator of whether the person complied.
   boolean isCompliant = uniform (myRNG4) < compliance_prob;
@@ -11930,7 +11384,6 @@ return uniform() < 1 - test.specificity;
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Body><![CDATA[update_value();
-update_value_QALY();
 
 ]]></Body>
 				</Function>
@@ -13075,39 +12528,13 @@ double sensitivity = 0;
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
-					<Id>1400527068544</Id>
-					<Name><![CDATA[update_value_QALY]]></Name>
-					<X>-198</X><Y>799</Y>
-					<Label><X>23</X><Y>1</Y></Label>
+					<Id>1403298099335</Id>
+					<Name><![CDATA[end_model]]></Name>
+					<X>-340</X><Y>820</Y>
+					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[Main main = get_Population().get_Main();
-
-if ((disease_state.isStateActive(Person.PreclinicalStage1) || disease_state.isStateActive(Person.ClinicalStage1))){
-  // Stage I value
-  current_QALY_mult = main.params_QALY_list.get(2); 
-}else if (disease_state.isStateActive(Person.PreclinicalStage2) || disease_state.isStateActive(Person.ClinicalStage2) || disease_state.isStateActive(Person.PreclinicalStage3) || disease_state.isStateActive(Person.ClinicalStage3) ){
-  //Stage 2&3 utility value
-  current_QALY_mult = main.params_QALY_list.get(3); 
-}else if ((disease_state.isStateActive(Person.PreclinicalStage4) || disease_state.isStateActive(Person.ClinicalStage4)) ){
-  //Stage 4 utility value
-  current_QALY_mult = main.params_QALY_list.get(4); 
-}else if (event_crc && !event_dead){
-  //utility value once diagnosied with CRC
-  current_QALY_mult = main.params_QALY_list.get(1);
-}else if (event_dead){
-  //utility value if dead
-  current_QALY_mult = 0;
-}else{
-  //multiplier if alive and no cancer
-  current_QALY_mult = main.params_QALY_list.get(0);
-}
-
-total_QALY += current_QALY_mult;
-
-
-]]></Body>
 				</Function>
 			</Functions>
 			<AnalysisData>
@@ -13186,15 +12613,7 @@ total_QALY += current_QALY_mult;
 			<IconTopGroupPersistent>true</IconTopGroupPersistent>
 			<Import><![CDATA[import java.io.File;
 import java.text.NumberFormat;
-import org.apache.commons.lang3.BooleanUtils;
-/* DEBUG
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.FileOutputStream;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
-*/
-]]></Import>
+import org.apache.commons.lang3.BooleanUtils;]]></Import>
 			<Generic>false</Generic>
 			<GenericParameters><![CDATA[T]]></GenericParameters>
 			<GenericParametersLabel><![CDATA[Generic parameters:]]></GenericParametersLabel>
@@ -15535,7 +14954,7 @@ import java.io.OutputStreamWriter;
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[java.util.TreeMap]]></CollectionClass>
+						<CollectionClass><![CDATA[java.util.HashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
 					</Properties>
@@ -15550,7 +14969,7 @@ import java.io.OutputStreamWriter;
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" AccessType="public" StaticVariable="false">
-						<CollectionClass><![CDATA[java.util.TreeMap]]></CollectionClass>
+						<CollectionClass><![CDATA[java.util.HashMap]]></CollectionClass>
 						<ElementClass><![CDATA[String]]></ElementClass>
 						<ValueElementClass><![CDATA[Integer]]></ValueElementClass>
 					</Properties>
@@ -16093,6 +15512,10 @@ if (get_Main().compute_population_rates) {
   compute_pop_rates();
 }
 
+//for (Person p: people){
+  //p.end_model();
+//}
+
 // Calculate probabilities of various events.
 compute_event_probs();
 // Calculate percentages of individuals who are up to date with screenings various ways
@@ -16101,7 +15524,8 @@ compute_utd();
 compute_intervention_cost();
 //Compute Year counters
 compute_year_counters();
-]]></Body>
+// compute county stuff
+//get_county_counts();]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -16145,7 +15569,8 @@ for (int i=0; i<people.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[try {
+					<Body><![CDATA[Main main = get_Main();
+try {
   String fileName = get_Main().infile_population_name;
   int populationSize = get_Main().population_size;
   org.renci.epi.util.DelimitedFileImporter in =
@@ -16199,6 +15624,14 @@ for (int i=0; i<people.size(); i++) {
     }
     p.stcotrbg = in.getString ("stcotrbg");
     p.zipcode = in.getString ("zipcode");
+    p.isUrban = main.getZipURData(p.zipcode);
+    if (main.average_model){
+      p.routine_test_string = in.getString("MODALITY_avg");
+      p.compliance_prob_input = in.getDouble("prob_scrn_avg");
+    } else if (main.sequential_model){
+      p.routine_test_string = in.getString("MODALITY_seq");
+      p.compliance_prob_input = in.getDouble("prob_screen_seq");
+    }
     populationSizeActual++;
 	if (populationSizeActual >= populationSize) {
        break;
@@ -16231,9 +15664,6 @@ for (int i=0; i<people.size(); i++) {
 }
 //new population insurance snapshot calcualtor
 compute_insurance_year_counters();
-
-// compute county stuff
-get_county_counts();
 
 output_person_data ();
 output_person_close ();]]></Body>
@@ -16285,7 +15715,7 @@ for (int i=0; i < people.size(); i++) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[/* Prior to 2014-07-14:
+					<Body><![CDATA[
 if (get_Main().output_population_snapshots) {
 	outfile_person_writer_count++;
 	NumberFormat format = new java.text.DecimalFormat ("00000");
@@ -16296,7 +15726,7 @@ if (get_Main().output_population_snapshots) {
 	outfile_person_writer =
 		Main.modelIO.getModelOutputWriter (fileName, append, compress);
 }
-*/]]></Body>
+]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnType><![CDATA[void]]></ReturnType>
@@ -16322,10 +15752,11 @@ if (get_Main().output_population_snapshots) {
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[/* Prior to 2014-07-14:
+					<Body><![CDATA[
 if (get_Main().output_population_snapshots && time () > outfile_person_min_age ) {
 	Main.modelIO.writePeople (people.iterator(), outfile_person_writer);
 }
+
 
 int year = (int)time ();
 if (get_Main().output_population_snapshots&& 
@@ -16342,37 +15773,7 @@ if (get_Main().output_population_snapshots&&
 	boolean append = false;
 	Main.modelIO.writePeople (people.iterator (), outputDir, fileName);
 } 
-*/
 
-Main main = get_Main();
-int year = (int)time();
-
-if (main.output_population_snapshots && year >= outfile_person_min_age) {
-    for (Person person : people) { // Add additional variables to each Person for individual output:
-        person.current_year = main.age;
-        person.rep_idx = main.rep_idx;
-        String [] s = main.scenario.split("\\.");
-        person.intervention = s[s.length - 1]; // zero-padded int or "control"
-    }
-        
-	NumberFormat format = new java.text.DecimalFormat("00000");
-	String suffix = format.format(year);
-	//String outputDir = main.output_dir;
-	String fileName = File.separator + "person." + suffix;
-	
-/* DEBUG
-    try {
-      Writer w = new BufferedWriter(new OutputStreamWriter(
-          new FileOutputStream("C:/dev/crcsim/output_person_data.txt", true),  "UTF-8"));
-          w.write(Thread.currentThread().getName() + ": " + main.output_dir + fileName + "\n");
-          w.flush();
-          w.close();
-    } catch(IOException ie) {
-                ie.printStackTrace();
-    }
-*/	
-	Main.modelIO.writePeople (people.iterator(), main.output_dir, fileName);
-} 
 ]]></Body>
 				</Function>
 				<Function AccessType="default" StaticFunction="false">
@@ -16695,19 +16096,6 @@ num_alive_year2020 = num_alive[6];
 num_alive_year2021 = num_alive[7];
 num_alive_year2022 = num_alive[8];
 num_alive_year2023 = num_alive[9];
-
-/*
-num_alive_year2024 = num_none[0];
-num_alive_year2025 = num_none[1];
-num_alive_year2026 = num_none[2];
-num_alive_year2027 = num_none[3];
-num_alive_year2028 = num_none[4];
-num_alive_year2029 = num_none[5];
-num_alive_year2030 = num_none[6];
-num_alive_year2031 = num_none[7];
-num_alive_year2032 = num_none[8];
-num_alive_year2033 = num_none[9];
-*/
 num_alive_year2024 = num_alive[10];
 num_alive_year2025 = num_alive[11];
 num_alive_year2026 = num_alive[12];
@@ -16728,20 +16116,6 @@ num_utd_any_year2020 = num_utd_any[6];
 num_utd_any_year2021 = num_utd_any[7];
 num_utd_any_year2022 = num_utd_any[8];
 num_utd_any_year2023 = num_utd_any[9];
-
-/*
-//Repurposed
-num_utd_any_year2024 = num_utd_any_none[0];
-num_utd_any_year2025 = num_utd_any_none[1];
-num_utd_any_year2026 = num_utd_any_none[2];
-num_utd_any_year2027 = num_utd_any_none[3];
-num_utd_any_year2028 = num_utd_any_none[4];
-num_utd_any_year2029 = num_utd_any_none[5];
-num_utd_any_year2030 = num_utd_any_none[6];
-num_utd_any_year2031 = num_utd_any_none[7];
-num_utd_any_year2032 = num_utd_any_none[8];
-num_utd_any_year2033 = num_utd_any_none[9];
-*/
 num_utd_any_year2024 = num_utd_any[10];
 num_utd_any_year2025 = num_utd_any[11];
 num_utd_any_year2026 = num_utd_any[12];
@@ -16849,7 +16223,11 @@ int[] num_utd_any_none = new int[20];
 				num_utd_any_none[j] = num_utd_any_none[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
 			}
 			
+			people.get(i).years_utd_colon = people.get(i).years_utd_colon + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
+			people.get(i).years_utd_any = people.get(i).years_utd_any + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]));
 			if (j == 9){
+				people.get(i).utd_in_2023 = (people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX]|| people.get(i).sigmoid_utd[ageIDX]);
+				
 				count_private = num_private[9];
 				count_utd_any_private = num_utd_any_private[9];
 				count_medicaid = num_medicaid[9];
@@ -16929,29 +16307,39 @@ Main main = get_Main();
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<Body><![CDATA[Main main = get_Main(); 
-if (people.get(1).get_year_from_age() == 2023){
-	for (Person p: people){
-	  String FIPS = p.stcotrbg.substring(2,5);
-	  Integer count_utd = county_count_utd.get(FIPS);
-	  Integer count_alive = county_count_alive.get(FIPS);
-	  if (count_utd == null){
-	    county_count_utd.put(FIPS,1);
-	  }else {
-	  	if ((p.colon_utd[main.age] || p.fobt_utd[main.age] || p.sigmoid_utd[main.age]) && (!p.event_dead) ){
-	      county_count_utd.put(FIPS,count_utd + 1);
-	    }
-	  }
-	  if (count_alive == null){
-	    county_count_alive.put(FIPS,1);
-	  }else{
-	    if (!p.event_dead ){
-	      county_count_alive.put(FIPS,count_alive + 1);
-	    }
-	  }
-	}
+					<Body><![CDATA[for (Person p: people){
+  String FIPS = p.stcotrbg.substring(2,5);
+  Integer count_utd = county_count_utd.get(FIPS);
+  Integer count_alive = county_count_alive.get(FIPS);
+  if (count_utd == null){
+    county_count_utd.put(FIPS,1);
+  }else {
+    county_count_utd.put(FIPS,count_utd + 1);
+  }
+  if (count_alive == null){
+    county_count_alive.put(FIPS,1);
+  }else{
+    county_count_alive.put(FIPS,count_alive + 1);
+  }
 }
-]]></Body>
+String[] keys_utd = new String[county_count_utd.size()];
+Integer[] values_utd = new Integer[county_count_utd.size()];
+int index = 0;
+for (Map.Entry<String, Integer> mapEntry: county_count_utd.entrySet()){
+  keys_utd[index] = mapEntry.getKey();
+  values_utd[index] = mapEntry.getValue();
+
+}
+
+
+String[] keys_alive = new String[county_count_alive.size()];
+Integer[] values_alive = new Integer[county_count_alive.size()];
+int index_utd = 0;
+for (Map.Entry<String, Integer> mapEntry: county_count_alive.entrySet()){
+  keys_alive[index_utd] = mapEntry.getKey();
+  values_alive[index_utd] = mapEntry.getValue();
+
+}]]></Body>
 				</Function>
 			</Functions>
 			<EmbeddedObjects>
@@ -17127,6 +16515,10 @@ if (people.get(1).get_year_from_age() == 2023){
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[person_idx]]></Name>
+							<Value><![CDATA[]]></Value>	
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[isUrban]]></Name>
 							<Value><![CDATA[]]></Value>	
 						</Parameter>
 					</Parameters>
@@ -18677,31 +18069,23 @@ getPresentation().setPresentable( getEngine().getRoot() );]]></ActionCode>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[outfile_county_name]]></ParameterName>
+					<ParameterName><![CDATA[average_model]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[outfile_county_overwrite]]></ParameterName>
+					<ParameterName><![CDATA[sequential_model]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[outfile_county]]></ParameterName>
+					<ParameterName><![CDATA[interventionName]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[medicaid_mailer_effect]]></ParameterName>
+					<ParameterName><![CDATA[interventionEffect1]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[mass_media_black_effect]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[mass_media_other_effect]]></ParameterName>
-					<ParameterValue><![CDATA[]]></ParameterValue>
-				</Parameter>
-				<Parameter>
-					<ParameterName><![CDATA[params_QALY_string]]></ParameterName>
+					<ParameterName><![CDATA[interventionEffect2]]></ParameterName>
 					<ParameterValue><![CDATA[]]></ParameterValue>
 				</Parameter>
 			</Parameters>			
@@ -22843,7 +22227,7 @@ copyToClipboard( s );
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
 			<Parameter>	
-				<Id>1398685490581</Id>
+				<Id>1400593310018</Id>
 				<Type>FIXED</Type>
 				<Value><![CDATA[]]></Value>
 				<Min><![CDATA[]]></Min>
@@ -22852,7 +22236,7 @@ copyToClipboard( s );
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
 			<Parameter>	
-				<Id>1398685490587</Id>
+				<Id>1400593314121</Id>
 				<Type>FIXED</Type>
 				<Value><![CDATA[]]></Value>
 				<Min><![CDATA[]]></Min>
@@ -22861,7 +22245,7 @@ copyToClipboard( s );
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
 			<Parameter>	
-				<Id>1398685490590</Id>
+				<Id>1409281752979</Id>
 				<Type>FIXED</Type>
 				<Value><![CDATA[]]></Value>
 				<Min><![CDATA[]]></Min>
@@ -22870,7 +22254,7 @@ copyToClipboard( s );
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
 			<Parameter>	
-				<Id>1399130238640</Id>
+				<Id>1409281785927</Id>
 				<Type>FIXED</Type>
 				<Value><![CDATA[]]></Value>
 				<Min><![CDATA[]]></Min>
@@ -22879,25 +22263,7 @@ copyToClipboard( s );
 				<Suggested><![CDATA[]]></Suggested>
 			</Parameter>
 			<Parameter>	
-				<Id>1399130247300</Id>
-				<Type>FIXED</Type>
-				<Value><![CDATA[]]></Value>
-				<Min><![CDATA[]]></Min>
-				<Max><![CDATA[]]></Max>
-				<Step><![CDATA[]]></Step>
-				<Suggested><![CDATA[]]></Suggested>
-			</Parameter>
-			<Parameter>	
-				<Id>1399130254813</Id>
-				<Type>FIXED</Type>
-				<Value><![CDATA[]]></Value>
-				<Min><![CDATA[]]></Min>
-				<Max><![CDATA[]]></Max>
-				<Step><![CDATA[]]></Step>
-				<Suggested><![CDATA[]]></Suggested>
-			</Parameter>
-			<Parameter>	
-				<Id>1400523738774</Id>
+				<Id>1409281790577</Id>
 				<Type>FIXED</Type>
 				<Value><![CDATA[]]></Value>
 				<Min><![CDATA[]]></Min>
@@ -23500,25 +22866,19 @@ if (root.simulation_count % 2 == 0) {
 				<Id>1396293671733</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1398685490581</Id>
+				<Id>1400593310018</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1398685490587</Id>
+				<Id>1400593314121</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1398685490590</Id>
+				<Id>1409281752979</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1399130238640</Id>
+				<Id>1409281785927</Id>
 			</FreeformParamValue>
 			<FreeformParamValue>	
-				<Id>1399130247300</Id>
-			</FreeformParamValue>
-			<FreeformParamValue>	
-				<Id>1399130254813</Id>
-			</FreeformParamValue>
-			<FreeformParamValue>	
-				<Id>1400523738774</Id>
+				<Id>1409281790577</Id>
 			</FreeformParamValue>
 			<RangeVariationParamValue>	
 				<Id>1328041345577</Id>
@@ -24129,31 +23489,23 @@ if (root.simulation_count % 2 == 0) {
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
-				<Id>1398685490581</Id>
+				<Id>1400593310018</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
-				<Id>1398685490587</Id>
+				<Id>1400593314121</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
-				<Id>1398685490590</Id>
+				<Id>1409281752979</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
-				<Id>1399130238640</Id>
+				<Id>1409281785927</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<RangeVariationParamValue>	
-				<Id>1399130247300</Id>
-				<Type>FIXED</Type>
-			</RangeVariationParamValue>
-			<RangeVariationParamValue>	
-				<Id>1399130254813</Id>
-				<Type>FIXED</Type>
-			</RangeVariationParamValue>
-			<RangeVariationParamValue>	
-				<Id>1400523738774</Id>
+				<Id>1409281790577</Id>
 				<Type>FIXED</Type>
 			</RangeVariationParamValue>
 			<ModelTimeProperties 
@@ -24571,7 +23923,7 @@ engine.runFast();]]></Code>
 		<CustomExperiment>
 			<Id>1349374749666</Id>
 			<Name><![CDATA[HassmillerCRC]]></Name>
-			<MaximumMemory>1038565</MaximumMemory>
+			<MaximumMemory>1500000</MaximumMemory>
 			<CommandLineArguments><![CDATA[seed 12334 ]]></CommandLineArguments>
 			<VmArgs><![CDATA[-Xms1024m -XX:MaxPermSize=330040k]]></VmArgs>
 			<Import><![CDATA[import java.io.File;
@@ -24594,7 +23946,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (1); //00);
+execute_populations_parallel (10); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -24623,21 +23975,16 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 //private String outputDirectory = "C:\\Users\\dacornej\\Documents\\GitHub\\crcsim\\model\\out";
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203";
-private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p1";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p2";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\partialpop";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\cleanpops-2014-02-05-1203-smallcohort";
+private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cornejo_pop";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out2";
+//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\out3";
 
 //For small test production runs
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\smallpops";
-//private String outputDirectory = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallout";
-
-// On stevec@STEVE-W510:
-//private String inputDirectory  = "C:\\dev\\var\\crcsim\\model\\cleanpops-2014-02-05-1203-no89or90";
-//private String inputDirectory  = "C:\\dev\\var\\crcsim\\model\\pops60";
-//private String outputDirectory = "C:\\dev\\var\\crcsim\\model\\out";
+//private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\seqout2";
 
 /**
  * Change this to select a different experment.
@@ -24651,13 +23998,12 @@ private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "007"; // all interventions with end year of testing program changed
 //private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
 //private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
-private String experimentId = "011";
-//private String experimentId = "011_endo_all";
+//private String experimentId = "011";
 //private String experimentId = "fs";
 //private String experimentId = "base";
-//private String experimentId = "new_base";
-//private String experimentId = "threshold_001";
-//private String experimentId = "test_database";
+private String experimentId = "seq_003";
+//private String experimentId = "avg_001";
+//private String experimentId = "modality_analysis";
 //private String experimentId = "T2";
 //private String experimentId = "T3_noRNG";
 
@@ -24757,10 +24103,10 @@ private void model_population (File [] cohorts,
     //System.out.println ("Experiment params: ==> \n" + experimentParameters + "END EXPERIMENT PARAMS");
     //System.out.println ("iteration params: ==> \n(" + iterationParameters + ")");		
 	for (File cohort : cohorts) {
-		//traceln ("cohort: " + cohort);
+		System.out.println ("cohort: " + cohort);
 		for (File intervention : interventions) {
 		    String scenario = get_scenario_name (cohort, iterationIndex, intervention);
-		    //traceln("scenario = " + scenario);
+		    //System.out.println ("output of get_senario_name method"+ scenario);
 	        String scenarioParameters = get_scenario_parameters (intervention);
 			futures.put (scenario,
 					     execute_parallel (cohort,
@@ -24786,7 +24132,7 @@ private void execute_populations_parallel (int replications) {
 	// Read parameters common to the entire experiment.
 	String experimentDefinition = formExperimentPath ("experiment.txt");
 	String experimentParameters = Main.modelIO.getFileAsString (new File (experimentDefinition));
-	//traceln("experimentDefinition: " + experimentDefinition);
+	
 	// Track parallel jobs using futures to allow us to wait for completion.
 	HashMap<String,List<Future>> futures = new HashMap<String,List<Future>> ();		
 
@@ -24795,20 +24141,20 @@ private void execute_populations_parallel (int replications) {
 	HashMap<String,Outcomes> results = new HashMap<String,Outcomes> ();
 		
 	List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
-	//List<String> iterationParameterSets = IterationUtil.generateIterationsFromValueList (formExperimentPath ("iterationsList.conf"));
+	
 	for (int c = 0; c < iterationParameterSets.size(); c++) {
 		String iterationParameters = iterationParameterSets.get(c);
 		int iterationIndex = c;
-		// For debug purposes
-		//System.out.println ("iterationParameters[" + c + "]: " + iterationParameters);
+		///For debug purposes
+		System.out.println (iterationParameters);
 		//System.exit(0);
  
         File [] cohorts = Main.modelIO.getFilesByPattern (".*.tsv.[0-9]+", new File (inputDirectory));
 		System.out.println("BREAK 1");
-		System.out.println("INPUT_DIRECTORY: " + inputDirectory);
-		System.out.println("COHORTS: " + cohorts);
-		System.out.println("EXPERIMENT_PARAMETERS: " + experimentParameters);
-		System.out.println("ITERATION_PARAMETERS: " + iterationParameters);
+		System.out.println("INPUT_DIRECTORY"+inputDirectory);
+		System.out.println("COHORTS"+cohorts);
+		System.out.println("EXPERIMENT_PARAMETERS"+experimentParameters);
+		System.out.println("ITERATION_PARMERTERS"+iterationParameters);
 		model_population (cohorts,
 					      experimentParameters,
                           iterationParameters,
@@ -24879,7 +24225,7 @@ private void calibrate (int replications) {
 /**
  * Join this thread with a map of collections of other threads.
  * For each key in the map, get the list of associated futures.
- * Wait for each future.
+ *   Wait for each future.
  * Once all have completed, add outcomes for the scenario.
  *@param futures A map of lists of futures where scenario ids are keys.
  *@param results A map of scenarios to outcomes objects.
@@ -24912,16 +24258,11 @@ private String getInputFileConfiguration (File input) {
 		buffer.append ("cohort=").append (cohort).append ("\n");
 		buffer.append ("death_rate_delay=").append (cohort).append ("\n");
 	}
-	int numLines = Main.modelIO.countFileLines (input);
-	final int MAX_LINES = 101; // Add one extra for headers
+	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		if (numLines > MAX_LINES) {
-		    numLines = MAX_LINES;
-		}		
-	}else{
-		numLines = numLines-1;
+		lines = 201;
 	}
-	buffer.append ("population_size=").append (numLines).append ("\n");
+	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");
 	return buffer.toString (); //value;
 }
@@ -25028,10 +24369,6 @@ public Main create_model (File input, String scenario, int replication) {
 	
 	// Configure the simulation to compute population rates.
 	root.compute_population_rates = true;
-	
-	// Save the scenario name in root so it's available in 
-	// Population.output_person_data():
-	root.scenario = scenario;
 	
 	return root;
 }
@@ -25145,7 +24482,6 @@ class ModelRunner implements Runnable {
 			root.outfile_replication_name = root.outfile_replication_name + "." + replication;
 			root.outfile_agent_name = root.outfile_agent_name + "." + replication;
 			root.outfile_agent_year_name = root.outfile_agent_year_name + "." + replication;
-			root.outfile_county_name = root.outfile_county_name + "." + replication;
 
 			synchronized (ModelRunner.class) {
 		   	 // This appears to workaround an occasional deadlock in the classloader in some vms.
@@ -25164,7 +24500,7 @@ class ModelRunner implements Runnable {
 			
 			long end = System.currentTimeMillis ();
 			traceln ("-end  : " + root.output_dir + " rep(" + replication + ") in " + 
-					( (end - start) / 1000.0 ) + " seconds");
+					( (end - start) / 1000 ) + " seconds");
 			//ADDED 17 Apr 2014 to see if can reduce memory usage
 			root.getEngine().stop();
 		} catch (Throwable t) {
@@ -25200,6 +24536,19 @@ List<Future> execute_parallel  (File input,
 }]]></AdditionalClassCode>
 		</CustomExperiment>
 	</Experiments>
+	<JavaClasses>
+		<!--   =========   Java Class   ========  -->
+		<JavaClass>
+			<Id>1409282426671</Id>
+			<Name><![CDATA[InterventionList]]></Name>
+			<Text><![CDATA[/**
+ * InterventionList
+ */	
+public enum InterventionList {
+	none,freescreeneveryone, freescreenwomen, freescreenrural, freescreennonwhite, mailedremindereveryone,mailedreminderrural,mailedreminderwomen, mailedremindernonwhite, massmediaeveryone,massmediawomen, massmediarural,massmedianonwhite;
+	}]]></Text>
+		</JavaClass>
+	</JavaClasses>
 	<ClassPathEntry>
 		<Location><![CDATA[al6utils-v7.jar]]></Location>
 		<Imported>true</Imported>

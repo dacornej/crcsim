@@ -1,5 +1,5 @@
 #Senario 0004: Average Mlog, GO Big Mailed Reminder to Everyone
 use_avg_mlog_probs=true
 interventionName=GoBigMailedReminderEveryone
-interventionEffect1=0.2
+interventionEffect1=0.1
 interventionEffect2=0.0

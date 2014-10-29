@@ -1,6 +1,6 @@
 #Senario 0004: Average Mlog, GO Big Mailed Reminder to Everyone
 average_model=true
 sequential_model=false
-interventionName=MailedReminderEveryone
-interventionEffect1=0.05
+interventionName=GoBigMailedReminderEveryone
+interventionEffect1=0.1
 interventionEffect2=0.0
