@@ -1,0 +1,10 @@
+#Senario 0006:  Full Mlog, Basecase
+average_model=true
+sequential_model=false
+interventionName=MailedReminderRural
+interventionEffect1=0.05
+interventionEffect2=0.0
+
+
+
+

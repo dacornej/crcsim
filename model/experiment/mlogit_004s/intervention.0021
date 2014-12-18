@@ -1,0 +1,7 @@
+#Senario 0001: aveage seq, Mass media everyone
+use_avg_mlog_probs=false
+interventionName=MassMediaEveryone
+interventionEffect1=0.03
+
+
+

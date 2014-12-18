@@ -1,0 +1,9 @@
+#Senario 0000: average seq, mailed reminder nonwhite
+average_model=false
+sequential_model=true
+interventionName=MailedReminderNonWhite
+interventionEffect1=0.05
+interventionEffect2=0.0
+
+
+

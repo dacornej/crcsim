@@ -1,0 +1,8 @@
+#Senario 0001: Average seq, Voucher Program women
+average_model=false
+sequential_model=true
+interventionName=FreeScreenWomen
+num_free_colonoscopy=400
+
+
+

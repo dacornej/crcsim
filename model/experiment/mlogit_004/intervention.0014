@@ -1,0 +1,7 @@
+#Senario 0001: Average seq, Voucher Program women
+use_avg_mlog_probs=false
+interventionName=FreeScreenWomen
+num_free_colonoscopy=400
+
+
+

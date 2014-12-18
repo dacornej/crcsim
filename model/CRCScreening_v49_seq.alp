@@ -7404,7 +7404,7 @@ catch (Exception e) {
   			*/
   } 
 
-  outfile_agent_year_writer.write("\r\n");
+  //outfile_agent_year_writer.write("\r\n");
 }
 catch (Exception e) {
   error(e.getMessage());
@@ -11224,12 +11224,12 @@ if (screen_state.isStateActive (Person.Diagnostic) && !routine_is_diagnostic) {
   compliance_prob = compliance_prob_input;
   
   //// Normalize/Adjust compliance probablities
-  if (routine_test.name.equals("Colonoscopy")){
+if (routine_test.name.equals("Colonoscopy")){
 	//System.out.println("Yes, Colonoscopy");
-	compliance_prob = Math.pow((1-(1-compliance_prob)),(10.0/6.0));
+	compliance_prob = (1-Math.pow((1-compliance_prob),(10.0/6.0)));
 }else if (routine_test.name.equals("FOBT")){
 	//System.out.println("Yes,FOBT");
-	compliance_prob = Math.pow((1-(1-compliance_prob)),(1.0/6.0));
+	compliance_prob = (1-Math.pow((1-compliance_prob),(1.0/6.0)));
 }else{
 	error("No test defined");
 }  
@@ -11285,7 +11285,7 @@ switch (intervention){
 	}
     break;
   case mailedreminderwomen:
-	if (isInInterventionWindow && uniform()<0.28){
+	if (isInInterventionWindow && (!sex_male) && (uniform()<0.54)){
 		compliance_prob+=main.interventionEffect1;
 	}
     break;
@@ -15934,11 +15934,18 @@ num_mail_reminders = new int[20];
 
 
 
-
+int[] num_urban = new int[20];
+int[] num_utd_any_urban = new int[20];
+int[] num_utd_colon_urban = new int[20];
+int[] num_rural = new int[20];
+int[] num_utd_any_rural = new int[20];
+int[] num_utd_colon_rural = new int[20];
 int[] num_male = new int[20];
 int[] num_utd_any_male = new int[20];
+int[] num_utd_colon_male = new int[20];
 int[] num_female = new int[20];
 int[] num_utd_any_female = new int[20];
+int[] num_utd_colon_female = new int[20];
 int[] num_white = new int[20];
 int[] num_utd_any_white = new int[20];
 int[] num_black = new int[20];
@@ -15995,14 +16002,29 @@ for (int i = 0; i < people.size(); i++){ // i is the current person
 						//If they don't meet these conditions they don't get a letter
 					}
 				}
-			
+				
+				
+				
 				//GENDER COUNTERS
 				if (people.get(i).sex_male){
 					num_male[j] = num_male[j] + 1;
 					num_utd_any_male[j] = num_utd_any_male[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					num_utd_colon_male[j] = num_utd_colon_male[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
 				}else{
 					num_female[j] = num_female[j] + 1;
 					num_utd_any_female[j] = num_utd_any_female[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					num_utd_colon_female[j] = num_utd_colon_female[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
+				}
+				
+				//URBAN COUNTERS
+				if (people.get(i).isUrban){
+					num_urban[j] = num_urban[j] + 1;
+					num_utd_any_urban[j] = num_utd_any_urban[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					num_utd_colon_urban[j] = num_utd_colon_urban[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
+				}else{
+					num_rural[j] = num_rural[j] + 1;
+					num_utd_any_rural[j] = num_utd_any_rural[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					num_utd_colon_rural[j] = num_utd_colon_rural[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]);
 				}
 				//RACE COUNTERS
 				if (people.get(i).race_white){
@@ -16073,6 +16095,18 @@ count_black = num_black[9];
 count_utd_any_black = num_utd_any_black[9];
 count_other = num_other[9];
 count_utd_any_other = num_utd_any_other[9];
+
+for (int tempIDX = 0; tempIDX < 14; tempIDX++){
+//int tempIDX = 9;
+	System.out.println("Year=" + (2014+tempIDX));
+	System.out.println("Experiment: ");
+	System.out.println("count_utd_colon_urban: " + num_utd_colon_urban[tempIDX]+ " average_model: "+ main.average_model);
+	System.out.println("count_utd_any_urban: " + num_utd_any_urban[tempIDX]+ " average_model: "+ main.average_model);
+	System.out.println("count_urban: " + num_urban[tempIDX]+ " average_model: "+ main.average_model);
+	System.out.println("count_utd_colon_rural: " + num_utd_colon_rural[tempIDX]+  " average_model: "+ main.average_model);
+	System.out.println("count_utd_any_rural: " + num_utd_any_rural[tempIDX]+ " average_model: "+ main.average_model);
+	System.out.println("count_rural: " + num_rural[tempIDX]+ " average_model: "+ main.average_model);
+}
 /*
 count_private = num_private[9];
 count_utd_any_private = num_utd_any_private[9];
@@ -23946,7 +23980,7 @@ import org.apache.commons.lang3.StringUtils;
 			<Code><![CDATA[/**
  * Configure the population scenario to execute.
  */
-execute_populations_parallel (10); //00);
+execute_populations_parallel (1); //00);
 //calibrate (1);
 ]]></Code>
 			<AdditionalClassCode><![CDATA[private List<Outcomes> _outcomes = null;
@@ -24001,7 +24035,8 @@ private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "011";
 //private String experimentId = "fs";
 //private String experimentId = "base";
-private String experimentId = "seq_002";
+//private String experimentId = "seq_002";
+private String experimentId = "seq_004t";
 //private String experimentId = "avg_001";
 //private String experimentId = "modality_analysis";
 //private String experimentId = "T2";
@@ -24260,7 +24295,7 @@ private String getInputFileConfiguration (File input) {
 	}
 	int lines = Main.modelIO.countFileLines (input);
 	if (debugMode) {
-		lines = 201;
+		lines = 2001;
 	}
 	buffer.append ("population_size=").append ((lines - 1)).append ("\n");
 	buffer.append ("infile_population_name=").append (input.getPath ()).append ("\n");

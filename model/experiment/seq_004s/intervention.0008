@@ -1,0 +1,8 @@
+#Senario 0001: aveage seq, Mass media everyone
+average_model=true
+sequential_model=false
+interventionName=MassMediaEveryone
+interventionEffect1=0.03
+
+
+

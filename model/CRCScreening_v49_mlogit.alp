@@ -11695,7 +11695,43 @@ if (    screen_state.isStateActive(Person.Routine)
   	//System.out.println(time());
   	//System.out.println(num_colonoscopies);
   }
+      routine_test.tot_performed++;
+      add_cost(routine_test.cost, "routine");
+
+      // Check for immediate death from the test procedure.
+      if (uniform() < routine_test.proportion_lethal) {
+        routine_test.tot_lethal++;
+        disease_state.fireEvent("other_death");
+        return;
+      }
+
+      if (disease_state.isStateActive(Person.Healthy)) {
+        // If the person is in the healthy state, then he has no lesions.
+        // So a positive result is actually a false positive.
+        if (is_false_positive(routine_test)) {
+          screen_state.fireEvent("screen_positive");
+        }
+      }
+      else if (disease_state.isStateActive(Person.Polyp) || disease_state.isStateActive(Person.PreclinicalCancer)) {
+        // Check each lesion for detection independently.
+        for (int i=0; i<lesions.size(); i++) {
+          //if (lesions.get(i).is_detected(routine_test)) {
+          if (lesions.get(i).is_detected_new1(routine_test,is_detected_array_routine)) {
+            screen_state.fireEvent("screen_positive");
   
+            // Once we've found one, we don't need to check the rest.
+            break;
+          }
+        }
+      }
+
+      // Check whether the test resulted in a perforation. The only implication
+      // of this so far is the cost of repairing it.
+      if (uniform() < routine_test.proportion_perforation) {
+        add_cost(routine_test.cost_perforation, "routine");
+      }
+  
+  /*
   if (routine_test.name.equals(diagnostic_test.name)) {
     // If the test used for routine screening is the same as the test
     // used for diagnostic testing, then we won't perform the actions
@@ -11743,6 +11779,8 @@ if (    screen_state.isStateActive(Person.Routine)
       }
     //}
   }
+  */
+  //--------------------------------------------------------------------
 }
 ]]></Body>
 				</Function>
@@ -12630,7 +12668,7 @@ double prob_sigmoid = 0;
 double prob_fdna = 0;
 double prob_colon = prob_colon_input;
 double prob_fobt = prob_fobt_input;
-
+//System.out.println("FOBT: " + prob_fobt);
 //Apply intervetnions here
 boolean isInInterventionWindow = false;
 if((main.age >= (main.dynamic_compliance_rate_year_offset_new + this.age)) && (main.age < (main.dynamic_compliance_rate_year_offset_new + this.age + 10))){
@@ -12654,53 +12692,127 @@ switch (intervention){
         prob_none = 0;
 	}
 	break;
-  case mailedremindereveryone:
-	if (isInInterventionWindow && uniform()< 0.38){
-		prob_colon += 0.5*main.interventionEffect1;
-        prob_fobt +=0.5*main.interventionEffect1;
-        prob_none = 1- prob_fobt - prob_colon;
-	}
-    break;
-  case mailedreminderrural:
-	if (isInInterventionWindow && !isUrban){
-		prob_colon += 0.5*main.interventionEffect1;
-        prob_fobt +=0.5*main.interventionEffect1;
-        prob_none = 1- prob_fobt - prob_colon;
-	}
-    break;
-  case massmediawomen:
-	if (isInInterventionWindow && !sex_male){
-		prob_colon += 0.5*main.interventionEffect1;
-        prob_fobt +=0.5*main.interventionEffect1;
-        prob_none = 1- prob_fobt - prob_colon;
-	}else if (isInInterventionWindow) {
-		prob_colon += 0.5*main.interventionEffect2;
-        prob_fobt +=0.5*main.interventionEffect2;
-        prob_none = 1- prob_fobt - prob_colon;
-	}
-    break;
-  case gobigmailedremindereveryone:
-    if (isInInterventionWindow){
-		prob_colon += 0.5*main.interventionEffect1;
-        prob_fobt +=0.5*main.interventionEffect1;
-        prob_none = 1- prob_fobt - prob_colon;
+	
+  case freescreenwomen:
+	if ((routine_test.name == "Colonoscopy") && (!this.sex_male)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    people.free_screen_count++;
+        is_free_screen = true;
+        prob_colon = 1;
+        prob_fobt = 0;
+        prob_none = 0;
 	}
 	break;
-  case gobigmassmediawomen:
-  	if (isInInterventionWindow && !sex_male){
-		prob_colon += 0.5*main.interventionEffect1;
-        prob_fobt +=0.5*main.interventionEffect1;
+
+  case freescreenrural:
+	if ((routine_test.name == "Colonoscopy") && (!this.isUrban)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    people.free_screen_count++;
+        is_free_screen = true;
+        prob_colon = 1;
+        prob_fobt = 0;
+        prob_none = 0;
+	}
+	break;
+	
+  case freescreennonwhite:
+	if ((routine_test.name == "Colonoscopy") && (!this.race_white)&& (main.age == 52) && (this.age <= 53) && (people.free_screen_count < main.num_free_colonoscopy)){
+	    people.free_screen_count++;
+        is_free_screen = true;
+        prob_colon = 1;
+        prob_fobt = 0;
+        prob_none = 0;
+	}
+	break;	
+
+  case mailedremindereveryone:
+	if (isInInterventionWindow && uniform()<0.28){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case mailedreminderwomen:
+	if (isInInterventionWindow && (!sex_male) && (uniform()<0.54)){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case mailedreminderrural:
+	if (isInInterventionWindow && !isUrban){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case mailedremindernonwhite:
+	if (isInInterventionWindow && !race_white){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case massmediaeveryone:
+	if (isInInterventionWindow){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case massmediawomen:
+	if (isInInterventionWindow && !sex_male){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
         prob_none = 1- prob_fobt - prob_colon;
 	}else if (isInInterventionWindow) {
-		prob_colon += 0.5*main.interventionEffect2;
-        prob_fobt +=0.5*main.interventionEffect2;
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect2;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect2;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case massmediarural:
+	if (isInInterventionWindow && !isUrban){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}else if (isInInterventionWindow) {
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect2;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect2;
+        prob_none = 1- prob_fobt - prob_colon;
+	}
+    break;
+
+  case massmedianonwhite:
+	if (isInInterventionWindow && !race_white){
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect1;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect1;
+        prob_none = 1- prob_fobt - prob_colon;
+	}else if (isInInterventionWindow) {
+		double prob_screen_t = prob_colon+prob_fobt;
+		prob_colon += (prob_colon/prob_screen_t)*main.interventionEffect2;
+        prob_fobt +=(prob_fobt/prob_screen_t)*main.interventionEffect2;
         prob_none = 1- prob_fobt - prob_colon;
 	}
     break;
   default:
   	System.out.println("Intervetnion name not entered correctly , entered as: "+ main.interventionName);
     break;
-}
+}	
 
 double trend_ammount = 0;
 double compliance_slack = 0;
@@ -12726,12 +12838,29 @@ if (prob_colon != 0 || prob_fobt != 0 || prob_sigmoid != 0) {
 }
 
 //----------------------------------------------
+// find probability of each test and set test type
+//routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
+double rand = uniform(0,1,myRNG4);
+//double rand = uniform(0,1);
+
+if (rand < prob_fobt){
+  //System.out.println("rand: " + rand + "Prob_fobt: " + prob_fobt);
+  routine_test = get_Population().get_Main().test_set.get_test_by_name("FOBT");	
+}else if (rand < (prob_fobt + prob_colon)){
+  //System.out.println("rand: " + rand + "Prob_colon: " + prob_colon + "prob_colon + prob_fobt: " + (prob_colon+prob_fobt));
+  routine_test = get_Population().get_Main().test_set.get_test_by_name("Colonoscopy");	
+}else{
+  routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
+}
+
+//----------------------------------------------
 // Create a vector containing the probability for
 // each test. All model-based probabilities must
 // be adjusted to account for the sum of the direct
 // probabilities. This vector should parallel the
 // test_set vector.
 
+/*
 double[] distribution = new double[get_Population().get_Main().test_set.size()];
 
 for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
@@ -12754,7 +12883,7 @@ for (int i=0; i<get_Population().get_Main().test_set.size(); i++) {
     error("Unexpected model-based test name: " + t.name);
   }
 }
-
+//System.out.println("Distribution of Tests: FOBT" + distribution[0] + " Colonoscopy: "+distribution[2]);
 //----------------------------------------------
 // Randomly choose which test this person will take.
 
@@ -12775,6 +12904,8 @@ if (routine_test == null) {
   routine_test = get_Population().get_Main().test_set.get_test_by_name("None");
   //routine_test = get_Population().get_Main().test_set.null_test;
 }
+*/
+//System.out.println("Routine Test: "+ routine_test);
 ]]></Body>
 				</Function>
 			</Functions>
@@ -15871,6 +16002,10 @@ try {
       p.prob_fobt_input = in.getDouble("prob_fobt_mlog");
       p.prob_none_input = in.getDouble("prob_noscrn_mlog");
     }
+    //System.out.println("isMale: "+p.sex_male);
+    //System.out.println("prob_none_input: "+p.prob_none_input);
+    //System.out.println("prob_fobt_input: "+p.prob_fobt_input);
+    //System.out.println("prob_colon_input: "+p.prob_colon_input);
     populationSizeActual++;
 	if (populationSizeActual >= populationSize) {
        break;
@@ -16176,8 +16311,14 @@ num_mail_reminders = new int[20];
 
 int[] num_male = new int[20];
 int[] num_utd_any_male = new int[20];
+int[] num_utd_colon_male = new int[20];
+int[] num_utd_fobt_male = new int[20];
+int[] num_utd_colonfobt_male = new int[20];
 int[] num_female = new int[20];
 int[] num_utd_any_female = new int[20];
+int[] num_utd_colon_female = new int[20];
+int[] num_utd_fobt_female = new int[20];
+int[] num_utd_colonfobt_female = new int[20];
 int[] num_white = new int[20];
 int[] num_utd_any_white = new int[20];
 int[] num_black = new int[20];
@@ -16238,11 +16379,23 @@ for (int i = 0; i < people.size(); i++){ // i is the current person
 			
 				//GENDER COUNTERS
 				if (people.get(i).sex_male){
+					//System.out.println("isMale: "+ people.get(i).sex_male+ "prob_none_input:" +people.get(i).prob_none_input+"prob_fobt_input"+people.get(i).prob_fobt_input + "prob_colon_input: "+ people.get(i).prob_colon_input);
 					num_male[j] = num_male[j] + 1;
-					num_utd_any_male[j] = num_utd_any_male[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					//System.out.println("count_male_2014: " + num_male[0]);
+					num_utd_any_male[j] = num_utd_any_male[j] + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX] || people.get(i).sigmoid_utd[ageIDX]));
+					num_utd_colon_male[j] = num_utd_colon_male[j] + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]) && !(people.get(i).fobt_utd[ageIDX]));
+					num_utd_fobt_male[j] = num_utd_fobt_male[j] + BooleanUtils.toInteger((people.get(i).fobt_utd[ageIDX]) && !(people.get(i).colon_utd[ageIDX]));
+					num_utd_colonfobt_male[j] = num_utd_colonfobt_male[j] + BooleanUtils.toInteger((people.get(i).fobt_utd[ageIDX]) && (people.get(i).colon_utd[ageIDX]));
+					//System.out.println("Test BooleanUtil, Boolean value: "+ true + " Integer Value: " + BooleanUtils.toInteger(true));
+					//System.out.println("Test BooleanUtil, Boolean value: "+ false + " Integer Value: " + BooleanUtils.toInteger(false));
 				}else{
+					//System.out.println("isMale: "+ people.get(i).sex_male+ "prob_none_input:" +people.get(i).prob_none_input);
 					num_female[j] = num_female[j] + 1;
-					num_utd_any_female[j] = num_utd_any_female[j] + BooleanUtils.toInteger(people.get(i).colon_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).fobt_utd[ageIDX]) + BooleanUtils.toInteger(people.get(i).sigmoid_utd[ageIDX]);
+					//System.out.println("count_female: " + num_female[0]);
+					num_utd_any_female[j] = num_utd_any_female[j] + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]||people.get(i).fobt_utd[ageIDX] || people.get(i).sigmoid_utd[ageIDX]));
+					num_utd_colon_female[j] = num_utd_colon_female[j] + BooleanUtils.toInteger((people.get(i).colon_utd[ageIDX]) && !(people.get(i).fobt_utd[ageIDX]));
+					num_utd_fobt_female[j] = num_utd_fobt_female[j] + BooleanUtils.toInteger((people.get(i).fobt_utd[ageIDX]) && !(people.get(i).colon_utd[ageIDX]));
+					num_utd_colonfobt_female[j] = num_utd_colonfobt_female[j] + BooleanUtils.toInteger((people.get(i).fobt_utd[ageIDX]) && (people.get(i).colon_utd[ageIDX]));
 				}
 				//RACE COUNTERS
 				if (people.get(i).race_white){
@@ -16301,6 +16454,22 @@ count_utd_any_dual = sum_over10(num_utd_any_dual);
 count_none = sum_over10(num_none);
 count_utd_any_none = sum_over10(num_utd_any_none);
 */
+//test in 2023
+
+for (int tempIDX = 0; tempIDX < 14; tempIDX++){
+//int tempIDX = 9;
+	System.out.println("Year=" + (2014+tempIDX));
+	System.out.println("Experiment: ");
+	System.out.println("count_utd_colon_only_male: " + num_utd_colon_male[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_utd_fobt_only_male: " + num_utd_fobt_male[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_utd_colonfobt_male: " + num_utd_colonfobt_male[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_utd_any_male: " + num_utd_any_male[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_male_2014: " + num_male[tempIDX]+ "use_avg_mlog_probs: "+main.use_avg_mlog_probs);
+	System.out.println("count_utd_colon_only_female: " + num_utd_colon_female[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_utd_fobt_only_female: " + num_utd_fobt_female[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_utd_colonfobt_female: " + num_utd_colonfobt_female[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+	System.out.println("count_female: " + num_female[tempIDX]+ "use_avg_mlog_probs: "+ main.use_avg_mlog_probs);
+}
 
 //Just do the counters in the year 2014
 count_male = num_male[9];
@@ -16325,7 +16494,9 @@ count_utd_any_dual = num_utd_any_dual[9];
 count_none = num_none[9];
 count_utd_any_none = num_utd_any_none[9];
 */
-
+//System.out.println("utd_fobt: " + 0 + "Value: " + num_utd_fobt[0]);
+//System.out.println("utd_colon: " + 0 + "Value: " + num_utd_colon[0]);
+//System.out.println("utd_any: " + 0+ " Value: " + num_utd_any[0]);
 num_alive_year2014 = num_alive[0];
 num_alive_year2015 = num_alive[1];
 num_alive_year2016 = num_alive[2];
@@ -24177,7 +24348,7 @@ static int outcomesIndex = 0;
 //private String inputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\pops";
 //private String outputDirectory = "C:\\Users\\mayorga_anylogic\\Documents\\GitHub\\crcsim\\model\\out";
 
-private boolean debugMode = true; // Denotes if only use part of population files.
+private boolean debugMode = false; // Denotes if only use part of population files.
 
 // For small scale runs on RENCI Machine
 //private String inputDirectory = "C:\\Users\\dacornej\\Documents\\pops";
@@ -24203,7 +24374,7 @@ private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 
 //For small test production runs
 //private String inputDirectory  = "\\\\ad.renci.org\\projects\\SystemsScience_Windows\\smallpops";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\mlogitout2";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\mlogitout3";
 
 /**
  * Change this to select a different experment.
@@ -24221,8 +24392,8 @@ private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "fs";
 //private String experimentId = "base";
 //private String experimentId = "base_seq";
-//private String experimentId = "mlogit_001";
-private String experimentId = "mlogit_test";
+private String experimentId = "mlogit_004t";
+//private String experimentId = "mlogit_test";
 //private String experimentId = "modality_analysis_mlogit";
 //private String experimentId = "T3_noRNG";
 
@@ -24764,9 +24935,8 @@ List<Future> execute_parallel  (File input,
  * InterventionList
  */	
 public enum InterventionList {
-	none,freescreeneveryone,mailedremindereveryone,mailedreminderrural,massmediawomen,gobigmailedremindereveryone,gobigmassmediawomen;
-	}
-]]></Text>
+	none,freescreeneveryone, freescreenwomen, freescreenrural, freescreennonwhite, mailedremindereveryone,mailedreminderrural,mailedreminderwomen, mailedremindernonwhite, massmediaeveryone,massmediawomen, massmediarural,massmedianonwhite;
+	}]]></Text>
 		</JavaClass>
 	</JavaClasses>
 	<ClassPathEntry>

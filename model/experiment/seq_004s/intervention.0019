@@ -1,0 +1,10 @@
+#Senario 0006:  Full seq, Mailed reminder rural
+average_model=false
+sequential_model=true
+interventionName=MailedReminderRural
+interventionEffect1=0.05
+interventionEffect2=0.0
+
+
+
+

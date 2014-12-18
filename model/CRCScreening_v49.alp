@@ -24624,11 +24624,11 @@ private boolean debugMode = false; // Denotes if only use part of population fil
 
 //For Production Runs on RENCI Machine(replaced by SystemsScience_Windows)
 //private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203";
-private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort";
+//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort";
 //private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p1";
 //private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\cleanpops-2014-02-05-1203-smallcohort-p2";
-//private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\partialpop";
-private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\out";
+private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\smallpops";
+private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\outSA";
 
 //For small test production runs
 //private String inputDirectory  = "\\\\ad.renci.org\\Shared\\Projects\\SystemsScience\\smallpops";
@@ -24651,12 +24651,12 @@ private String outputDirectory = "\\\\ad.renci.org\\Shared\\Projects\\SystemsSci
 //private String experimentId = "007"; // all interventions with end year of testing program changed
 //private String experimentId = "008"; // two secular trend intervention,mailed reminder,mass media, all on, NO endoscopy expainsion
 //private String experimentId = "009"; // 10% secular trend is baseline, also 5% trend and no trend interventions,,mailed reminder(w. 10% trend),mass media(w. 10% trend), all on(w. 10% trend), NO endoscopy expainsion
-private String experimentId = "011";
+//private String experimentId = "011";
 //private String experimentId = "011_endo_all";
 //private String experimentId = "fs";
 //private String experimentId = "base";
 //private String experimentId = "new_base";
-//private String experimentId = "threshold_001";
+private String experimentId = "threshold_001";
 //private String experimentId = "test_database";
 //private String experimentId = "T2";
 //private String experimentId = "T3_noRNG";
@@ -24794,8 +24794,8 @@ private void execute_populations_parallel (int replications) {
 	_outcomes = new ArrayList<Outcomes> ();
 	HashMap<String,Outcomes> results = new HashMap<String,Outcomes> ();
 		
-	List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
-	//List<String> iterationParameterSets = IterationUtil.generateIterationsFromValueList (formExperimentPath ("iterationsList.conf"));
+	//List<String> iterationParameterSets = IterationUtil.generateIterations (formExperimentPath ("iterations.conf"));
+	List<String> iterationParameterSets = IterationUtil.generateIterationsFromValueList (formExperimentPath ("iterationsList.conf"));
 	for (int c = 0; c < iterationParameterSets.size(); c++) {
 		String iterationParameters = iterationParameterSets.get(c);
 		int iterationIndex = c;

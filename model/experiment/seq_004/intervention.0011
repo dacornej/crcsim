@@ -1,0 +1,7 @@
+#Senario 0011: avg seq, Mass media nonwhite
+average_model=true
+sequential_model=false
+interventionName=MassMediaNonWhite
+interventionEffect1=0.05
+interventionEffect2=0.02
+

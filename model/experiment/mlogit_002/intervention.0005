@@ -1,0 +1,6 @@
+#Senario 0005: Average Mlog, GO BIG Mass media(focused on women)
+average_model=true
+sequential_model=false
+interventionName=MailedReminderWomen
+interventionEffect1=0.05
+interventionEffect2=0.0

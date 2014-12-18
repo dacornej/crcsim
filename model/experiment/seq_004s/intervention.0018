@@ -1,0 +1,6 @@
+#Senario 0005: Average seq, mailed reminder women
+average_model=false
+sequential_model=true
+interventionName=MailedReminderWomen
+interventionEffect1=0.05
+interventionEffect2=0.0

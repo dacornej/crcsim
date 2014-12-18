@@ -1,0 +1,8 @@
+#Senario 0003: Average Seq, Voucher Program Non white
+average_model=false
+sequential_model=true
+interventionName=FreeScreenNonWhite
+num_free_colonoscopy=400
+
+
+

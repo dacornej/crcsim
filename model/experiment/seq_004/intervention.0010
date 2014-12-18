@@ -1,0 +1,6 @@
+#Senario 00010: avg seq, Mass media rurual
+average_model=true
+sequential_model=false
+interventionName=MassMediaRural
+interventionEffect1=0.05
+interventionEffect2=0.02

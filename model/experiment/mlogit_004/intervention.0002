@@ -1,0 +1,7 @@
+#Senario 0002: Average seq, Voucher Program Rural
+use_avg_mlog_probs=true
+interventionName=FreeScreenRural
+num_free_colonoscopy=400
+
+
+
