@@ -1,0 +1,10 @@
+#Senario 0000: MAIL REMINDER with  1% effect
+secular_trend_active=true
+intervene_mass_media=true
+mass_media_black_effect=0.02
+mass_media_other_effect=0.01
+mass_media_black_reach=0.8
+mass_media_other_reach=0.4
+
+
+

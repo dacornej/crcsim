@@ -1,0 +1,7 @@
+#Senario 0004: MASS Media with  5% effect
+secular_trend_active=true
+intervene_mass_media=true
+mass_media_black_effect=0.01
+mass_media_other_effect=0.005
+mass_media_black_reach=0.4
+mass_media_other_reach=0.2

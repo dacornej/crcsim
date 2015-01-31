@@ -1,0 +1,7 @@
+#Senario 0002: MASS MEDIA with 10% SECULAR TREND
+secular_trend_active=true
+intervene_mass_media=true
+mass_media_black_effect=0.04
+mass_media_other_effect=0.02
+mass_media_black_reach=1.0
+mass_media_other_reach=0.8

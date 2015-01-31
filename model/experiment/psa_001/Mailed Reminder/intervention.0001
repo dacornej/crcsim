@@ -1,0 +1,4 @@
+#Senario 0000: MAIL REMINDER with  5% effect
+secular_trend_active=true
+intervene_medicaid_mailer=true
+medicaid_mailer_effect=0.05
